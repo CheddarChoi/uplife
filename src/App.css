@@ -1,3 +1,7 @@
+:root {
+  --prime-blue: rgba(53, 152, 219, 1);
+}
+
 .App {
   text-align: center;
 }

@@ -1,0 +1,80 @@
+body {
+  font-family: Roboto;
+}
+
+h1 {
+  font-weight: bold;
+  font-size: 40px;
+  line-height: 48px;
+}
+
+h2 {
+  font-weight: normal;
+  font-size: 32px;
+  line-height: 38px;
+}
+
+h3 {
+  font-weight: normal;
+  font-size: 28px;
+  line-height: 34px;
+}
+
+h4 {
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 32px;
+}
+
+h5 {
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 24px;
+}
+
+h6 {
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 19px;
+}
+
+.value {
+  font-weight: 300;
+  font-size: 10px;
+  line-height: 19px;
+}
+
+.small {
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 19px;
+}
+
+.gray {
+  color: #c2c2c2;
+}
+
+div.content {
+  background: #f9fbff;
+  border-radius: 30px;
+
+  margin-top: 75px;
+  padding: 40px 75px;
+}
+
+div.uplifeDiv {
+  background: #ffffff;
+  box-shadow: 0px 4px 45px -15px rgba(0, 0, 0, 0.15);
+  border-radius: 20px;
+  padding: 16px 40px;
+  margin-bottom: 35px;
+
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 32px;
+
+  text-align: center;
+  color: #3598db;
+}

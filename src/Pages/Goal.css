@@ -10,6 +10,12 @@
   padding: 32px;
   cursor: pointer;
   margin-bottom: 32px;
+  display: flex;
+  flex-direction: column;
+  /* 
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; */
 }
 
 .blank {

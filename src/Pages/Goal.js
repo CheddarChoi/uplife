@@ -35,7 +35,10 @@ const Goal = () => {
         />
 
         <div class="goalContainer row">
-          <div className="goalType col" onClick={() => handleRoute("/goal1")}>
+          <div
+            className="goalType col"
+            onClick={() => handleRoute("/goal/total")}
+          >
             <Number num="1" />
             <h4>
               I will use my phone less than{" "}

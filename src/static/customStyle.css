@@ -78,3 +78,20 @@ div.uplifeDiv {
   text-align: center;
   color: #3598db;
 }
+
+button.uplifeButton {
+  padding: 17px 71px;
+  width: 100%;
+
+  background: #3598db;
+  border-radius: 10px;
+  border: none;
+
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 24px;
+
+  color: #ffffff;
+}

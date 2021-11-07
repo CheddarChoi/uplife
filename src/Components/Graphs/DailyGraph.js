@@ -8,6 +8,7 @@ const Plot = createPlotlyComponent(Plotly);
 const DailyGraph = () => {
 
   const [goal, setGoal] = useState(4)
+  const [xaxis, setXaxis] = useState({x0:0, x1:1})
   const emotion = [4, 1, 3, 5,5,2,1]
   const usage = [9, 4, 1, 4,2,3,4]
   return (
@@ -38,8 +39,8 @@ const DailyGraph = () => {
           shapes: [{
                     type: 'line',
 
-                    x0: 0,
-                    x1: 1,
+                    x0: xaxis.x0,
+                    x1: xaxis.x1,
                     xref: 'paper',
 
                     y0: goal,
@@ -58,7 +59,6 @@ const DailyGraph = () => {
             }
         }}
         onUpdate={(figure) => {
-          
           setGoal(figure.layout.shapes[0].y0)
           console.log(goal)
         }} 

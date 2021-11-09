@@ -1,16 +1,24 @@
 import React from "react";
+import { useState } from "react";
 import { useHistory } from "react-router-dom";
+
 import DraggableGraph from "../Components/Graphs/DraggableGraph";
 import SectionTitle from "../Components/SectionTitle";
 
 import "../static/customStyle.css";
 import "./Goal.css";
 
-const TotalGoal = () => {
+const CategoryGoal = () => {
   const history = useHistory();
+  const [category, setCategory] = useState("Entertainment");
+  const options = ["Entertainment", "SNS", "Communication", "Productivity"];
 
   const handleRoute = (path) => {
     history.push(path);
+  };
+
+  const onChangeHandler = (e) => {
+    setCategory(e.currentTarget.value);
   };
 
   return (
@@ -29,8 +37,19 @@ const TotalGoal = () => {
               New Goal
             </h2>
             <h4>
-              I will use my phone less than{" "}
-              <span className="blank">3 hr 42 min</span> a day.
+              I will use{" "}
+              <select
+                onChange={onChangeHandler}
+                value={category}
+                className="uplifeDropdown"
+              >
+                {options.map((item, index) => (
+                  <option key={item} value={item}>
+                    {item}
+                  </option>
+                ))}
+              </select>{" "}
+              apps less than <span className="blank">3 hr 42 min</span> a day.
             </h4>
             <button
               className="uplifeButton"
@@ -40,7 +59,7 @@ const TotalGoal = () => {
               Set Goal
             </button>
           </div>
-          <div className="col">
+          <div className="col-md-auto">
             <DraggableGraph />
           </div>
         </div>
@@ -49,4 +68,4 @@ const TotalGoal = () => {
   );
 };
 
-export default TotalGoal;
+export default CategoryGoal;

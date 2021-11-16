@@ -1,7 +1,7 @@
 import React from "react";
 
 import SectionTitle from "../Components/SectionTitle";
-import DraggableGraph from "../Components/Graphs/DraggableGraph";
+import DailyGraph from "../Components/Graphs/DailyGraph";
 
 const Home = () => {
   return (
@@ -15,7 +15,7 @@ const Home = () => {
           <div class="col-md-auto">
             <div className="uplifeDiv">Phone Usage &#38; Emotional State</div>
             <div style={{ width: "100%", border: "solid 1px black" }}>
-              <DraggableGraph />
+              <DailyGraph />
             </div>
           </div>
           <div class="col-md-auto">
@@ -29,13 +29,13 @@ const Home = () => {
           <div class="col-md-auto">
             <div className="uplifeDiv">Total App Usage</div>
             <div style={{ width: "100%", border: "solid 1px black" }}>
-              <DraggableGraph />
+              <DailyGraph />
             </div>
           </div>
           <div class="col-md-auto">
             <div className="uplifeDiv">Usage by Category</div>
             <div style={{ width: "100%", border: "solid 1px black" }}>
-              <DraggableGraph />
+              <DailyGraph />
             </div>
           </div>
         </div>

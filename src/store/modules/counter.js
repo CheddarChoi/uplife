@@ -13,7 +13,14 @@ export const setGoal = number => ({type:SET_GOAL, number })
 // **** 초기상태 정의
 const initialState = {
   color: 'red',
-  number: 0,
+  number: 3,
+  goals:[
+      {
+          id:0,
+          name:'total',
+          value:0
+      }
+  ]
 };
 
 // **** 리듀서 작성

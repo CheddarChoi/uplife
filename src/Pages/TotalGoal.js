@@ -11,9 +11,32 @@ import "./Goal.css";
 const mapStateToProps = state =>({
   number : state.counter.number
 })
-// const mapDispatchToProps = dispatch =>({
-//   setGoal : number => dispatch(setGoal(number))
-// })
+const convertNumToTime =(number) =>{
+    var sign = (number >= 0) ? 1 : -1;
+
+    number = number * sign;
+    var hour = Math.floor(number);
+    var decpart = number - hour;
+
+    var min = 1 / 60;
+
+    decpart = min * Math.round(decpart / min);
+
+    var minute = Math.floor(decpart * 60) + '';
+
+
+    if (minute.length < 2) {
+    minute = '0' + minute; 
+    }
+
+
+    sign = sign == 1 ? '' : '-';
+
+
+    var time = sign + hour + ' hr ' + minute + ' min';
+
+    return time;
+}
 
 const TotalGoal = (props) => {
   const history = useHistory();
@@ -40,7 +63,7 @@ const TotalGoal = (props) => {
             </h2>
             <h4>
               I will use my phone less than{" "}
-              <span className="blank">{number}</span> a day.
+              <span className="blank">{convertNumToTime(number)}</span> a day.
             </h4>
             {/* </div> */}
             <button

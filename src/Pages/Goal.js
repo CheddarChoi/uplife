@@ -1,9 +1,13 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 import SectionTitle from "../Components/SectionTitle";
+import { connect } from 'react-redux';
+import { setGoal } from "../store/modules/counter";
+
 import "./Goal.css";
 
 const Number = (props) => {
+
   return (
     <div
       style={{
@@ -19,13 +23,21 @@ const Number = (props) => {
   );
 };
 
-const Goal = () => {
+const mapStateToProps = ({ counter }) => ({
+  number: counter.number,
+});
+const mapDispatchToProps = dispatch =>({
+  setGoal : number => dispatch(setGoal(number))
+})
+
+
+const Goal = (props) => {
   const history = useHistory();
 
   const handleRoute = (path) => {
     history.push(path);
   };
-
+  const { number } = props
   return (
     <div class="container">
       <div class="content">
@@ -42,7 +54,7 @@ const Goal = () => {
             <Number num="1" />
             <h4>
               I will use my phone less than{" "}
-              <span className="blank">3 hr 42 min</span> a day.
+              <span className="blank">{number}</span> a day.
             </h4>
           </div>
 
@@ -73,4 +85,6 @@ const Goal = () => {
   );
 };
 
-export default Goal;
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Goal);

@@ -13,7 +13,7 @@ const mapDispatchToProps = dispatch =>({
   setGoal : number => dispatch(setGoal(number))
 })
 
-const DraggableGraph = (props) => {
+const DraggableGraph2 = (props) => {
 
   const [goal, setGoal] = useState(props.number)
   const [xaxis, setXaxis] = useState({x0:0, x1:1})
@@ -34,45 +34,18 @@ const DraggableGraph = (props) => {
   return (
     <>
       <Plot
-        style={{ width: "100%" }}
         data={[{
-                x: ['MON', 'TUE', 'WED', 'THU','FRI','SAT','SUN'],
-                y: emotion,
-                name: 'Emotion Rate',
-                marker: {
-                    'size': 12,
-                }
-            }, {
                 x: ['MON', 'TUE', 'WED', 'THU','FRI','SAT','SUN'],
                 y: usage,
                 name: 'Total Usage',
                 mode: 'bar',
                 type:'bar',
                 marker:{
-                  'color':usage.map(value => {
-                    // console.log('status',[goal, value])
-                    return value>goal?'pink':'yellow'
-                  })
+                  'color':'yellow'
                 }
             }]}
         layout={{
           title: 'Phone Usage',
-          shapes: [{
-                    type: 'line',
-
-                    x0: xaxis.x0,
-                    x1: xaxis.x1,
-                    xref: 'paper',
-
-                    y0: goal,
-                    y1: goal,
-                    yref: 'y',
-
-                    line: {
-                        width: 2,
-                        color: 'rgb(30, 30, 30)'
-                    }
-                }]
         }}
         config={{
             edits: {
@@ -88,4 +61,4 @@ const DraggableGraph = (props) => {
   );
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(DraggableGraph);
+export default connect(mapStateToProps, mapDispatchToProps)(DraggableGraph2);

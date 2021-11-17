@@ -4,6 +4,7 @@ import SectionTitle from "../Components/SectionTitle";
 import DraggableGraph from "../Components/Graphs/DraggableGraph";
 import CategoryBarGraph from "../Components/Graphs/CategoryBarGraph";
 import DailyGraph from "../Components/Graphs/DailyGraph";
+import DailyGraph2 from "../Components/Graphs/DailyGraph2"
 
 const Home = () => {
   return (
@@ -34,7 +35,7 @@ const Home = () => {
           <div className="col-7">
             <div className="uplifeDiv">Total App Usage</div>
             <div style={{ width: "100%", border: "solid 1px black" }}>
-              <DraggableGraph />
+              <DailyGraph2 />
             </div>
           </div>
           <div className="col-5">

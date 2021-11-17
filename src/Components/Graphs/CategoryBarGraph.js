@@ -8,17 +8,17 @@ const Plot = createPlotlyComponent(Plotly);
 const CategoryBarGraph = () => {
   const allCategory = [
     "Productivity",
-    "Communcation",
+    "Communication",
     "SNS",
     "Entertainment",
     "Total",
   ];
   const allColors = {
     Productivity: ["#883DA2", "#CCAFDA"],
-    Communcation: ["#7BAB63", "#C7DBC1"],
+    Communication: ["#7BAB63", "#C7DBC1"],
     SNS: ["#FFBC47", "#FBE2B5"],
-    Entertainment: ["#E4567C", "F1B9CB"],
-    Total: ["#3598DB", "ABD3F1"],
+    Entertainment: ["#E4567C", "#F1B9CB"],
+    Total: ["#3598DB", "#ABD3F1"],
   };
   const [category, setCategory] = useState("Total");
   return (
@@ -44,7 +44,6 @@ const CategoryBarGraph = () => {
                 return value === category
                   ? allColors[value][0]
                   : allColors[value][1];
-                // console.log(value);
               }),
             },
           },
@@ -58,7 +57,6 @@ const CategoryBarGraph = () => {
         }}
         onClick={(figure) => {
           setCategory(figure.points[0].label);
-          console.log(category);
         }}
       />
     </>

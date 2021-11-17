@@ -4,25 +4,44 @@ import createPlotlyComponent from "react-plotly.js/factory";
 
 const Plot = createPlotlyComponent(Plotly);
 
+var emotionData = {
+  x: [
+    "2019-01-01 00:00",
+    "2019-01-01 01:00",
+    "2019-01-01 12:00",
+    "2019-01-01 12:30",
+    "2019-01-01 14:00",
+    "2019-01-01 17:00",
+    "2019-01-01 18:00",
+    "2019-01-01 19:30",
+    "2019-01-01 20:00",
+    "2019-01-01 21:00",
+    "2019-01-01 22:00",
+    "2019-01-01 23:00",
+    "2019-01-01 24:00",
+  ],
+  y: [5, 5, 10, 10, 8, 8, 6, 6, 3, 3, 7, 4, 4],
+};
+
 var usageData = [
   {
-    startDate: "2016-01-01 04:00",
-    endDate: "2016-01-01 06:00",
+    startDate: "2019-01-01 04:00",
+    endDate: "2019-01-01 06:00",
     category: "Entertainment",
   },
   {
-    startDate: "2016-01-01 09:00",
-    endDate: "2016-01-01 12:00",
+    startDate: "2019-01-01 09:00",
+    endDate: "2019-01-01 12:00",
     category: "SNS",
   },
   {
-    startDate: "2016-01-01 13:00",
-    endDate: "2016-01-01 15:00",
+    startDate: "2019-01-01 13:00",
+    endDate: "2019-01-01 15:00",
     category: "Communication",
   },
   {
-    startDate: "2016-01-01 20:00",
-    endDate: "2016-01-01 23:00",
+    startDate: "2019-01-01 20:00",
+    endDate: "2019-01-01 23:00",
     category: "Productivity",
   },
 ];
@@ -47,59 +66,35 @@ const DailyGraph = () => {
   return (
     <>
       <Plot
-        data={[
-          {
-            x: [
-              "2016-01-01 00:00",
-              "2016-01-01 01:00",
-              "2016-01-01 12:00",
-              "2016-01-01 12:30",
-              "2016-01-01 14:00",
-              "2016-01-01 17:00",
-              "2016-01-01 18:00",
-              "2016-01-01 19:30",
-              "2016-01-01 20:00",
-              "2016-01-01 21:00",
-              "2016-01-01 22:00",
-              "2016-01-01 23:00",
-              "2016-01-01 24:00",
-            ],
-            y: [5, 5, 10, 10, 8, 8, 6, 6, 3, 3, 7, 4, 4],
-            name: "Emotion Rate",
-            marker: {
-              size: 1,
-            },
-          },
-        ]}
+        style={{ width: "100%" }}
+        data={[emotionData]}
         layout={{
-          // autosize: true,
-          // rangemode: "tozero",
-          // width: 500,
-          margin: { l: 50, r: 0, b: 0, t: 20 },
+          margin: { l: 50, r: 50, b: 0, t: 20 },
           height: 200,
           autoscale: false,
           xaxis: {
             autorange: false,
-            range: ["2016-01-01", "2016-01-02"],
+            range: ["2019-01-01", "2019-01-02"],
             tick0: 0,
-            dtick: 3,
+            // dtick: 3,
           },
           yaxis: {
             autorange: false,
             range: [1, 10],
             tick0: 1,
-            dtick: 3,
+            // dtick: 3,
             showticklabels: true,
           },
         }}
         config={config}
       />
-      <br />
+      <hr />
       <Plot
+        style={{ width: "100%" }}
         data={traces}
         layout={{
           hovermode: !1,
-          height: 50,
+          height: 100,
           xaxis: {
             title: "",
             titlefont: {
@@ -108,7 +103,7 @@ const DailyGraph = () => {
             tickfont: {
               size: 10,
             },
-            range: ["2016-01-01", "2016-01-02"],
+            range: ["2019-01-01", "2019-01-02"],
             showticklabels: true,
             showgrid: true,
             zerolinecolor: "#969696",
@@ -134,7 +129,7 @@ const DailyGraph = () => {
             y: -0.2,
             xanchor: "center",
           },
-          margin: { l: 50, b: 0, r: 0, t: 0 },
+          margin: { l: 50, b: 50, r: 50, t: 0 },
         }}
         config={config}
       />

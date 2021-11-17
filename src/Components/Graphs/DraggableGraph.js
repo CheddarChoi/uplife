@@ -34,6 +34,7 @@ const DraggableGraph = (props) => {
   return (
     <>
       <Plot
+        style={{ width: "100%" }}
         data={[{
                 x: ['MON', 'TUE', 'WED', 'THU','FRI','SAT','SUN'],
                 y: emotion,

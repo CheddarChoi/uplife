@@ -58,7 +58,10 @@ const Goal = (props) => {
             </h4>
           </div>
 
-          <div className="goalType col" onClick={() => handleRoute("/goal2")}>
+          <div
+            className="goalType col"
+            onClick={() => handleRoute("/goal/category")}
+          >
             <Number num="2" />
             <h4>
               I will use <span className="blank">entertainment</span> apps less
@@ -66,7 +69,10 @@ const Goal = (props) => {
             </h4>
           </div>
 
-          <div className="goalType col" onClick={() => handleRoute("/goal2")}>
+          <div
+            className="goalType col"
+            onClick={() => handleRoute("/goal/time")}
+          >
             <Number num="3" />
             <h4>
               I will not use <span className="blank">social</span> apps during{" "}

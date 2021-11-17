@@ -1,50 +1,26 @@
 import React from "react";
+import { useState } from "react";
 import { useHistory } from "react-router-dom";
+
 import DraggableGraph from "../Components/Graphs/DraggableGraph";
 import SectionTitle from "../Components/SectionTitle";
-import { connect } from 'react-redux';
-import convertNumToTime from '../Components/Functions/convertNumToTime'
 
 import "../static/customStyle.css";
 import "./Goal.css";
 
-const mapStateToProps = state =>({
-  number : state.counter.number
-})
-// const convertNumToTime =(number) =>{
-//     var sign = (number >= 0) ? 1 : -1;
-
-//     number = number * sign;
-//     var hour = Math.floor(number);
-//     var decpart = number - hour;
-
-//     var min = 1 / 60;
-
-//     decpart = min * Math.round(decpart / min);
-
-//     var minute = Math.floor(decpart * 60) + '';
-
-
-//     if (minute.length < 2) {
-//     minute = '0' + minute; 
-//     }
-
-
-//     sign = sign == 1 ? '' : '-';
-
-
-//     var time = sign + hour + ' hr ' + minute + ' min';
-
-//     return time;
-// }
-
-const TotalGoal = (props) => {
+const CategoryGoal = () => {
   const history = useHistory();
+  const [category, setCategory] = useState("Entertainment");
+  const options = ["Entertainment", "SNS", "Communication", "Productivity"];
 
   const handleRoute = (path) => {
     history.push(path);
   };
-  const {number} = props
+
+  const onChangeHandler = (e) => {
+    setCategory(e.currentTarget.value);
+  };
+
   return (
     <div class="container">
       <div class="content">
@@ -61,8 +37,19 @@ const TotalGoal = (props) => {
               New Goal
             </h2>
             <h4>
-              I will use my phone less than{" "}
-              <span className="blank">{convertNumToTime(number)}</span> a day.
+              I will use{" "}
+              <select
+                onChange={onChangeHandler}
+                value={category}
+                className="uplifeDropdown"
+              >
+                {options.map((item, index) => (
+                  <option key={item} value={item}>
+                    {item}
+                  </option>
+                ))}
+              </select>{" "}
+              apps less than <span className="blank">3 hr 42 min</span> a day.
             </h4>
             <button
               className="uplifeButton"
@@ -72,7 +59,7 @@ const TotalGoal = (props) => {
               Set Goal
             </button>
           </div>
-          <div className="col">
+          <div className="col-md-auto">
             <DraggableGraph />
           </div>
         </div>
@@ -81,4 +68,4 @@ const TotalGoal = (props) => {
   );
 };
 
-export default connect(mapStateToProps)(TotalGoal);
+export default CategoryGoal;

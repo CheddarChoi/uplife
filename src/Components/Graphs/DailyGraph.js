@@ -46,13 +46,21 @@ var usageData = [
   },
 ];
 
+const allColors = {
+  Productivity: "#883DA2",
+  Communcation: "#7BAB63",
+  SNS: "#FFBC47",
+  Entertainment: "#E4567C",
+  Total: "#3598DB",
+};
+
 var traces = [];
 usageData.map((d) => {
   var trace = {
     x: [d.startDate, d.endDate],
     y: [0, 0],
     mode: "lines",
-    line: { width: 20 },
+    line: { width: 20, color: allColors[d.category] },
     showlegend: false,
   };
   traces.push(trace);

@@ -1,0 +1,11 @@
+.categoryTag {
+  width: 156px;
+  /* height: 64px; */
+  border-radius: 10px;
+
+  text-align: center;
+
+  /* color: white; */
+  padding: 15px;
+  margin: 10px 0;
+}

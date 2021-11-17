@@ -1,10 +1,27 @@
 import React from "react";
 
 import SectionTitle from "../Components/SectionTitle";
-import DraggableGraph from "../Components/Graphs/DraggableGraph";
 import CategoryBarGraph from "../Components/Graphs/CategoryBarGraph";
 import DailyGraph from "../Components/Graphs/DailyGraph";
-import DailyGraph2 from "../Components/Graphs/DailyGraph2"
+import DailyGraph2 from "../Components/Graphs/DailyGraph2";
+
+import "./Home.css";
+
+const allColors = {
+  Productivity: "#883DA2",
+  Communcation: "#7BAB63",
+  SNS: "#FFBC47",
+  Entertainment: "#E4567C",
+  // Total: "#3598DB",
+};
+
+const categoryLits = Object.entries(allColors).map((key, i) => {
+  return (
+    <div className="categoryTag" style={{ backgroundColor: key[1] }}>
+      <h6>{key[0]}</h6>
+    </div>
+  );
+});
 
 const Home = () => {
   return (
@@ -26,6 +43,7 @@ const Home = () => {
           </div>
           <div className="col-5">
             <div className="uplifeDiv">App Category</div>
+            {categoryLits}
           </div>
         </div>
         <div

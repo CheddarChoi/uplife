@@ -2,17 +2,26 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 import DraggableGraph from "../Components/Graphs/DraggableGraph";
 import SectionTitle from "../Components/SectionTitle";
+import { connect } from 'react-redux';
+import setGoal from '../store/modules/counter'
 
 import "../static/customStyle.css";
 import "./Goal.css";
 
-const TotalGoal = () => {
+const mapStateToProps = state =>({
+  number : state.counter.number
+})
+// const mapDispatchToProps = dispatch =>({
+//   setGoal : number => dispatch(setGoal(number))
+// })
+
+const TotalGoal = (props) => {
   const history = useHistory();
 
   const handleRoute = (path) => {
     history.push(path);
   };
-
+  const {number} = props
   return (
     <div class="container">
       <div class="content">
@@ -31,7 +40,7 @@ const TotalGoal = () => {
             </h2>
             <h4>
               I will use my phone less than{" "}
-              <span className="blank">3 hr 42 min</span> a day.
+              <span className="blank">{number}</span> a day.
             </h4>
             {/* </div> */}
             <button
@@ -51,4 +60,4 @@ const TotalGoal = () => {
   );
 };
 
-export default TotalGoal;
+export default connect(mapStateToProps)(TotalGoal);

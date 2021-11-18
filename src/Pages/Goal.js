@@ -1,13 +1,12 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 import SectionTitle from "../Components/SectionTitle";
-import { connect } from 'react-redux';
+import { connect } from "react-redux";
 import { setGoal } from "../store/modules/counter";
 
 import "./Goal.css";
 
 const Number = (props) => {
-
   return (
     <div
       style={{
@@ -26,10 +25,9 @@ const Number = (props) => {
 const mapStateToProps = ({ counter }) => ({
   number: counter.number,
 });
-const mapDispatchToProps = dispatch =>({
-  setGoal : number => dispatch(setGoal(number))
-})
-
+const mapDispatchToProps = (dispatch) => ({
+  setGoal: (number) => dispatch(setGoal(number)),
+});
 
 const Goal = (props) => {
   const history = useHistory();
@@ -37,7 +35,7 @@ const Goal = (props) => {
   const handleRoute = (path) => {
     history.push(path);
   };
-  const { number } = props
+  const { number } = props;
   return (
     <div class="container">
       <div class="content">
@@ -71,7 +69,8 @@ const Goal = (props) => {
 
           <div
             className="goalType col"
-            onClick={() => handleRoute("/goal/time")}
+            onClick={() => alert("Not implemented yet!")}
+            // onClick={() => handleRoute("/goal/time")}
           >
             <Number num="3" />
             <h4>
@@ -84,7 +83,5 @@ const Goal = (props) => {
     </div>
   );
 };
-
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(Goal);

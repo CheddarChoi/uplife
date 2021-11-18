@@ -2,15 +2,15 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 import DraggableGraph from "../Components/Graphs/DraggableGraph";
 import SectionTitle from "../Components/SectionTitle";
-import { connect } from 'react-redux';
-import convertNumToTime from '../Components/Functions/convertNumToTime'
+import { connect } from "react-redux";
+import convertNumToTime from "../Components/Functions/convertNumToTime";
 
 import "../static/customStyle.css";
 import "./Goal.css";
 
-const mapStateToProps = state =>({
-  number : state.counter.number
-})
+const mapStateToProps = (state) => ({
+  number: state.counter.number,
+});
 // const convertNumToTime =(number) =>{
 //     var sign = (number >= 0) ? 1 : -1;
 
@@ -24,14 +24,11 @@ const mapStateToProps = state =>({
 
 //     var minute = Math.floor(decpart * 60) + '';
 
-
 //     if (minute.length < 2) {
-//     minute = '0' + minute; 
+//     minute = '0' + minute;
 //     }
 
-
 //     sign = sign == 1 ? '' : '-';
-
 
 //     var time = sign + hour + ' hr ' + minute + ' min';
 
@@ -44,7 +41,7 @@ const TotalGoal = (props) => {
   const handleRoute = (path) => {
     history.push(path);
   };
-  const {number} = props
+  const { number } = props;
   return (
     <div class="container">
       <div class="content">

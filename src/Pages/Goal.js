@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import SectionTitle from "../Components/SectionTitle";
 import { connect } from "react-redux";
 import { setGoal } from "../store/modules/counter";
+import convertNumToTime from "../Components/Functions/convertNumToTime";
 
 import "./Goal.css";
 
@@ -52,7 +53,7 @@ const Goal = (props) => {
             <Number num="1" />
             <h4>
               I will use my phone less than{" "}
-              <span className="blank">{number}</span> a day.
+              <span className="blank">{convertNumToTime(number)}</span> a day.
             </h4>
           </div>
 

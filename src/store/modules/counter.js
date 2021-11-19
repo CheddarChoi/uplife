@@ -1,18 +1,15 @@
-// 액션 타입 정의
-const CHANGE_COLOR = 'counter/CHANGE_COLOR';
+const CHANGE_CATEGORY = 'counter/CHANGE_CATEGORY';
 const INCREMENT = 'counter/INCREMENT';
 const DECREMENT = 'counter/DECREMENT';
 const SET_GOAL = 'counter/SETGOAL';
 
-// 액션 생섬함수 정의
-export const changeColor = color => ({ type: CHANGE_COLOR, color });
+export const changeCategory = category => ({ type: CHANGE_CATEGORY, category });
 export const increment = () => ({ type: INCREMENT });
 export const decrement = () => ({ type: DECREMENT });
 export const setGoal = number => ({type:SET_GOAL, number })
 
-// **** 초기상태 정의
 const initialState = {
-  color: 'red',
+  category: 'SNS',
   number: 3,
   goals:[
       {
@@ -23,13 +20,12 @@ const initialState = {
   ]
 };
 
-// **** 리듀서 작성
 export default function counter(state = initialState, action) {
   switch (action.type) {
-    case CHANGE_COLOR:
+    case CHANGE_CATEGORY:
       return {
         ...state,
-        color: action.color,
+        category: action.category,
       };
     case INCREMENT:
       return {

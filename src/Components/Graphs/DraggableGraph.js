@@ -15,7 +15,7 @@ const mapDispatchToProps = dispatch =>({
 
 const DraggableGraph = (props) => {
 
-  const [goal, setGoal] = useState(props.number)
+  const [goal, setGoal2] = useState(props.number)
   const [xaxis, setXaxis] = useState({x0:0, x1:1})
   const emotion = [4, 1, 3, 5,5,2,1]
   const usage = [9, 4, 1, 4,2,3,4]
@@ -80,7 +80,7 @@ const DraggableGraph = (props) => {
             }
         }}
         onUpdate={(figure) => {
-          setGoal(figure.layout.shapes[0].y0)
+          setGoal2(figure.layout.shapes[0].y0)
           console.log(goal)
         }} 
       />

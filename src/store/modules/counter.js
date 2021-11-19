@@ -6,18 +6,15 @@ const SET_GOAL = 'counter/SETGOAL';
 export const changeCategory = category => ({ type: CHANGE_CATEGORY, category });
 export const increment = () => ({ type: INCREMENT });
 export const decrement = () => ({ type: DECREMENT });
-export const setGoal = number => ({type:SET_GOAL, number })
+export const setGoal = total_goal => ({type:SET_GOAL, total_goal })
 
 const initialState = {
-  category: 'SNS',
-  number: 3,
-  goals:[
-      {
-          id:0,
-          name:'total',
-          value:0
-      }
-  ]
+  category: 'Total',
+  total_goal: 3,
+  enter_goal: 3,
+  sns_goal:2,
+  com_goal:1,
+  pro_goal:5,
 };
 
 export default function counter(state = initialState, action) {
@@ -30,17 +27,17 @@ export default function counter(state = initialState, action) {
     case INCREMENT:
       return {
         ...state,
-        number: state.number + 1,
+        total_goal: state.total_goal + 1,
       };
     case DECREMENT:
       return {
         ...state,
-        number: state.number - 1,
+        total_goal: state.total_goal - 1,
       };
     case SET_GOAL:
       return{
           ...state,
-          number: action.number
+          total_goal: action.total_goal
       };
     default:
       return state;

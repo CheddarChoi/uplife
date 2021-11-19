@@ -7,23 +7,23 @@ import { setGoal } from '../../store/modules/counter'
 const Plot = createPlotlyComponent(Plotly);
 
 const mapStateToProps = state =>({
-  number : state.counter.number
+  total_goal : state.counter.total_goal
 })
 const mapDispatchToProps = dispatch =>({
-  setGoal : number => dispatch(setGoal(number))
+  setGoal : total_goal => dispatch(setGoal(total_goal))
 })
 
 const DraggableGraph = (props) => {
 
-  const [goal, setGoal2] = useState(props.number)
+  const [goal, setGoal2] = useState(props.total_goal)
   const [xaxis, setXaxis] = useState({x0:0, x1:1})
   const emotion = [4, 1, 3, 5,5,2,1]
   const usage = [9, 4, 1, 4,2,3,4]
-  const {number} = props
+  const {total_goal} = props
 
-  const handleGoal = number =>{
+  const handleGoal = total_goal =>{
     const {setGoal} = props;
-    setGoal(number)
+    setGoal(total_goal)
   }
 
   useEffect(()=>{

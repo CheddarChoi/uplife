@@ -11,12 +11,17 @@ const Plot = createPlotlyComponent(Plotly);
 
 const mapStateToProps = (state) => ({
   category: state.counter.category,
+  Total: state.counter.Total,
 });
 const mapDispatchToProps = (dispatch) => ({
   changeCategory: (category) => dispatch(changeCategory(category)),
 });
 
 const CategoryBarGraph = (props) => {
+  const { Total } = props; ////요오오오오오게 Total Goal. 소수점이고, hr, min으로 convert 하려면 ../Functions/convertNumToTime.js쓰면댐!
+  const [total, setTotal] = useState(Total);
+  console.log("TOTAL", Total);
+
   const [category, setCategory] = useState(props.category);
   const handleCategory = (type) => {
     const { changeCategory } = props;

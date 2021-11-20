@@ -1,20 +1,28 @@
 const CHANGE_CATEGORY = 'counter/CHANGE_CATEGORY';
-const INCREMENT = 'counter/INCREMENT';
-const DECREMENT = 'counter/DECREMENT';
 const SET_GOAL = 'counter/SETGOAL';
+const SET_CATEGORY_GOAL = 'counter/SET_CATEGORY_GOAL';
+
 
 export const changeCategory = category => ({ type: CHANGE_CATEGORY, category });
-export const increment = () => ({ type: INCREMENT });
-export const decrement = () => ({ type: DECREMENT });
-export const setGoal = total_goal => ({type:SET_GOAL, total_goal })
+export const setGoal = Total => ({type:SET_GOAL, Total })
+export const setCategoryGoal = (category, goal) => ({type:SET_CATEGORY_GOAL, category, goal })
 
 const initialState = {
   category: 'Total',
-  total_goal: 3,
-  enter_goal: 3,
-  sns_goal:2,
-  com_goal:1,
-  pro_goal:5,
+  Total: 3,
+  Entertainment:3,
+  SNS:2,
+  Communication:1,
+  Productivity:6,
+  category_goal:{
+    'Entertainment':3,
+    'SNS':2,
+    'Communication':1,
+    'Productivity':6
+  },
+  dummy:{
+
+  }
 };
 
 export default function counter(state = initialState, action) {
@@ -24,21 +32,41 @@ export default function counter(state = initialState, action) {
         ...state,
         category: action.category,
       };
-    case INCREMENT:
-      return {
-        ...state,
-        total_goal: state.total_goal + 1,
-      };
-    case DECREMENT:
-      return {
-        ...state,
-        total_goal: state.total_goal - 1,
-      };
     case SET_GOAL:
       return{
           ...state,
-          total_goal: action.total_goal
+          Total: action.Total
       };
+    case SET_CATEGORY_GOAL:
+      switch(action.category){
+        case 'Entertainment':
+          return {
+            ...state,
+            Entertainment:action.goal
+          }
+        case 'SNS':
+          return{
+            ...state,
+            SNS:action.goal
+          }
+        case 'Communication':
+          return{
+            ...state,
+            Communication:action.goal
+          }
+        case 'Productivity':
+          return{
+            ...state,
+            Productivity:action.goal
+          }
+        case 'Total':
+          return{
+            ...state,
+            Total:action.goal
+          }
+        default:
+          return state
+      }
     default:
       return state;
   }

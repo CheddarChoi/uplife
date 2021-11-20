@@ -9,7 +9,7 @@ import { allColors } from "../variables/categories";
 const Plot = createPlotlyComponent(Plotly);
 
 const mapStateToProps = (state) => ({
-  total_goal: state.counter.total_goal,
+  Total: state.counter.Total,
   category: state.counter.category,
 });
 const mapDispatchToProps = (dispatch) => ({
@@ -19,14 +19,14 @@ const mapDispatchToProps = (dispatch) => ({
 const DraggableGraph2 = (props) => {
   const { type } = props.category;
   console.log("totalgoaltype", allColors[props.category]);
-  const [goal, setGoal] = useState(props.total_goal);
+  const [goal, setGoal] = useState(props.Total);
 
   const [category, setCategory] = useState(props.category);
   const [color, setColor] = useState(allColors[props.category]);
   const [xaxis, setXaxis] = useState({ x0: 0, x1: 1 });
   const emotion = [4, 1, 3, 5, 5, 2, 1];
   const usage = [9, 4, 1, 4, 2, 3, 4];
-  const { total_goal } = props;
+  const { Total } = props;
 
   // useEffect(()=>{
   //   setColor(allColors[type])

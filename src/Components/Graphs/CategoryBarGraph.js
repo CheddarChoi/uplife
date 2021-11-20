@@ -9,16 +9,20 @@ const Plot = createPlotlyComponent(Plotly);
 
 const mapStateToProps = (state) => ({
   category: state.counter.category,
-  Total:state.counter.Total
+  Entertainment : state.counter.Entertainment,
+  SNS : state.counter.SNS,
+  Communication : state.counter.Communication,
+  Total : state.counter.Total,
+  Productivity : state.counter.Productivity,
 });
 const mapDispatchToProps = (dispatch) => ({
   changeCategory: (category) => dispatch(changeCategory(category)),
 });
 
 const CategoryBarGraph = (props) => {
-  const { Total } = props; ////요오오오오오게 Total Goal. 소수점이고, hr, min으로 convert 하려면 ../Functions/convertNumToTime.js쓰면댐!
+  const { Total, Entertainment, SNS, Communication, Productivity } = props; ////요오오오오오게 Total Goal. 소수점이고, hr, min으로 convert 하려면 ../Functions/convertNumToTime.js쓰면댐!
   const [total, setTotal] = useState(Total)
-  console.log("TOTAL", Total)
+  console.log("TOTAL", Entertainment)
   const allCategory = [
     "Productivity",
     "Communication",

@@ -14,15 +14,6 @@ const initialState = {
   SNS:2,
   Communication:1,
   Productivity:6,
-  category_goal:{
-    'Entertainment':3,
-    'SNS':2,
-    'Communication':1,
-    'Productivity':6
-  },
-  dummy:{
-
-  }
 };
 
 export default function counter(state = initialState, action) {

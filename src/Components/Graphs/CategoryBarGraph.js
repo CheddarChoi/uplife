@@ -25,7 +25,7 @@ const mapDispatchToProps = (dispatch) => ({
 const CategoryBarGraph = (props) => {
   const { Total, Entertainment, SNS, Communication, Productivity, category } = props; ////요오오오오오게 Total Goal. 소수점이고, hr, min으로 convert 하려면 ../Functions/convertNumToTime.js쓰면댐!
   const [total, setTotal] = useState(Total)
-  console.log("TOTAL", Entertainment)
+
   const allCategory = [
     "Productivity",
     "Communication",

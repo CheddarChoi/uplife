@@ -72,8 +72,8 @@ const DraggableGraph = (props) => {
               yaxis: {
                 fixedrange: true,
               },
-              y0: goal,
-              y1: goal,
+              y0: goal?goal:3,
+              y1: goal?goal:3,
               yref: "y",
 
               line: {

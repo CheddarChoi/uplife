@@ -17,20 +17,17 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 const DraggableGraph2 = (props) => {
-  const { type } = props.category;
-  console.log("totalgoaltype", allColors[props.category]);
+  const { category, changeCategory } = props;
+  console.log("AA", props);
   const [goal, setGoal] = useState(props.Total);
 
-  const [category, setCategory] = useState(props.category);
+  const [category2, setCategory] = useState(props.category);
   const [color, setColor] = useState(allColors[props.category]);
   const [xaxis, setXaxis] = useState({ x0: 0, x1: 1 });
   const emotion = [4, 1, 3, 5, 5, 2, 1];
   const usage = [9, 4, 1, 4, 2, 3, 4];
   const { Total } = props;
 
-  // useEffect(()=>{
-  //   setColor(allColors[type])
-  // },category)
 
   return (
     <>
@@ -44,7 +41,7 @@ const DraggableGraph2 = (props) => {
             mode: "bar",
             type: "bar",
             marker: {
-              color: allColors[props.category][0],
+              color: allColors[category][0],
             },
           },
         ]}

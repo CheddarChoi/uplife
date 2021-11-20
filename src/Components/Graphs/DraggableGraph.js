@@ -96,15 +96,9 @@ const DraggableGraph = (props) => {
           },
         }}
         onUpdate={(figure) => {
-<<<<<<< HEAD
           setGoal2(figure.layout.shapes[0].y0)
           // console.log(goal)
         }} 
-=======
-          setGoal2(figure.layout.shapes[0].y0);
-          console.log(goal);
-        }}
->>>>>>> d123f5a58f191ca9fad5cc4d656a7f7e2aba9b99
       />
     </>
   );

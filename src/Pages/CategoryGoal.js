@@ -108,7 +108,7 @@ const CategoryGoal = (props) => {
             <button
               className="uplifeButton"
               style={{ marginTop: "auto" }}
-              onClick={() => handleRoute("/")}
+              onClick={() => handleRoute("/goal")}
             >
               Set Goal
             </button>

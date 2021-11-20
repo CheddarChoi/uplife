@@ -2,7 +2,6 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 import SectionTitle from "../Components/SectionTitle";
 import { connect } from "react-redux";
-import { setGoal } from "../store/modules/counter";
 import convertNumToTime from "../Components/Functions/convertNumToTime";
 
 import "./Goal.css";
@@ -23,12 +22,15 @@ const GoalNum = (props) => {
   );
 };
 
-const mapStateToProps = ({ counter }) => ({
-  Total: counter.Total,
+const mapStateToProps = (state) => ({
+  category: state.counter.category,
+  Entertainment : state.counter.Entertainment,
+  SNS : state.counter.SNS,
+  Communication : state.counter.Communication,
+  Total : state.counter.Total,
+  Productivity : state.counter.Productivity,
 });
-const mapDispatchToProps = (dispatch) => ({
-  setGoal: (Total) => dispatch(setGoal(Total)),
-});
+
 
 const Goal = (props) => {
   const history = useHistory();
@@ -36,7 +38,7 @@ const Goal = (props) => {
   const handleRoute = (path) => {
     history.push(path);
   };
-  const { Total } = props;
+  const { Total, category, Entertainment, SNS, Communication, Productivity } = props;
   return (
     <div class="container">
       <div class="content">
@@ -81,9 +83,13 @@ const Goal = (props) => {
             </h4>
           </div>
         </div>
+        Entertainment : {convertNumToTime(Entertainment)}<br/>
+        SNS : {convertNumToTime(SNS)}<br/>
+        Communication : {convertNumToTime(Communication)}<br/>
+        Productivity : {convertNumToTime(Productivity)}
       </div>
     </div>
   );
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Goal);
+export default connect(mapStateToProps)(Goal);

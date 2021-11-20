@@ -100,8 +100,8 @@ const DraggableGraph2 = (props) => {
               x1: xaxis.x1,
               xref: "paper",
 
-              y0: getGoal(category),
-              y1: getGoal(category),
+              y0: getGoal(category)?getGoal(category):3,
+              y1: getGoal(category)?getGoal(category):3,
               yref: "y",
 
               line: {

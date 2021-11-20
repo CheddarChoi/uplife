@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import SectionTitle from "../Components/SectionTitle";
 import { connect } from "react-redux";
@@ -7,6 +7,8 @@ import { convertNumToTime } from "../Components/Functions/convertNumToTime";
 import { allCategory } from "../Components/variables/categories";
 import { Button } from "react-bootstrap";
 import { FaTrashAlt } from "react-icons/fa";
+import { changeCategory } from "../store/modules/counter";
+import { setCategoryGoal } from "../store/modules/counter";
 import "./Goal.css";
 
 const GoalNum = (props) => {
@@ -34,8 +36,15 @@ const mapStateToProps = (state) => ({
   Productivity: state.counter.Productivity,
 });
 
+const mapDispatchToProps = (dispatch) => ({
+  changeCategory: (type) => dispatch(changeCategory(type)),
+  setCategoryGoal: (category, num) => dispatch(setCategoryGoal(category, num)),
+});
+
 const Goal = (props) => {
   const history = useHistory();
+  const {setCategoryGoal} = props
+
 
   const handleRoute = (path) => {
     history.push(path);
@@ -44,7 +53,8 @@ const Goal = (props) => {
   var currentGoal = {};
   allCategory.forEach((c) => {
     currentGoal[c] = props[c];
-  });
+  })
+
   return (
     <div class="container">
       <div class="content">
@@ -53,12 +63,12 @@ const Goal = (props) => {
           subtitle="Check your current goal lists"
         />
         <ul>
-          {currentGoal["Total"] && (
+          {!(!currentGoal["Total"]) && (
             <li>
               <h4>
                 I will use my phone less than{" "}
                 <b>{convertNumToTime(currentGoal["Total"])}</b> a day.
-                <Button variant="outline-danger">
+                <Button variant="outline-danger" onClick={()=>{setCategoryGoal("Total", NaN)}}>
                   <FaTrashAlt />
                 </Button>
               </h4>
@@ -71,7 +81,7 @@ const Goal = (props) => {
                   <h4>
                     I will use <b>{c}</b> apps less than{" "}
                     <b>{convertNumToTime(currentGoal[c])}</b> a day.
-                    <Button variant="outline-danger">
+                    <Button variant="outline-danger" onClick={()=>{setCategoryGoal(c, NaN)}}>
                       <FaTrashAlt />
                     </Button>
                   </h4>
@@ -129,4 +139,4 @@ const Goal = (props) => {
   );
 };
 
-export default connect(mapStateToProps)(Goal);
+export default connect(mapStateToProps, mapDispatchToProps)(Goal);

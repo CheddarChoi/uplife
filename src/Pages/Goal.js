@@ -3,10 +3,11 @@ import { useHistory } from "react-router-dom";
 import SectionTitle from "../Components/SectionTitle";
 import { connect } from "react-redux";
 import { setGoal } from "../store/modules/counter";
+import convertNumToTime from "../Components/Functions/convertNumToTime";
 
 import "./Goal.css";
 
-const Number = (props) => {
+const total_goal = (props) => {
   return (
     <div
       style={{
@@ -23,10 +24,10 @@ const Number = (props) => {
 };
 
 const mapStateToProps = ({ counter }) => ({
-  number: counter.number,
+  total_goal: counter.total_goal,
 });
 const mapDispatchToProps = (dispatch) => ({
-  setGoal: (number) => dispatch(setGoal(number)),
+  setGoal: (total_goal) => dispatch(setGoal(total_goal)),
 });
 
 const Goal = (props) => {
@@ -35,7 +36,7 @@ const Goal = (props) => {
   const handleRoute = (path) => {
     history.push(path);
   };
-  const { number } = props;
+  const { total_goal } = props;
   return (
     <div class="container">
       <div class="content">
@@ -49,10 +50,10 @@ const Goal = (props) => {
             className="goalType col"
             onClick={() => handleRoute("/goal/total")}
           >
-            <Number num="1" />
+            <total_goal num="1" />
             <h4>
               I will use my phone less than{" "}
-              <span className="blank">{number}</span> a day.
+              <span className="blank">{convertNumToTime(total_goal)}</span> a day.
             </h4>
           </div>
 
@@ -60,7 +61,7 @@ const Goal = (props) => {
             className="goalType col"
             onClick={() => handleRoute("/goal/category")}
           >
-            <Number num="2" />
+            <total_goal num="2" />
             <h4>
               I will use <span className="blank">entertainment</span> apps less
               than <span className="blank">1 hr 15 min</span> a day.
@@ -72,7 +73,7 @@ const Goal = (props) => {
             onClick={() => alert("Not implemented yet!")}
             // onClick={() => handleRoute("/goal/time")}
           >
-            <Number num="3" />
+            <total_goal num="3" />
             <h4>
               I will not use <span className="blank">social</span> apps during{" "}
               <span className="blank">1:00 pm ~ 3:00 pm</span>

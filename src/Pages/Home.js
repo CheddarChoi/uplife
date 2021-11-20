@@ -4,6 +4,8 @@ import SectionTitle from "../Components/SectionTitle";
 import CategoryBarGraph from "../Components/Graphs/CategoryBarGraph";
 import DailyGraph from "../Components/Graphs/DailyGraph";
 import DailyGraph2 from "../Components/Graphs/DailyGraph2";
+import { connect } from "react-redux";
+import { changeCategory } from "../store/modules/counter";
 
 import "./Home.css";
 
@@ -12,8 +14,15 @@ const allColors = {
   Communcation: "#7BAB63",
   SNS: "#FFBC47",
   Entertainment: "#E4567C",
-  // Total: "#3598DB",
+  Total: "#3598DB",
 };
+
+const mapStateToProps = (state) => ({
+  category: state.counter.category,
+});
+const mapDispatchToProps = (dispatch) => ({
+  changeCategory: (category) => dispatch(changeCategory(category)),
+});
 
 const categoryLits = Object.entries(allColors).map((key, i) => {
   return (
@@ -68,4 +77,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

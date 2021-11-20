@@ -1,11 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import Plotly from "plotly.js-basic-dist-min";
 import createPlotlyComponent from "react-plotly.js/factory";
+import { connect } from "react-redux";
+import { changeCategory } from "../../store/modules/counter";
 
 const Plot = createPlotlyComponent(Plotly);
 
-const CategoryBarGraph = () => {
+const mapStateToProps = (state) => ({
+  category: state.counter.category,
+});
+const mapDispatchToProps = (dispatch) => ({
+  changeCategory: (category) => dispatch(changeCategory(category)),
+});
+
+const CategoryBarGraph = (props) => {
   const allCategory = [
     "Productivity",
     "Communication",
@@ -20,7 +29,18 @@ const CategoryBarGraph = () => {
     Entertainment: ["#E4567C", "#F1B9CB"],
     Total: ["#3598DB", "#ABD3F1"],
   };
-  const [category, setCategory] = useState("Total");
+  const [category, setCategory] = useState(props.category);
+  const handleCategory = (type) =>{
+    const {changeCategory} = props
+    changeCategory(type)
+  }
+
+  useEffect(()=>{
+    handleCategory(category)
+  },[category])
+
+
+  console.log("category", props.category)
   return (
     <>
       <Plot
@@ -57,10 +77,12 @@ const CategoryBarGraph = () => {
         }}
         onClick={(figure) => {
           setCategory(figure.points[0].label);
+          changeCategory(figure.points[0].label);
+          console.log("categoryafter",figure.points[0].label)
         }}
       />
     </>
   );
 };
 
-export default CategoryBarGraph;
+export default connect(mapStateToProps, mapDispatchToProps)(CategoryBarGraph);

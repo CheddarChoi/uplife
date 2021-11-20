@@ -1,50 +1,43 @@
-// 액션 타입 정의
-const CHANGE_COLOR = 'counter/CHANGE_COLOR';
+const CHANGE_CATEGORY = 'counter/CHANGE_CATEGORY';
 const INCREMENT = 'counter/INCREMENT';
 const DECREMENT = 'counter/DECREMENT';
 const SET_GOAL = 'counter/SETGOAL';
 
-// 액션 생섬함수 정의
-export const changeColor = color => ({ type: CHANGE_COLOR, color });
+export const changeCategory = category => ({ type: CHANGE_CATEGORY, category });
 export const increment = () => ({ type: INCREMENT });
 export const decrement = () => ({ type: DECREMENT });
-export const setGoal = number => ({type:SET_GOAL, number })
+export const setGoal = total_goal => ({type:SET_GOAL, total_goal })
 
-// **** 초기상태 정의
 const initialState = {
-  color: 'red',
-  number: 3,
-  goals:[
-      {
-          id:0,
-          name:'total',
-          value:0
-      }
-  ]
+  category: 'Total',
+  total_goal: 3,
+  enter_goal: 3,
+  sns_goal:2,
+  com_goal:1,
+  pro_goal:5,
 };
 
-// **** 리듀서 작성
 export default function counter(state = initialState, action) {
   switch (action.type) {
-    case CHANGE_COLOR:
+    case CHANGE_CATEGORY:
       return {
         ...state,
-        color: action.color,
+        category: action.category,
       };
     case INCREMENT:
       return {
         ...state,
-        number: state.number + 1,
+        total_goal: state.total_goal + 1,
       };
     case DECREMENT:
       return {
         ...state,
-        number: state.number - 1,
+        total_goal: state.total_goal - 1,
       };
     case SET_GOAL:
       return{
           ...state,
-          number: action.number
+          total_goal: action.total_goal
       };
     default:
       return state;

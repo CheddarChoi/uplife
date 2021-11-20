@@ -30,17 +30,16 @@ const CategoryBarGraph = (props) => {
     Total: ["#3598DB", "#ABD3F1"],
   };
   const [category, setCategory] = useState(props.category);
-  const handleCategory = (type) =>{
-    const {changeCategory} = props
-    changeCategory(type)
-  }
+  const handleCategory = (type) => {
+    const { changeCategory } = props;
+    changeCategory(type);
+  };
 
-  useEffect(()=>{
-    handleCategory(category)
-  },[category])
+  useEffect(() => {
+    handleCategory(category);
+  }, [category]);
 
-
-  console.log("category", props.category)
+  console.log("category", props.category);
   return (
     <>
       <Plot
@@ -71,6 +70,8 @@ const CategoryBarGraph = (props) => {
         layout={{
           title: "Usage by Category",
           bargap: 0.5,
+          xaxis: { fixedrange: true },
+          yaxis: { fixedrange: true },
         }}
         config={{
           displayModeBar: false,
@@ -78,7 +79,7 @@ const CategoryBarGraph = (props) => {
         onClick={(figure) => {
           setCategory(figure.points[0].label);
           changeCategory(figure.points[0].label);
-          console.log("categoryafter",figure.points[0].label)
+          console.log("categoryafter", figure.points[0].label);
         }}
       />
     </>

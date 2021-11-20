@@ -8,7 +8,7 @@ const Plot = createPlotlyComponent(Plotly);
 
 const mapStateToProps = (state) => ({
   total_goal: state.counter.total_goal,
-  category : state.counter.category
+  category: state.counter.category,
 });
 const mapDispatchToProps = (dispatch) => ({
   changeCategory: (category) => dispatch(changeCategory(category)),
@@ -22,12 +22,12 @@ const DraggableGraph2 = (props) => {
     Entertainment: "#E4567C",
     Total: "#3598DB",
   };
-  const {type} = props.category
-  console.log("totalgoaltype",allColors[props.category])
+  const { type } = props.category;
+  console.log("totalgoaltype", allColors[props.category]);
   const [goal, setGoal] = useState(props.total_goal);
 
-  const [category, setCategory] = useState(props.category)
-  const [color, setColor] = useState(allColors[props.category])
+  const [category, setCategory] = useState(props.category);
+  const [color, setColor] = useState(allColors[props.category]);
   const [xaxis, setXaxis] = useState({ x0: 0, x1: 1 });
   const emotion = [4, 1, 3, 5, 5, 2, 1];
   const usage = [9, 4, 1, 4, 2, 3, 4];
@@ -36,7 +36,6 @@ const DraggableGraph2 = (props) => {
   // useEffect(()=>{
   //   setColor(allColors[type])
   // },category)
-
 
   return (
     <>
@@ -56,13 +55,19 @@ const DraggableGraph2 = (props) => {
         ]}
         layout={{
           title: "Phone Usage",
+          xaxis: {
+            fixedrange: true,
+          },
+          yaxis: {
+            fixedrange: true,
+          },
         }}
         config={{
+          displayModeBar: false,
           edits: {
             shapePosition: true,
           },
         }}
-
       />
     </>
   );

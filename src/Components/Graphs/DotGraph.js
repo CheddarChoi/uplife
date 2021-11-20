@@ -42,7 +42,6 @@ data.forEach((d) => {
     },
   });
 });
-console.log(traces);
 
 const DotGraph = () => {
   return (

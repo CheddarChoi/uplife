@@ -106,9 +106,11 @@ const CategoryBarGraph = (props) => {
           displayModeBar: false,
         }}
         onClick={(figure) => {
-          setCategory(figure.points[0].label);
-          changeCategory(figure.points[0].label);
-          console.log("categoryafter", figure.points[0].label);
+          if (allCategory.includes(figure.points[0].label)) {
+            setCategory(figure.points[0].label);
+            changeCategory(figure.points[0].label);
+            console.log("categoryafter", figure.points[0].label);
+          }
         }}
       />
     </>

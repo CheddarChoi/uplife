@@ -3,9 +3,9 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { createStore } from 'redux';
-import rootReducer from './store/modules';
-import { Provider } from 'react-redux';
+import { createStore } from "redux";
+import rootReducer from "./store/modules";
+import { Provider } from "react-redux";
 import { persistStore } from "redux-persist";
 import { PersistGate } from "redux-persist/integration/react";
 
@@ -14,7 +14,6 @@ const devTools =
 const store = createStore(rootReducer, devTools);
 const persistor = persistStore(store);
 console.log(store.getState());
-
 
 // ReactDOM.render(
 //   <React.StrictMode>
@@ -27,7 +26,7 @@ console.log(store.getState());
 
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store = {store}>
+    <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <App />
       </PersistGate>

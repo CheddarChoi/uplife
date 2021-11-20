@@ -21,7 +21,6 @@ const mapDispatchToProps = (dispatch) => ({
 
 const Home = (props) => {
   const categoryLits = Object.entries(allColors).map((key, i) => {
-    console.log(key[1][0]);
     const { changeCategory } = props;
     const setCategory = () => {
       changeCategory(allCategory[i]);

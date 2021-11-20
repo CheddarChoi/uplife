@@ -1,17 +1,31 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
+import { connect } from 'react-redux';
+import { setCategoryGoal } from '../store/modules/counter'
+import {changeCategory} from '../store/modules/counter'
 
-import DraggableGraph from "../Components/Graphs/DraggableGraph";
+import DraggableGraph2 from "../Components/Graphs/DraggableGraph2";
 import SectionTitle from "../Components/SectionTitle";
 
 import "../static/customStyle.css";
 import "./Goal.css";
 
-const CategoryGoal = () => {
+const mapStateToProps = state =>({
+  category : state.counter.category,
+  category_goal : state.counter.category_goal,
+})
+const mapDispatchToProps = dispatch =>({
+  setCategoryGoal : (category, num) => dispatch(setCategoryGoal(category, num)),
+  changeCategory : (type) => dispatch(changeCategory(type))
+})
+
+const CategoryGoal = (props) => {
   const history = useHistory();
   const [category, setCategory] = useState("Entertainment");
-  const options = ["Entertainment", "SNS", "Communication", "Productivity"];
+  const options = ["Entertainment", "SNS", "Communication", "Productivity","Total"];
+
+
 
   const handleRoute = (path) => {
     history.push(path);
@@ -19,7 +33,18 @@ const CategoryGoal = () => {
 
   const onChangeHandler = (e) => {
     setCategory(e.currentTarget.value);
+    changeCategory(e.currentTarget.value);
   };
+  const handleCategory = (type) =>{
+    const {changeCategory} = props
+    changeCategory(type)
+  }
+
+  useEffect(()=>{
+    handleCategory(category)
+    console.log("category",props.category)
+    console.log("goal",props.category_goal)
+  },[category])
 
   return (
     <div class="container">
@@ -49,7 +74,7 @@ const CategoryGoal = () => {
                   </option>
                 ))}
               </select>{" "}
-              apps less than <span className="blank">3 hr 42 min</span> a day.
+              apps less than <span className="blank">{"aaa"}</span> a day.
             </h4>
             <button
               className="uplifeButton"
@@ -60,7 +85,7 @@ const CategoryGoal = () => {
             </button>
           </div>
           <div className="col-md-auto">
-            <DraggableGraph />
+            <DraggableGraph2 />
           </div>
         </div>
       </div>
@@ -68,4 +93,4 @@ const CategoryGoal = () => {
   );
 };
 
-export default CategoryGoal;
+export default connect(mapStateToProps, mapDispatchToProps)(CategoryGoal);

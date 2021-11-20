@@ -2,34 +2,62 @@ import React, {useEffect, useState} from "react";
 import Plotly from "plotly.js-basic-dist-min";
 import createPlotlyComponent from "react-plotly.js/factory";
 import { connect } from 'react-redux';
-import { setGoal } from '../../store/modules/counter'
+import { setCategoryGoal } from '../../store/modules/counter'
+import {changeCategory} from '../../store/modules/counter'
 
 const Plot = createPlotlyComponent(Plotly);
 
 const mapStateToProps = state =>({
-  Total : state.counter.Total
+  // Total:state.couter.Total,
+  Entertainment : state.counter.Entertainment,
+  SNS : state.counter.SNS,
+  Communication : state.counter.Communication,
+  Productivity : state.counter.EntProductivityertainment,
+  category : state.counter.category,
+  Total:state.counter.Total
 })
 const mapDispatchToProps = dispatch =>({
-  setGoal : Total => dispatch(setGoal(Total))
+  setCategoryGoal : (category, num) => dispatch(setCategoryGoal(category, num)),
+  changeCategory : (type) => dispatch(changeCategory(type))
 })
 
-const DraggableGraph = (props) => {
+const DraggableGraph2 = (props) => {
+  console.log("AAA",props)
 
-  const [goal, setGoal2] = useState(props.Total)
+    const getGoal = (type) =>{
+    switch(type){
+      case 'Entertainment':
+          return props.Entertainment
+      case 'SNS':
+          return props.SNS
+      case 'Communication':
+          return props.Communication
+      case 'Productivity':
+          return props.Productivity
+      case 'Total':
+          return props.Total
+      default:
+        return null
+    }
+
+  }
+  
   const [xaxis, setXaxis] = useState({x0:0, x1:1})
+  const [category, setCategory2] = useState(props.category)
+  const [goal, setGoal2] = useState(getGoal(category))
   const emotion = [4, 1, 3, 5,5,2,1]
   const usage = [9, 4, 1, 4,2,3,4]
-  const {Total} = props
 
-  const handleGoal = Total =>{
-    const {setGoal} = props;
-    setGoal(Total)
-  }
 
   useEffect(()=>{
-    handleGoal(goal)
-    // console.log("props",props)
+    setCategoryGoal(props.category,goal)
+    console.log("props",props.category)
+    console.log("goal",props)
   },[goal])
+
+  // useEffect(()=>{
+  //   setGoal2(props.category_goal[props.category])
+  // },[category])
 
   return (
     <>
@@ -81,11 +109,10 @@ const DraggableGraph = (props) => {
         }}
         onUpdate={(figure) => {
           setGoal2(figure.layout.shapes[0].y0)
-          // console.log(goal)
         }} 
       />
     </>
   );
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(DraggableGraph);
+export default connect(mapStateToProps, mapDispatchToProps)(DraggableGraph2);

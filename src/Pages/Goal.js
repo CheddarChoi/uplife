@@ -24,10 +24,10 @@ const GoalNum = (props) => {
 };
 
 const mapStateToProps = ({ counter }) => ({
-  total_goal: counter.total_goal,
+  Total: counter.Total,
 });
 const mapDispatchToProps = (dispatch) => ({
-  setGoal: (total_goal) => dispatch(setGoal(total_goal)),
+  setGoal: (Total) => dispatch(setGoal(Total)),
 });
 
 const Goal = (props) => {
@@ -36,7 +36,7 @@ const Goal = (props) => {
   const handleRoute = (path) => {
     history.push(path);
   };
-  const { total_goal } = props;
+  const { Total } = props;
   return (
     <div class="container">
       <div class="content">
@@ -53,7 +53,7 @@ const Goal = (props) => {
             <GoalNum num="1" />
             <h4>
               I will use my phone less than{" "}
-              <span className="blank">{convertNumToTime(total_goal)}</span> a
+              <span className="blank">{convertNumToTime(Total)}</span> a
               day.
             </h4>
           </div>

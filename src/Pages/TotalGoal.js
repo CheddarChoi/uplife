@@ -19,7 +19,8 @@ const TotalGoal = (props) => {
   const handleRoute = (path) => {
     history.push(path);
   };
-  const { Total } = props;
+  const  {Total}= props;
+
   return (
     <div class="container">
       <div class="content">

@@ -40,13 +40,13 @@ const AppUsageGraph = (props) => {
   });
 
   const emotionTrace = {
-              x: ["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"],
-              y: emotion,
-              name: "Emotion Rate",
-              marker: {
-                size: 12,
-              },
-            }
+    x: allDays,
+    y: emotion,
+    name: "Emotion Rate",
+    marker: {
+      size: 12,
+    },
+  };
 
   const trace = {
     x: allDays,
@@ -63,7 +63,7 @@ const AppUsageGraph = (props) => {
     <>
       <Plot
         style={{ width: "100%" }}
-        data={[emotionTrace,trace]}
+        data={[emotionTrace, trace]}
         layout={{
           margin: { l: 50, b: 50, r: 50, t: 50 },
           xaxis: {

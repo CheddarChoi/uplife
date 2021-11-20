@@ -68,10 +68,6 @@ usageData.map((d) => {
 });
 
 const DailyGraph = () => {
-  var config = {
-    displayModeBar: false,
-  };
-
   return (
     <>
       <Plot
@@ -85,17 +81,19 @@ const DailyGraph = () => {
             autorange: false,
             range: ["2019-01-01", "2019-01-02"],
             tick0: 0,
-            // dtick: 3,
+            fixedrange: true,
           },
           yaxis: {
             autorange: false,
             range: [1, 10.1],
             tick0: 1,
-            // dtick: 3,
+            fixedrange: true,
             showticklabels: true,
           },
         }}
-        config={config}
+        config={{
+          displayModeBar: false,
+        }}
       />
       <Plot
         style={{ width: "100%" }}
@@ -112,6 +110,7 @@ const DailyGraph = () => {
               size: 10,
             },
             range: ["2019-01-01", "2019-01-02"],
+            fixedrange: true,
             ticks: "outside",
             showticklabels: true,
             showgrid: true,
@@ -125,6 +124,7 @@ const DailyGraph = () => {
               size: 10,
             },
             range: [-0.5, 0.5],
+            fixedrange: true,
             showgrid: false,
             showticklabels: false,
           },
@@ -136,7 +136,9 @@ const DailyGraph = () => {
           },
           margin: { l: 50, b: 50, r: 50, t: 0 },
         }}
-        config={config}
+        config={{
+          displayModeBar: false,
+        }}
       />
     </>
   );

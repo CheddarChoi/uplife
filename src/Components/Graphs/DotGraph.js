@@ -51,10 +51,6 @@ data.forEach((d) => {
 console.log(traces);
 
 const DotGraph = () => {
-  var config = {
-    displayModeBar: false,
-  };
-
   return (
     <Plot
       style={{ width: "100%" }}
@@ -94,7 +90,9 @@ const DotGraph = () => {
         showlegend: false,
         margin: { l: 50, b: 50, r: 50, t: 0 },
       }}
-      config={config}
+      config={{
+        displayModeBar: false,
+      }}
     />
   );
 };

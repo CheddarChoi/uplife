@@ -71,8 +71,8 @@ const Goal = (props) => {
 
           <div
             className="goalType col"
-            onClick={() => alert("Not implemented yet!")}
-            // onClick={() => handleRoute("/goal/time")}
+            // onClick={() => alert("Not implemented yet!")}
+            onClick={() => handleRoute("/goal/time")}
           >
             <GoalNum num="3" />
             <h4>

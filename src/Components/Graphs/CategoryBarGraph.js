@@ -5,6 +5,8 @@ import createPlotlyComponent from "react-plotly.js/factory";
 import { connect } from "react-redux";
 import { changeCategory } from "../../store/modules/counter";
 
+import { allCategory, allColors } from "../variables/categories";
+
 const Plot = createPlotlyComponent(Plotly);
 
 const mapStateToProps = (state) => ({
@@ -15,20 +17,6 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 const CategoryBarGraph = (props) => {
-  const allCategory = [
-    "Productivity",
-    "Communication",
-    "SNS",
-    "Entertainment",
-    "Total",
-  ];
-  const allColors = {
-    Productivity: ["#883DA2", "#CCAFDA"],
-    Communication: ["#7BAB63", "#C7DBC1"],
-    SNS: ["#FFBC47", "#FBE2B5"],
-    Entertainment: ["#E4567C", "#F1B9CB"],
-    Total: ["#3598DB", "#ABD3F1"],
-  };
   const [category, setCategory] = useState(props.category);
   const handleCategory = (type) => {
     const { changeCategory } = props;

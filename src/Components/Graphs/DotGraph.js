@@ -2,15 +2,9 @@ import React from "react";
 import Plotly from "plotly.js-basic-dist-min";
 import createPlotlyComponent from "react-plotly.js/factory";
 
-const Plot = createPlotlyComponent(Plotly);
+import { allColors } from "../variables/categories";
 
-const allColors = {
-  Productivity: ["#883DA2", "#CCAFDA"],
-  Communication: ["#7BAB63", "#C7DBC1"],
-  SNS: ["#FFBC47", "#FBE2B5"],
-  Entertainment: ["#E4567C", "#F1B9CB"],
-  Total: ["#3598DB", "#ABD3F1"],
-};
+const Plot = createPlotlyComponent(Plotly);
 
 var data = [
   { time: "2019-01-01 00:00", emotion: "bad", category: "Productivity" },

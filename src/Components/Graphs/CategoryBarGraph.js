@@ -5,6 +5,8 @@ import createPlotlyComponent from "react-plotly.js/factory";
 import { connect } from "react-redux";
 import { changeCategory } from "../../store/modules/counter";
 
+import { allCategory, allColors } from "../variables/categories";
+
 const Plot = createPlotlyComponent(Plotly);
 
 const mapStateToProps = (state) => ({

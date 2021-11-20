@@ -6,30 +6,29 @@ import { setGoal } from "../../store/modules/counter";
 
 const Plot = createPlotlyComponent(Plotly);
 
-const mapStateToProps = state =>({
-  Total : state.counter.Total
-})
-const mapDispatchToProps = dispatch =>({
-  setGoal : Total => dispatch(setGoal(Total))
-})
+const mapStateToProps = (state) => ({
+  Total: state.counter.Total,
+});
+const mapDispatchToProps = (dispatch) => ({
+  setGoal: (Total) => dispatch(setGoal(Total)),
+});
 
 const DraggableGraph = (props) => {
+  const [goal, setGoal2] = useState(props.Total);
+  const [xaxis, setXaxis] = useState({ x0: 0, x1: 1 });
+  const emotion = [4, 1, 3, 5, 5, 2, 1];
+  const usage = [9, 4, 1, 4, 2, 3, 4];
+  const { Total } = props;
 
-  const [goal, setGoal2] = useState(props.Total)
-  const [xaxis, setXaxis] = useState({x0:0, x1:1})
-  const emotion = [4, 1, 3, 5,5,2,1]
-  const usage = [9, 4, 1, 4,2,3,4]
-  const {Total} = props
+  const handleGoal = (Total) => {
+    const { setGoal } = props;
+    setGoal(Total);
+  };
 
-  const handleGoal = Total =>{
-    const {setGoal} = props;
-    setGoal(Total)
-  }
-
-  useEffect(()=>{
-    handleGoal(goal)
+  useEffect(() => {
+    handleGoal(goal);
     // console.log("props",props)
-  },[goal])
+  }, [goal]);
 
   return (
     <>
@@ -91,9 +90,9 @@ const DraggableGraph = (props) => {
           },
         }}
         onUpdate={(figure) => {
-          setGoal2(figure.layout.shapes[0].y0)
+          setGoal2(figure.layout.shapes[0].y0);
           // console.log(goal)
-        }} 
+        }}
       />
     </>
   );

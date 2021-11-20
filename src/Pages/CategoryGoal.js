@@ -7,6 +7,7 @@ import {changeCategory} from '../store/modules/counter'
 
 import DraggableGraph2 from "../Components/Graphs/DraggableGraph2";
 import SectionTitle from "../Components/SectionTitle";
+import convertNumToTime from "../Components/Functions/convertNumToTime";
 
 import "../static/customStyle.css";
 import "./Goal.css";
@@ -94,7 +95,7 @@ const CategoryGoal = (props) => {
                   </option>
                 ))}
               </select>{" "}
-              apps less than <span className="blank">{getGoal(category)}</span> a day.
+              apps less than <span className="blank">{convertNumToTime(getGoal(category))}</span> a day.
             </h4>
             <button
               className="uplifeButton"

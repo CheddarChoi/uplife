@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { setCategoryGoal } from '../../store/modules/counter'
 import {changeCategory} from '../../store/modules/counter'
 
+
 const Plot = createPlotlyComponent(Plotly);
 
 const mapStateToProps = (state) => ({
@@ -48,10 +49,10 @@ const DraggableGraph2 = (props) => {
   const usage = [9, 4, 1, 4,2,3,4]
 
 
-  useEffect(()=>{
-    setCategoryGoal(props.category,goal)
-    console.log(props.category, ":",getGoal(props.category))
-  },[goal])
+  // useEffect(()=>{
+  //   setCategoryGoal(props.category,goal)
+  //   console.log(props.category, ":",getGoal(props.category))
+  // },[goal])
 
   // useEffect(()=>{
   //   setGoal2(props.category_goal[props.category])
@@ -107,6 +108,7 @@ const DraggableGraph2 = (props) => {
         }}
         onUpdate={(figure) => {
           setGoal2(figure.layout.shapes[0].y0)
+          setCategoryGoal(props.category,figure.layout.shapes[0].y0)
         }} 
       />
     </>

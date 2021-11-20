@@ -4,26 +4,21 @@ import createPlotlyComponent from "react-plotly.js/factory";
 import { connect } from "react-redux";
 import { changeCategory } from "../../store/modules/counter";
 
+import { allColors } from "../variables/categories";
+
 const Plot = createPlotlyComponent(Plotly);
 
 const mapStateToProps = (state) => ({
   Total: state.counter.Total,
-  category : state.counter.category
+  category: state.counter.category,
 });
 const mapDispatchToProps = (dispatch) => ({
   changeCategory: (category) => dispatch(changeCategory(category)),
 });
 
 const DraggableGraph2 = (props) => {
-  const allColors = {
-    Productivity: "#883DA2",
-    Communication: "#7BAB63",
-    SNS: "#FFBC47",
-    Entertainment: "#E4567C",
-    Total: "#3598DB",
-  };
-  const {type} = props.category
-  console.log("totalgoaltype",allColors[props.category])
+  const { type } = props.category;
+  console.log("totalgoaltype", allColors[props.category]);
   const [goal, setGoal] = useState(props.Total);
 
   const [category, setCategory] = useState(props.category);
@@ -49,7 +44,7 @@ const DraggableGraph2 = (props) => {
             mode: "bar",
             type: "bar",
             marker: {
-              color: allColors[props.category],
+              color: allColors[props.category][0],
             },
           },
         ]}

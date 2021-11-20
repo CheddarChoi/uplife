@@ -7,15 +7,9 @@ import DailyGraph2 from "../Components/Graphs/DailyGraph2";
 import { connect } from "react-redux";
 import { changeCategory } from "../store/modules/counter";
 
-import "./Home.css";
+import { allColors } from "../Components/variables/categories";
 
-const allColors = {
-  Productivity: "#883DA2",
-  Communcation: "#7BAB63",
-  SNS: "#FFBC47",
-  Entertainment: "#E4567C",
-  Total: "#3598DB",
-};
+import "./Home.css";
 
 const mapStateToProps = (state) => ({
   category: state.counter.category,
@@ -25,8 +19,9 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 const categoryLits = Object.entries(allColors).map((key, i) => {
+  console.log(key[1][0]);
   return (
-    <div className="categoryTag" style={{ backgroundColor: key[1] }}>
+    <div className="categoryTag" style={{ backgroundColor: key[1][0] }}>
       <h6>{key[0]}</h6>
     </div>
   );

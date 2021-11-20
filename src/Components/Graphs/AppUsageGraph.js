@@ -4,7 +4,7 @@ import createPlotlyComponent from "react-plotly.js/factory";
 import { connect } from "react-redux";
 import { changeCategory } from "../../store/modules/counter";
 import { convertSecToTime } from "../Functions/convertNumToTime";
-import { allCategory, allColors } from "../variables/categories";
+import { allCategory, allColors, allDays } from "../variables/categories";
 import usageData from "../../static/data/usageTime.json";
 
 const Plot = createPlotlyComponent(Plotly);
@@ -40,7 +40,7 @@ const AppUsageGraph = (props) => {
   });
 
   const trace = {
-    x: ["TUE", "WED", "THU", "FRI", "SAT", "SUN", "MON (TODAY)"],
+    x: allDays,
     y: usage,
     name: "Total Usage",
     mode: "bar",

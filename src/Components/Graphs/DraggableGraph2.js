@@ -4,6 +4,9 @@ import createPlotlyComponent from "react-plotly.js/factory";
 import { connect } from "react-redux";
 import { setCategoryGoal } from "../../store/modules/counter";
 import { changeCategory } from "../../store/modules/counter";
+import { allCategory, allColors, allDays } from "../variables/categories";
+import { convertSecToTime } from "../Functions/convertNumToTime";
+import usageData from "../../static/data/usageTime.json";
 
 const Plot = createPlotlyComponent(Plotly);
 
@@ -52,16 +55,13 @@ const DraggableGraph2 = (props) => {
   // const [category2, setCategory2] = useState(props.category)
   const [goal, setGoal2] = useState(getGoal(category));
   const emotion = [4, 1, 3, 5, 5, 2, 1];
-  const usage = [9, 4, 1, 4, 2, 3, 4];
 
-  // useEffect(()=>{
-  //   setCategoryGoal(props.category,goal)
-  //   console.log(props.category, ":",getGoal(props.category))
-  // },[goal])
-
-  // useEffect(()=>{
-  //   setGoal2(props.category_goal[props.category])
-  // },[category])
+  const usage = [];
+  usageData.forEach((d) => {
+    var total = 0;
+    allCategory.forEach((c) => (total = c === category ? total : total + d[c]));
+    usage.push(convertSecToTime(total));
+  });
 
   return (
     <>
@@ -69,7 +69,7 @@ const DraggableGraph2 = (props) => {
         style={{ width: "100%" }}
         data={[
           {
-            x: ["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"],
+            x: allDays,
             y: emotion,
             name: "Emotion Rate",
             marker: {
@@ -77,21 +77,27 @@ const DraggableGraph2 = (props) => {
             },
           },
           {
-            x: ["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"],
+            x: allDays,
             y: usage,
-            name: "Total Usage",
+            name: category + " Total Usage",
             mode: "bar",
             type: "bar",
             marker: {
               color: usage.map((value) => {
-                // console.log('status',[goal, value])
-                return value > goal ? "pink" : "yellow";
+                return value > goal
+                  ? allColors[category][1]
+                  : allColors[category][0];
               }),
             },
           },
         ]}
         layout={{
           margin: { l: 50, b: 50, r: 50, t: 0 },
+          showlegend: true,
+          legend: {
+            x: 0.4,
+            y: -0.2,
+          },
           shapes: [
             {
               type: "line",
@@ -100,8 +106,8 @@ const DraggableGraph2 = (props) => {
               x1: xaxis.x1,
               xref: "paper",
 
-              y0: getGoal(category)?getGoal(category):3,
-              y1: getGoal(category)?getGoal(category):3,
+              y0: getGoal(category) ? getGoal(category) : 3,
+              y1: getGoal(category) ? getGoal(category) : 3,
               yref: "y",
 
               line: {

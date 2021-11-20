@@ -46,6 +46,23 @@ const CategoryBarGraph = (props) => {
     changeCategory(type);
   };
 
+  const getGoal = (type) => {
+    switch (type) {
+      case "Entertainment":
+        return props.Entertainment;
+      case "SNS":
+        return props.SNS;
+      case "Communication":
+        return props.Communication;
+      case "Productivity":
+        return props.Productivity;
+      case "Total":
+        return props.Total;
+      default:
+        return null;
+    }
+  };
+
   useEffect(() => {
     handleCategory(category);
   }, [category]);
@@ -65,13 +82,24 @@ const CategoryBarGraph = (props) => {
     showlegend: false,
   };
 
-  const goalMarker = {
-    x: [Total - 0.25, Total + 0.25],
-    y: ["Total", "Total"],
+  // const goalMarker = {
+  //   x: [Total - 0.25, Total + 0.25],
+  //   y: ["Total", "Total"],
+  //   name: "Goal",
+  //   mode: "lines",
+  //   line: { width: 40, color: "rgba(50, 50, 50, 0.7)" },
+  // };
+
+  const goalMarker = allCategory.map(e=>{
+    return {
+    x: [getGoal(e) - 0.25, getGoal(e) + 0.25],
+    y: [e, e],
     name: "Goal",
     mode: "lines",
     line: { width: 40, color: "rgba(50, 50, 50, 0.7)" },
-  };
+    showlegend: false,
+  }
+  })
 
   const layout = {
     bargap: 0.5,
@@ -89,7 +117,7 @@ const CategoryBarGraph = (props) => {
     <>
       <Plot
         style={{ width: "100%" }}
-        data={[usageData, goalMarker]}
+        data={goalMarker.concat(usageData)}
         layout={Object.assign({}, customLayout, layout)}
         config={{
           displayModeBar: false,

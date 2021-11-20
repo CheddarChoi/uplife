@@ -8,6 +8,7 @@ import { connect } from "react-redux";
 import { changeCategory } from "../store/modules/counter";
 
 import { allColors } from "../Components/variables/categories";
+import { allCategory } from "../Components/variables/categories";
 
 import "./Home.css";
 
@@ -18,16 +19,25 @@ const mapDispatchToProps = (dispatch) => ({
   changeCategory: (category) => dispatch(changeCategory(category)),
 });
 
-const categoryLits = Object.entries(allColors).map((key, i) => {
+
+
+
+const Home = (props) => {
+  
+
+  const categoryLits = Object.entries(allColors).map((key, i) => {
   console.log(key[1][0]);
+  const {changeCategory} = props
+  const setCategory = () =>{
+    changeCategory(allCategory[i])
+  }
   return (
-    <div className="categoryTag" style={{ backgroundColor: key[1][0] }}>
+    <div onClick={setCategory}className="categoryTag" style={{ backgroundColor: key[1][0] }}>
       <h6>{key[0]}</h6>
     </div>
   );
 });
 
-const Home = () => {
   return (
     <div className="container">
       <div className="content">

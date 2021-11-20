@@ -9,11 +9,11 @@ export const setCategoryGoal = (category, goal) => ({type:SET_CATEGORY_GOAL, cat
 
 const initialState = {
   category: 'Total',
-  Total: 3,
-  Entertainment:3,
-  SNS:2,
-  Communication:1,
-  Productivity:6,
+  Total: NaN,
+  Entertainment:NaN,
+  SNS:NaN,
+  Communication:NaN,
+  Productivity:NaN,
 };
 
 export default function counter(state = initialState, action) {

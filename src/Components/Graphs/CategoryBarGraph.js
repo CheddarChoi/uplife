@@ -23,7 +23,7 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 const CategoryBarGraph = (props) => {
-  const { Total, Entertainment, SNS, Communication, Productivity } = props; ////요오오오오오게 Total Goal. 소수점이고, hr, min으로 convert 하려면 ../Functions/convertNumToTime.js쓰면댐!
+  const { Total, Entertainment, SNS, Communication, Productivity, category } = props; ////요오오오오오게 Total Goal. 소수점이고, hr, min으로 convert 하려면 ../Functions/convertNumToTime.js쓰면댐!
   const [total, setTotal] = useState(Total)
   console.log("TOTAL", Entertainment)
   const allCategory = [
@@ -40,7 +40,7 @@ const CategoryBarGraph = (props) => {
     Entertainment: ["#E4567C", "#F1B9CB"],
     Total: ["#3598DB", "#ABD3F1"],
   };
-  const [category, setCategory] = useState(props.category);
+  const [category2, setCategory] = useState(props.category);
   const handleCategory = (type) => {
     const { changeCategory } = props;
     changeCategory(type);
@@ -64,8 +64,8 @@ const CategoryBarGraph = (props) => {
   };
 
   useEffect(() => {
-    handleCategory(category);
-  }, [category]);
+    handleCategory(category2);
+  }, [category2]);
 
   const usageData = {
     x: [3, 1, 3, 5, 12],
@@ -82,13 +82,6 @@ const CategoryBarGraph = (props) => {
     showlegend: false,
   };
 
-  // const goalMarker = {
-  //   x: [Total - 0.25, Total + 0.25],
-  //   y: ["Total", "Total"],
-  //   name: "Goal",
-  //   mode: "lines",
-  //   line: { width: 40, color: "rgba(50, 50, 50, 0.7)" },
-  // };
 
   const goalMarker = allCategory.map(e=>{
     return {

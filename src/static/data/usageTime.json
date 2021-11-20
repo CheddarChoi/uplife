@@ -1,0 +1,66 @@
+[
+  {
+    "Date": "2019-04-30",
+    "Communication": 766,
+    "Entertainment": 7066,
+    "Productivity": 2723,
+    "SNS": 496,
+    "Total": 11051
+  },
+  {
+    "Date": "2019-05-01",
+    "Communication": 2032,
+    "Entertainment": 822,
+    "Productivity": 4679,
+    "SNS": 810,
+    "Total": 8343
+  },
+  {
+    "Date": "2019-05-02",
+    "Communication": 1751,
+    "Entertainment": 1471,
+    "Productivity": 4732,
+    "SNS": 657,
+    "Total": 8611
+  },
+  {
+    "Date": "2019-05-03",
+    "Communication": 1764,
+    "Entertainment": 1660,
+    "Productivity": 4380,
+    "SNS": 1138,
+    "Total": 8942
+  },
+  {
+    "Date": "2019-05-04",
+    "Communication": 1866,
+    "Entertainment": 3828,
+    "Productivity": 5889,
+    "SNS": 1694,
+    "Total": 13277
+  },
+  {
+    "Date": "2019-05-05",
+    "Communication": 313,
+    "Entertainment": 1519,
+    "Productivity": 11409,
+    "SNS": 1848,
+    "Total": 15089
+  },
+  {
+    "Date": "2019-05-06",
+    "Communication": 5753,
+    "Entertainment": 790,
+    "Productivity": 3227,
+    "SNS": 1641,
+    "Total": 11411
+  },
+  {
+    "Date": "Total",
+    "Communication": 14245,
+    "Entertainment": 17156,
+    "Productivity": 37039,
+    "SNS": 8284,
+    "Total": 76724
+  }
+]

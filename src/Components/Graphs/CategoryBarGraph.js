@@ -7,39 +7,26 @@ import { changeCategory } from "../../store/modules/counter";
 
 import { allCategory, allColors } from "../variables/categories";
 import { customLayout } from "./configs";
+import usageData from "../../static/data/usageTime.json";
+import { convertSecToTime } from "../Functions/convertNumToTime";
 
 const Plot = createPlotlyComponent(Plotly);
 
 const mapStateToProps = (state) => ({
   category: state.counter.category,
-  Entertainment : state.counter.Entertainment,
-  SNS : state.counter.SNS,
-  Communication : state.counter.Communication,
-  Total : state.counter.Total,
-  Productivity : state.counter.Productivity,
+  Entertainment: state.counter.Entertainment,
+  SNS: state.counter.SNS,
+  Communication: state.counter.Communication,
+  Total: state.counter.Total,
+  Productivity: state.counter.Productivity,
 });
 const mapDispatchToProps = (dispatch) => ({
   changeCategory: (category) => dispatch(changeCategory(category)),
 });
 
 const CategoryBarGraph = (props) => {
-  const { Total, Entertainment, SNS, Communication, Productivity, category } = props; ////요오오오오오게 Total Goal. 소수점이고, hr, min으로 convert 하려면 ../Functions/convertNumToTime.js쓰면댐!
-  const [total, setTotal] = useState(Total)
-  console.log("TOTAL", Entertainment)
-  const allCategory = [
-    "Productivity",
-    "Communication",
-    "SNS",
-    "Entertainment",
-    "Total",
-  ];
-  const allColors = {
-    Productivity: ["#883DA2", "#CCAFDA"],
-    Communication: ["#7BAB63", "#C7DBC1"],
-    SNS: ["#FFBC47", "#FBE2B5"],
-    Entertainment: ["#E4567C", "#F1B9CB"],
-    Total: ["#3598DB", "#ABD3F1"],
-  };
+  const { Total, category } = props; ////요오오오오오게 Total Goal. 소수점이고, hr, min으로 convert 하려면 ../Functions/convertNumToTime.js쓰면댐!
+  const [total, setTotal] = useState(Total);
   const [category2, setCategory] = useState(props.category);
   const handleCategory = (type) => {
     const { changeCategory } = props;
@@ -67,9 +54,13 @@ const CategoryBarGraph = (props) => {
     handleCategory(category2);
   }, [category2]);
 
-  const usageData = {
-    x: [3, 1, 3, 5, 12],
-    y: ["Productivity", "Communication", "SNS", "Entertainment", "Total"],
+  let todayData = usageData.at(
+    usageData.findIndex((e) => e.Date === "2019-05-06")
+  );
+
+  const trace = {
+    x: allCategory.map((c) => convertSecToTime(todayData[c])),
+    y: allCategory,
     name: "Usage",
     mode: "bar",
     type: "bar",
@@ -82,17 +73,16 @@ const CategoryBarGraph = (props) => {
     showlegend: false,
   };
 
-
-  const goalMarker = allCategory.map(e=>{
+  const goalMarker = allCategory.map((e) => {
     return {
-    x: [getGoal(e) - 0.25, getGoal(e) + 0.25],
-    y: [e, e],
-    name: "Goal",
-    mode: "lines",
-    line: { width: 40, color: "rgba(50, 50, 50, 0.7)" },
-    showlegend: false,
-  }
-  })
+      x: [getGoal(e) - 0.05, getGoal(e) + 0.05],
+      y: [e, e],
+      name: "Goal",
+      mode: "lines",
+      line: { width: 40, color: "rgba(50, 50, 50, 0.7)" },
+      showlegend: false,
+    };
+  });
 
   const layout = {
     bargap: 0.5,
@@ -110,7 +100,7 @@ const CategoryBarGraph = (props) => {
     <>
       <Plot
         style={{ width: "100%" }}
-        data={goalMarker.concat(usageData)}
+        data={goalMarker.concat(trace)}
         layout={Object.assign({}, customLayout, layout)}
         config={{
           displayModeBar: false,

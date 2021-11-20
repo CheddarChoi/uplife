@@ -2,7 +2,7 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 import SectionTitle from "../Components/SectionTitle";
 import { connect } from "react-redux";
-import convertNumToTime from "../Components/Functions/convertNumToTime";
+import { convertNumToTime } from "../Components/Functions/convertNumToTime";
 
 import { allCategory } from "../Components/variables/categories";
 import { Button } from "react-bootstrap";

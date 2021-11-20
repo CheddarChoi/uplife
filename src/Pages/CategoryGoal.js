@@ -7,7 +7,7 @@ import { changeCategory } from "../store/modules/counter";
 
 import DraggableGraph2 from "../Components/Graphs/DraggableGraph2";
 import SectionTitle from "../Components/SectionTitle";
-import convertNumToTime from "../Components/Functions/convertNumToTime";
+import { convertNumToTime } from "../Components/Functions/convertNumToTime";
 
 import "../static/customStyle.css";
 import "./Goal.css";

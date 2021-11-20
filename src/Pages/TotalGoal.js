@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import DraggableGraph from "../Components/Graphs/DraggableGraph";
 import SectionTitle from "../Components/SectionTitle";
 import { connect } from "react-redux";
-import convertNumToTime from "../Components/Functions/convertNumToTime";
+import { convertNumToTime } from "../Components/Functions/convertNumToTime";
 
 import "../static/customStyle.css";
 import "./Goal.css";

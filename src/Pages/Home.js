@@ -3,7 +3,7 @@ import React from "react";
 import SectionTitle from "../Components/SectionTitle";
 import CategoryBarGraph from "../Components/Graphs/CategoryBarGraph";
 import DailyGraph from "../Components/Graphs/DailyGraph";
-import DailyGraph2 from "../Components/Graphs/DailyGraph2";
+import AppUsageGraph from "../Components/Graphs/AppUsageGraph";
 import { connect } from "react-redux";
 import { changeCategory } from "../store/modules/counter";
 
@@ -19,24 +19,23 @@ const mapDispatchToProps = (dispatch) => ({
   changeCategory: (category) => dispatch(changeCategory(category)),
 });
 
-
-
-
 const Home = (props) => {
-  
-
   const categoryLits = Object.entries(allColors).map((key, i) => {
-  console.log(key[1][0]);
-  const {changeCategory} = props
-  const setCategory = () =>{
-    changeCategory(allCategory[i])
-  }
-  return (
-    <div onClick={setCategory}className="categoryTag" style={{ backgroundColor: key[1][0] }}>
-      <h6>{key[0]}</h6>
-    </div>
-  );
-});
+    console.log(key[1][0]);
+    const { changeCategory } = props;
+    const setCategory = () => {
+      changeCategory(allCategory[i]);
+    };
+    return (
+      <div
+        onClick={setCategory}
+        className="categoryTag"
+        style={{ backgroundColor: key[1][0] }}
+      >
+        <h6>{key[0]}</h6>
+      </div>
+    );
+  });
 
   return (
     <div className="container">
@@ -50,7 +49,9 @@ const Home = (props) => {
           style={{ marginTop: "50px", columnGap: "30px" }}
         >
           <div className="col-7">
-            <div className="uplifeDiv">Phone Usage &#38; Emotional State</div>
+            <div className="uplifeDiv">
+              Today's Phone Usage &#38; Emotional State
+            </div>
             <div style={{ width: "100%" }}>
               <DailyGraph />
             </div>
@@ -65,13 +66,13 @@ const Home = (props) => {
           style={{ marginTop: "50px", columnGap: "30px" }}
         >
           <div className="col-7">
-            <div className="uplifeDiv">Total App Usage</div>
+            <div className="uplifeDiv">Weekly Total App Usage</div>
             <div style={{ width: "100%" }}>
-              <DailyGraph2 />
+              <AppUsageGraph />
             </div>
           </div>
           <div className="col-5">
-            <div className="uplifeDiv">Usage by Category</div>
+            <div className="uplifeDiv">Today's Usage by Category</div>
             <div style={{ width: "100%" }}>
               <CategoryBarGraph />
             </div>

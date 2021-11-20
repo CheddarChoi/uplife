@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Plotly from "plotly.js-basic-dist-min";
 import createPlotlyComponent from "react-plotly.js/factory";
 import { connect } from "react-redux";
 import { changeCategory } from "../../store/modules/counter";
-
-import { allColors } from "../variables/categories";
+import { convertSecToTime } from "../Functions/convertNumToTime";
+import { allCategory, allColors } from "../variables/categories";
+import usageData from "../../static/data/usageTime.json";
 
 const Plot = createPlotlyComponent(Plotly);
 
@@ -16,7 +17,7 @@ const mapDispatchToProps = (dispatch) => ({
   changeCategory: (category) => dispatch(changeCategory(category)),
 });
 
-const DraggableGraph2 = (props) => {
+const AppUsageGraph = (props) => {
   const { type } = props.category;
   console.log("totalgoaltype", allColors[props.category]);
   const [goal, setGoal] = useState(props.Total);
@@ -25,29 +26,36 @@ const DraggableGraph2 = (props) => {
   const [color, setColor] = useState(allColors[props.category]);
   const [xaxis, setXaxis] = useState({ x0: 0, x1: 1 });
   const emotion = [4, 1, 3, 5, 5, 2, 1];
-  const usage = [9, 4, 1, 4, 2, 3, 4];
+
   const { Total } = props;
 
-  // useEffect(()=>{
-  //   setColor(allColors[type])
-  // },category)
+  const usage = [];
+  usageData.forEach((d) => {
+    if (props.category === "Total") {
+      var total = 0;
+      allCategory.forEach(
+        (c) => (total = c === "Total" ? total : total + d[c])
+      );
+      usage.push(convertSecToTime(total));
+    } else usage.push(convertSecToTime(d[props.category]));
+  });
+
+  const trace = {
+    x: ["TUE", "WED", "THU", "FRI", "SAT", "SUN", "MON (TODAY)"],
+    y: usage,
+    name: "Total Usage",
+    mode: "bar",
+    type: "bar",
+    marker: {
+      color: allColors[props.category][0],
+    },
+  };
 
   return (
     <>
       <Plot
         style={{ width: "100%" }}
-        data={[
-          {
-            x: ["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"],
-            y: usage,
-            name: "Total Usage",
-            mode: "bar",
-            type: "bar",
-            marker: {
-              color: allColors[props.category][0],
-            },
-          },
-        ]}
+        data={[trace]}
         layout={{
           margin: { l: 50, b: 50, r: 50, t: 50 },
           xaxis: {
@@ -70,4 +78,4 @@ const DraggableGraph2 = (props) => {
   );
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(DraggableGraph2);
+export default connect(mapStateToProps, mapDispatchToProps)(AppUsageGraph);

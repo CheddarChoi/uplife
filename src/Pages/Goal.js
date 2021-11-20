@@ -4,6 +4,9 @@ import SectionTitle from "../Components/SectionTitle";
 import { connect } from "react-redux";
 import convertNumToTime from "../Components/Functions/convertNumToTime";
 
+import { allCategory } from "../Components/variables/categories";
+import { Button } from "react-bootstrap";
+import { FaTrashAlt } from "react-icons/fa";
 import "./Goal.css";
 
 const GoalNum = (props) => {
@@ -24,13 +27,12 @@ const GoalNum = (props) => {
 
 const mapStateToProps = (state) => ({
   category: state.counter.category,
-  Entertainment : state.counter.Entertainment,
-  SNS : state.counter.SNS,
-  Communication : state.counter.Communication,
-  Total : state.counter.Total,
-  Productivity : state.counter.Productivity,
+  Entertainment: state.counter.Entertainment,
+  SNS: state.counter.SNS,
+  Communication: state.counter.Communication,
+  Total: state.counter.Total,
+  Productivity: state.counter.Productivity,
 });
-
 
 const Goal = (props) => {
   const history = useHistory();
@@ -38,15 +40,52 @@ const Goal = (props) => {
   const handleRoute = (path) => {
     history.push(path);
   };
-  const { Total, category, Entertainment, SNS, Communication, Productivity } = props;
+
+  var currentGoal = {};
+  allCategory.forEach((c) => {
+    currentGoal[c] = props[c];
+  });
   return (
     <div class="container">
       <div class="content">
         <SectionTitle
-          title="Goal Type"
+          title="Current Goals"
+          subtitle="Check your current goal lists"
+        />
+        <ul>
+          {currentGoal["Total"] && (
+            <li>
+              <h4>
+                I will use my phone less than{" "}
+                <b>{convertNumToTime(currentGoal["Total"])}</b> a day.
+                <Button variant="outline-danger">
+                  <FaTrashAlt />
+                </Button>
+              </h4>
+            </li>
+          )}
+          {allCategory.map((c) => {
+            if (c !== "Total" && currentGoal[c])
+              return (
+                <li>
+                  <h4>
+                    I will use <b>{c}</b> apps less than{" "}
+                    <b>{convertNumToTime(currentGoal[c])}</b> a day.
+                    <Button variant="outline-danger">
+                      <FaTrashAlt />
+                    </Button>
+                  </h4>
+                </li>
+              );
+            else return <></>;
+          })}
+        </ul>
+      </div>
+      <div class="content">
+        <SectionTitle
+          title="Add New Goals"
           subtitle="Choose a new type of goal you want to create"
         />
-
         <div class="goalContainer row">
           <div
             className="goalType col"
@@ -55,8 +94,10 @@ const Goal = (props) => {
             <GoalNum num="1" />
             <h4>
               I will use my phone less than{" "}
-              <span className="blank">{convertNumToTime(Total)}</span> a
-              day.
+              <span className="blank">
+                {convertNumToTime(currentGoal["Total"])}
+              </span>{" "}
+              a day.
             </h4>
           </div>
 
@@ -83,10 +124,6 @@ const Goal = (props) => {
             </h4>
           </div>
         </div>
-        Entertainment : {convertNumToTime(Entertainment)}<br/>
-        SNS : {convertNumToTime(SNS)}<br/>
-        Communication : {convertNumToTime(Communication)}<br/>
-        Productivity : {convertNumToTime(Productivity)}
       </div>
     </div>
   );

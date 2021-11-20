@@ -7,13 +7,18 @@ import { changeCategory } from "../store/modules/counter";
 
 import DraggableGraph2 from "../Components/Graphs/DraggableGraph2";
 import SectionTitle from "../Components/SectionTitle";
+import convertNumToTime from "../Components/Functions/convertNumToTime";
 
 import "../static/customStyle.css";
 import "./Goal.css";
 
 const mapStateToProps = (state) => ({
   category: state.counter.category,
-  category_goal: state.counter.category_goal,
+  Entertainment: state.counter.Entertainment,
+  SNS: state.counter.SNS,
+  Communication: state.counter.Communication,
+  Total: state.counter.Total,
+  Productivity: state.counter.Productivity,
 });
 const mapDispatchToProps = (dispatch) => ({
   setCategoryGoal: (category, num) => dispatch(setCategoryGoal(category, num)),
@@ -22,7 +27,8 @@ const mapDispatchToProps = (dispatch) => ({
 
 const CategoryGoal = (props) => {
   const history = useHistory();
-  const [category, setCategory] = useState("Entertainment");
+  const { Entertainment, SNS, Communication, Total, Productivity } = props;
+  const [category, setCategory] = useState(props.category);
   const options = [
     "Entertainment",
     "SNS",
@@ -30,6 +36,23 @@ const CategoryGoal = (props) => {
     "Productivity",
     "Total",
   ];
+
+  const getGoal = (type) => {
+    switch (type) {
+      case "Entertainment":
+        return props.Entertainment;
+      case "SNS":
+        return props.SNS;
+      case "Communication":
+        return props.Communication;
+      case "Productivity":
+        return props.Productivity;
+      case "Total":
+        return props.Total;
+      default:
+        return null;
+    }
+  };
 
   const handleRoute = (path) => {
     history.push(path);
@@ -46,8 +69,6 @@ const CategoryGoal = (props) => {
 
   useEffect(() => {
     handleCategory(category);
-    console.log("category", props.category);
-    console.log("goal", props.category_goal);
   }, [category]);
 
   return (
@@ -78,7 +99,11 @@ const CategoryGoal = (props) => {
                   </option>
                 ))}
               </select>{" "}
-              apps less than <span className="blank">{"aaa"}</span> a day.
+              apps less than{" "}
+              <span className="blank">
+                {convertNumToTime(getGoal(category))}
+              </span>{" "}
+              a day.
             </h4>
             <button
               className="uplifeButton"

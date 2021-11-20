@@ -8,13 +8,12 @@ import { changeCategory } from "../../store/modules/counter";
 const Plot = createPlotlyComponent(Plotly);
 
 const mapStateToProps = (state) => ({
-  // Total:state.couter.Total,
+  category: state.counter.category,
+  Total: state.counter.Total,
   Entertainment: state.counter.Entertainment,
   SNS: state.counter.SNS,
   Communication: state.counter.Communication,
-  Productivity: state.counter.EntProductivityertainment,
-  category: state.counter.category,
-  Total: state.counter.Total,
+  Productivity: state.counter.Productivity,
 });
 const mapDispatchToProps = (dispatch) => ({
   setCategoryGoal: (category, num) => dispatch(setCategoryGoal(category, num)),
@@ -22,7 +21,15 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 const DraggableGraph2 = (props) => {
-  console.log("AAA", props);
+  const {
+    Entertainment,
+    SNS,
+    Communication,
+    Total,
+    Productivity,
+    category,
+    setCategoryGoal,
+  } = props;
 
   const getGoal = (type) => {
     switch (type) {
@@ -42,16 +49,15 @@ const DraggableGraph2 = (props) => {
   };
 
   const [xaxis, setXaxis] = useState({ x0: 0, x1: 1 });
-  const [category, setCategory2] = useState(props.category);
+  // const [category2, setCategory2] = useState(props.category)
   const [goal, setGoal2] = useState(getGoal(category));
   const emotion = [4, 1, 3, 5, 5, 2, 1];
   const usage = [9, 4, 1, 4, 2, 3, 4];
 
-  useEffect(() => {
-    setCategoryGoal(props.category, goal);
-    console.log("props", props.category);
-    console.log("goal", props);
-  }, [goal]);
+  // useEffect(()=>{
+  //   setCategoryGoal(props.category,goal)
+  //   console.log(props.category, ":",getGoal(props.category))
+  // },[goal])
 
   // useEffect(()=>{
   //   setGoal2(props.category_goal[props.category])
@@ -94,8 +100,8 @@ const DraggableGraph2 = (props) => {
               x1: xaxis.x1,
               xref: "paper",
 
-              y0: goal,
-              y1: goal,
+              y0: getGoal(category),
+              y1: getGoal(category),
               yref: "y",
 
               line: {
@@ -115,6 +121,7 @@ const DraggableGraph2 = (props) => {
         }}
         onUpdate={(figure) => {
           setGoal2(figure.layout.shapes[0].y0);
+          setCategoryGoal(props.category, figure.layout.shapes[0].y0);
         }}
       />
     </>

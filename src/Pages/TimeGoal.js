@@ -68,7 +68,7 @@ const TimeGoal = () => {
               <br />
               and represented based on the time and app category you used
             </h6>
-            <div style={{ width: "100%", border: "solid 1px black" }}>
+            <div style={{ width: "100%" }}>
               <DotGraph />
             </div>
           </div>

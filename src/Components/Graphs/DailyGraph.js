@@ -21,6 +21,7 @@ var emotionData = {
     "2019-01-01 24:00",
   ],
   y: [5, 5, 10, 10, 8, 8, 6, 6, 3, 3, 7, 4, 4],
+  mode: "lines",
 };
 
 var usageData = [
@@ -88,7 +89,7 @@ const DailyGraph = () => {
           },
           yaxis: {
             autorange: false,
-            range: [1, 10],
+            range: [1, 10.1],
             tick0: 1,
             // dtick: 3,
             showticklabels: true,
@@ -96,7 +97,6 @@ const DailyGraph = () => {
         }}
         config={config}
       />
-      <hr />
       <Plot
         style={{ width: "100%" }}
         data={traces}
@@ -112,10 +112,9 @@ const DailyGraph = () => {
               size: 10,
             },
             range: ["2019-01-01", "2019-01-02"],
+            ticks: "outside",
             showticklabels: true,
             showgrid: true,
-            zerolinecolor: "#969696",
-            zerolinewidth: 1,
           },
           yaxis: {
             title: "",
@@ -128,8 +127,6 @@ const DailyGraph = () => {
             range: [-0.5, 0.5],
             showgrid: false,
             showticklabels: false,
-            zerolinecolor: "#969696",
-            zerolinewidth: 1,
           },
           legend: {
             orientation: "h",

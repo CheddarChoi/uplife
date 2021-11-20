@@ -15,6 +15,8 @@ const allColors = {
 var data = [
   { time: "2019-01-01 00:00", emotion: "bad", category: "Productivity" },
   { time: "2019-01-01 02:00", emotion: "good", category: "SNS" },
+  { time: "2019-01-01 02:00", emotion: "bad", category: "SNS" },
+  { time: "2019-01-01 02:00", emotion: "bad", category: "Entertainment" },
   { time: "2019-01-01 12:00", emotion: "good", category: "Productivity" },
 ];
 
@@ -32,25 +34,34 @@ data.forEach((d) => {
       d.emotion === "good"
         ? [cnt[d.emotion][d.time]]
         : [-cnt[d.emotion][d.time]],
-    mode: "markers",
+    mode: "markers+text",
+    text: d.emotion === "good" ? ["😁"] : ["😠"],
+    textfont: {
+      size: 16,
+      color: "black",
+    },
     name: d.category,
     marker: {
       color: allColors[d.category][0],
       symbol: "circle",
-      size: 16,
+      size: 25,
     },
   });
 });
 console.log(traces);
 
 const DotGraph = () => {
+  var config = {
+    displayModeBar: false,
+  };
+
   return (
     <Plot
       style={{ width: "100%" }}
       data={traces}
       layout={{
         hovermode: !1,
-        height: 500,
+        height: 400,
         xaxis: {
           title: "",
           titlefont: {
@@ -61,6 +72,7 @@ const DotGraph = () => {
           },
           ticks: "outside",
           range: ["2019-01-01", "2019-01-02"],
+          fixedrange: true,
           showticklabels: true,
           showgrid: true,
         },
@@ -73,6 +85,7 @@ const DotGraph = () => {
             size: 10,
           },
           range: [-5, 5],
+          fixedrange: true,
           showgrid: false,
           showticklabels: false,
           zerolinecolor: "#969696",
@@ -81,6 +94,7 @@ const DotGraph = () => {
         showlegend: false,
         margin: { l: 50, b: 50, r: 50, t: 0 },
       }}
+      config={config}
     />
   );
 };

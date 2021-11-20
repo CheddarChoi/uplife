@@ -7,7 +7,7 @@ import convertNumToTime from "../Components/Functions/convertNumToTime";
 
 import "./Goal.css";
 
-const total_goal = (props) => {
+const GoalNum = (props) => {
   return (
     <div
       style={{
@@ -50,10 +50,11 @@ const Goal = (props) => {
             className="goalType col"
             onClick={() => handleRoute("/goal/total")}
           >
-            <total_goal num="1" />
+            <GoalNum num="1" />
             <h4>
               I will use my phone less than{" "}
-              <span className="blank">{convertNumToTime(total_goal)}</span> a day.
+              <span className="blank">{convertNumToTime(total_goal)}</span> a
+              day.
             </h4>
           </div>
 
@@ -61,7 +62,7 @@ const Goal = (props) => {
             className="goalType col"
             onClick={() => handleRoute("/goal/category")}
           >
-            <total_goal num="2" />
+            <GoalNum num="2" />
             <h4>
               I will use <span className="blank">entertainment</span> apps less
               than <span className="blank">1 hr 15 min</span> a day.
@@ -73,7 +74,7 @@ const Goal = (props) => {
             onClick={() => alert("Not implemented yet!")}
             // onClick={() => handleRoute("/goal/time")}
           >
-            <total_goal num="3" />
+            <GoalNum num="3" />
             <h4>
               I will not use <span className="blank">social</span> apps during{" "}
               <span className="blank">1:00 pm ~ 3:00 pm</span>

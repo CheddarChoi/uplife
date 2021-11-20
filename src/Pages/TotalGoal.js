@@ -42,7 +42,7 @@ const TotalGoal = (props) => {
             <button
               className="uplifeButton"
               style={{ marginTop: "auto" }}
-              onClick={() => handleRoute("/goal")}
+              onClick={() => handleRoute("/")}
             >
               Set Goal
             </button>

@@ -12,14 +12,13 @@ const mapStateToProps = (state) => ({
   Total: state.counter.Total,
 });
 
-
 const TotalGoal = (props) => {
   const history = useHistory();
 
   const handleRoute = (path) => {
     history.push(path);
   };
-  const  {Total}= props;
+  const { Total } = props;
 
   return (
     <div class="container">
@@ -48,8 +47,16 @@ const TotalGoal = (props) => {
               Set Goal
             </button>
           </div>
-          <div className="col">
-            <DraggableGraph />
+          <div class="col">
+            <div className="uplifeDiv" style={{ marginBottom: "20px" }}>
+              Total phone usage over the past week
+            </div>
+            <h6 style={{ textAlign: "center", marginBottom: "25px" }}>
+              Drag the black bar to set your own goal
+            </h6>
+            <div style={{ width: "100%" }}>
+              <DraggableGraph />
+            </div>
           </div>
         </div>
       </div>

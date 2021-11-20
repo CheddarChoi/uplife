@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 import { changeCategory } from "../../store/modules/counter";
 
 import { allCategory, allColors } from "../variables/categories";
+import { customLayout } from "./configs";
 
 const Plot = createPlotlyComponent(Plotly);
 
@@ -32,40 +33,47 @@ const CategoryBarGraph = (props) => {
     handleCategory(category);
   }, [category]);
 
-  console.log("category", props.category);
+  const usageData = {
+    x: [3, 1, 3, 5, 12],
+    y: ["Productivity", "Communication", "SNS", "Entertainment", "Total"],
+    name: "Usage",
+    mode: "bar",
+    type: "bar",
+    orientation: "h",
+    marker: {
+      color: allCategory.map((value) => {
+        return value === category ? allColors[value][0] : allColors[value][1];
+      }),
+    },
+    showlegend: false,
+  };
+
+  const goalMarker = {
+    x: [Total - 0.25, Total + 0.25],
+    y: ["Total", "Total"],
+    name: "Goal",
+    mode: "lines",
+    line: { width: 40, color: "rgba(50, 50, 50, 0.7)" },
+  };
+
+  const layout = {
+    bargap: 0.5,
+    margin: { l: 100, r: 100, b: 20, t: 50 },
+    xaxis: { fixedrange: true },
+    yaxis: { fixedrange: true },
+    showlegend: true,
+    legend: {
+      x: 0.4,
+      y: -0.2,
+    },
+  };
+
   return (
     <>
       <Plot
         style={{ width: "100%" }}
-        data={[
-          {
-            x: [3, 1, 3, 5, 12],
-            y: [
-              "Productivity",
-              "Communication",
-              "SNS",
-              "Entertainment",
-              "Total",
-            ],
-            name: "Usage",
-            mode: "bar",
-            type: "bar",
-            orientation: "h",
-            marker: {
-              color: allCategory.map((value) => {
-                return value === category
-                  ? allColors[value][0]
-                  : allColors[value][1];
-              }),
-            },
-          },
-        ]}
-        layout={{
-          title: "Usage by Category",
-          bargap: 0.5,
-          xaxis: { fixedrange: true },
-          yaxis: { fixedrange: true },
-        }}
+        data={[usageData, goalMarker]}
+        layout={Object.assign({}, customLayout, layout)}
         config={{
           displayModeBar: false,
         }}

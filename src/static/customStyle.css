@@ -64,6 +64,9 @@ div.content {
 }
 
 div.uplifeDiv {
+  width: fit-content;
+  margin: auto;
+
   background: #ffffff;
   box-shadow: 0px 4px 45px -15px rgba(0, 0, 0, 0.15);
   border-radius: 20px;

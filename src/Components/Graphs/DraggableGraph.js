@@ -58,7 +58,7 @@ const DraggableGraph = (props) => {
           },
         ]}
         layout={{
-          title: "Phone Usage",
+          margin: { l: 50, b: 50, r: 50, t: 0 },
           shapes: [
             {
               type: "line",
@@ -82,6 +82,8 @@ const DraggableGraph = (props) => {
               },
             },
           ],
+          paper_bgcolor: "#f9fbff",
+          plot_bgcolor: "#f9fbff",
         }}
         config={{
           displayModeBar: false,

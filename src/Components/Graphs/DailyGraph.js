@@ -2,6 +2,7 @@ import React from "react";
 import Plotly from "plotly.js-basic-dist-min";
 import createPlotlyComponent from "react-plotly.js/factory";
 import { allColors } from "../variables/categories";
+import { customLayout, customConfig } from "./configs";
 
 const Plot = createPlotlyComponent(Plotly);
 
@@ -83,16 +84,15 @@ const DailyGraph = () => {
             fixedrange: true,
             showticklabels: true,
           },
+          paper_bgcolor: "#f9fbff",
+          plot_bgcolor: "#f9fbff",
         }}
-        config={{
-          displayModeBar: false,
-        }}
+        config={customConfig}
       />
       <Plot
         style={{ width: "100%" }}
         data={traces}
         layout={{
-          hovermode: !1,
           height: 100,
           xaxis: {
             title: "",
@@ -128,10 +128,10 @@ const DailyGraph = () => {
             xanchor: "center",
           },
           margin: { l: 50, b: 50, r: 50, t: 0 },
+          paper_bgcolor: "#f9fbff",
+          plot_bgcolor: "#f9fbff",
         }}
-        config={{
-          displayModeBar: false,
-        }}
+        config={customConfig}
       />
     </>
   );

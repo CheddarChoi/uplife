@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
-import { connect } from 'react-redux';
-import { setCategoryGoal } from '../store/modules/counter'
-import {changeCategory} from '../store/modules/counter'
+import { connect } from "react-redux";
+import { setCategoryGoal } from "../store/modules/counter";
+import { changeCategory } from "../store/modules/counter";
 
 import DraggableGraph2 from "../Components/Graphs/DraggableGraph2";
 import SectionTitle from "../Components/SectionTitle";
@@ -11,21 +11,25 @@ import SectionTitle from "../Components/SectionTitle";
 import "../static/customStyle.css";
 import "./Goal.css";
 
-const mapStateToProps = state =>({
-  category : state.counter.category,
-  category_goal : state.counter.category_goal,
-})
-const mapDispatchToProps = dispatch =>({
-  setCategoryGoal : (category, num) => dispatch(setCategoryGoal(category, num)),
-  changeCategory : (type) => dispatch(changeCategory(type))
-})
+const mapStateToProps = (state) => ({
+  category: state.counter.category,
+  category_goal: state.counter.category_goal,
+});
+const mapDispatchToProps = (dispatch) => ({
+  setCategoryGoal: (category, num) => dispatch(setCategoryGoal(category, num)),
+  changeCategory: (type) => dispatch(changeCategory(type)),
+});
 
 const CategoryGoal = (props) => {
   const history = useHistory();
   const [category, setCategory] = useState("Entertainment");
-  const options = ["Entertainment", "SNS", "Communication", "Productivity","Total"];
-
-
+  const options = [
+    "Entertainment",
+    "SNS",
+    "Communication",
+    "Productivity",
+    "Total",
+  ];
 
   const handleRoute = (path) => {
     history.push(path);
@@ -35,16 +39,16 @@ const CategoryGoal = (props) => {
     setCategory(e.currentTarget.value);
     changeCategory(e.currentTarget.value);
   };
-  const handleCategory = (type) =>{
-    const {changeCategory} = props
-    changeCategory(type)
-  }
+  const handleCategory = (type) => {
+    const { changeCategory } = props;
+    changeCategory(type);
+  };
 
-  useEffect(()=>{
-    handleCategory(category)
-    console.log("category",props.category)
-    console.log("goal",props.category_goal)
-  },[category])
+  useEffect(() => {
+    handleCategory(category);
+    console.log("category", props.category);
+    console.log("goal", props.category_goal);
+  }, [category]);
 
   return (
     <div class="container">
@@ -84,8 +88,16 @@ const CategoryGoal = (props) => {
               Set Goal
             </button>
           </div>
-          <div className="col-md-auto">
-            <DraggableGraph2 />
+          <div class="col">
+            <div className="uplifeDiv" style={{ marginBottom: "20px" }}>
+              Categorical phone usage over the past week
+            </div>
+            <h6 style={{ textAlign: "center", marginBottom: "25px" }}>
+              Drag the black bar to set your own goal
+            </h6>
+            <div style={{ width: "100%" }}>
+              <DraggableGraph2 />
+            </div>
           </div>
         </div>
       </div>

@@ -49,13 +49,15 @@ const DraggableGraph2 = (props) => {
           },
         ]}
         layout={{
-          title: "Phone Usage",
+          margin: { l: 50, b: 50, r: 50, t: 50 },
           xaxis: {
             fixedrange: true,
           },
           yaxis: {
             fixedrange: true,
           },
+          paper_bgcolor: "#f9fbff",
+          plot_bgcolor: "#f9fbff",
         }}
         config={{
           displayModeBar: false,

@@ -60,7 +60,7 @@ const TimeGoal = () => {
             </button>
           </div>
           <div class="col">
-            <div className="uplifeDiv" style={{ marginBottom: "10px" }}>
+            <div className="uplifeDiv" style={{ marginBottom: "20px" }}>
               Good/bad emotion over the past week
             </div>
             <h6 style={{ textAlign: "center", marginBottom: "25px" }}>

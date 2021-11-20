@@ -41,7 +41,7 @@ const Home = () => {
         >
           <div className="col-7">
             <div className="uplifeDiv">Phone Usage &#38; Emotional State</div>
-            <div style={{ width: "100%", border: "solid 1px black" }}>
+            <div style={{ width: "100%" }}>
               <DailyGraph />
             </div>
           </div>
@@ -56,13 +56,13 @@ const Home = () => {
         >
           <div className="col-7">
             <div className="uplifeDiv">Total App Usage</div>
-            <div style={{ width: "100%", border: "solid 1px black" }}>
+            <div style={{ width: "100%" }}>
               <DailyGraph2 />
             </div>
           </div>
           <div className="col-5">
             <div className="uplifeDiv">Usage by Category</div>
-            <div style={{ width: "100%", border: "solid 1px black" }}>
+            <div style={{ width: "100%" }}>
               <CategoryBarGraph />
             </div>
           </div>

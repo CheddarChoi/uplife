@@ -21,7 +21,7 @@ const mapDispatchToProps = (dispatch) => ({
 
 const Home = (props) => {
   const categoryLits = Object.entries(allColors).map((key, i) => {
-    const { changeCategory } = props;
+    const { changeCategory, category } = props;
     const setCategory = () => {
       changeCategory(allCategory[i]);
     };
@@ -29,9 +29,9 @@ const Home = (props) => {
       <div
         onClick={setCategory}
         className="categoryTag"
-        style={{ backgroundColor: key[1][0] }}
+        style={{ backgroundColor: category === key[0] ? key[1][0] : key[1][1] }}
       >
-        <h6>{key[0]}</h6>
+        <div className="categoryButton">{key[0]}</div>
       </div>
     );
   });

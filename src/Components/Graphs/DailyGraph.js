@@ -1,135 +1,135 @@
 import React from "react";
 import Plotly from "plotly.js-basic-dist-min";
 import createPlotlyComponent from "react-plotly.js/factory";
-import { allColors } from "../variables/categories";
-import { customLayout, customConfig } from "./configs";
+import { allCategory, allColors } from "../variables/categories";
+import { customConfig } from "./configs";
+
+import emotionData from "../../static/data/emotion.json";
+import usageLogData from "../../static/data/usageLog.json";
 
 const Plot = createPlotlyComponent(Plotly);
 
-var emotionData = {
-  x: [
-    "2019-01-01 00:00",
-    "2019-01-01 01:00",
-    "2019-01-01 12:00",
-    "2019-01-01 12:30",
-    "2019-01-01 14:00",
-    "2019-01-01 17:00",
-    "2019-01-01 18:00",
-    "2019-01-01 19:30",
-    "2019-01-01 20:00",
-    "2019-01-01 21:00",
-    "2019-01-01 22:00",
-    "2019-01-01 23:00",
-    "2019-01-01 24:00",
-  ],
-  y: [5, 5, 10, 10, 8, 8, 6, 6, 3, 3, 7, 4, 4],
-  mode: "lines",
+const date2string = (date) => {
+  return (
+    date.toISOString().split("T")[0] +
+    " " +
+    date.toISOString().split("T")[1].split(".")[0]
+  );
 };
 
-var usageData = [
-  {
-    startDate: "2019-01-01 04:00",
-    endDate: "2019-01-01 06:00",
-    category: "Entertainment",
-  },
-  {
-    startDate: "2019-01-01 09:00",
-    endDate: "2019-01-01 12:00",
-    category: "SNS",
-  },
-  {
-    startDate: "2019-01-01 13:00",
-    endDate: "2019-01-01 15:00",
-    category: "Communication",
-  },
-  {
-    startDate: "2019-01-01 20:00",
-    endDate: "2019-01-01 23:00",
-    category: "Productivity",
-  },
-];
-
-var traces = [];
-usageData.map((d) => {
-  var trace = {
-    x: [d.startDate, d.endDate],
-    y: [0, 0],
-    mode: "lines",
-    line: { width: 20, color: allColors[d.category][0] },
+const DailyGraph = () => {
+  var x = [];
+  var y = [];
+  emotionData.forEach((d) => {
+    if (d.timestamp > "2019-05-06 00:00:00") {
+      x.push(d.timestamp);
+      y.push(d.Emotional_state);
+    }
+  });
+  var emotionTrace = {
+    x: x,
+    y: y,
+    mode: "markers+lines",
+    name: "emotion",
+    yaxis: "y2",
     showlegend: false,
   };
-  traces.push(trace);
-});
+  console.log(emotionTrace);
 
-const DailyGraph = () => {
+  var usageData = [];
+  usageLogData.forEach((d) => {
+    var start = new Date(d.startTime);
+    var end = new Date(d.startTime);
+    end.setSeconds(end.getSeconds() + d.seconds);
+    if (date2string(start) > "2019-05-06 00:00:00")
+      usageData.push({
+        startTime: date2string(start),
+        endTime: date2string(end),
+        category: d.category,
+      });
+  });
+
+  var usageLogTrace = [];
+  usageData.forEach((d) => {
+    if (allCategory.includes(d.category)) {
+      var trace = {
+        x: [d.startTime, d.endTime],
+        y: [0, 0],
+        mode: "lines",
+        name: d.category,
+        line: { width: 20, color: allColors[d.category][0] },
+        showlegend: false,
+      };
+      usageLogTrace.push(trace);
+    }
+  });
+
   return (
     <>
       <Plot
         style={{ width: "100%" }}
-        data={[emotionData]}
+        data={usageLogTrace.concat(emotionTrace)}
         layout={{
-          margin: { l: 50, r: 50, b: 0, t: 20 },
-          height: 200,
-          autoscale: false,
-          xaxis: {
-            autorange: false,
-            range: ["2019-01-01", "2019-01-02"],
-            tick0: 0,
-            fixedrange: true,
-          },
-          yaxis: {
-            autorange: false,
-            range: [1, 10.1],
-            tick0: 1,
-            fixedrange: true,
-            showticklabels: true,
-          },
-          paper_bgcolor: "#f9fbff",
-          plot_bgcolor: "#f9fbff",
-        }}
-        config={customConfig}
-      />
-      <Plot
-        style={{ width: "100%" }}
-        data={traces}
-        layout={{
-          height: 100,
+          height: 400,
           xaxis: {
             title: "",
-            titlefont: {
-              size: 10,
-            },
             tickfont: {
               size: 10,
             },
-            range: ["2019-01-01", "2019-01-02"],
-            fixedrange: true,
+            range: ["2019-05-06 00:00:00", "2019-05-07 00:00:00"],
+            rangeselector: {
+              buttons: [
+                {
+                  step: "hour",
+                  stepmode: "backward",
+                  count: 1,
+                  label: "1h",
+                },
+                {
+                  step: "hour",
+                  stepmode: "backward",
+                  count: 6,
+                  label: "6h",
+                },
+                {
+                  step: "hour",
+                  stepmode: "backward",
+                  count: 12,
+                  label: "12h",
+                },
+                {
+                  step: "all",
+                },
+              ],
+            },
+            rangeslider: {},
+
             ticks: "outside",
             showticklabels: true,
             showgrid: true,
           },
           yaxis: {
             title: "",
-            titlefont: {
-              size: 10,
-            },
             tickfont: {
               size: 10,
             },
-            range: [-0.5, 0.5],
+            range: [-0.5, 2.5],
             fixedrange: true,
             showgrid: false,
             showticklabels: false,
           },
-          legend: {
-            orientation: "h",
-            x: 0.5,
-            y: -0.2,
-            xanchor: "center",
+          yaxis2: {
+            title: "",
+            fixedrange: true,
+            range: [-15, 10],
+            showgrid: false,
+            showticklabels: false,
+            overlaying: "y",
+            side: "left",
           },
           margin: { l: 50, b: 50, r: 50, t: 0 },
           paper_bgcolor: "#f9fbff",
-          plot_bgcolor: "#f9fbff",
+          // plot_bgcolor: "#f9fbff",
         }}
         config={customConfig}
       />

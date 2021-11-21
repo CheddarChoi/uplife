@@ -1,0 +1,866 @@
+[
+  {
+    "name": "YouTube",
+    "seconds": 69,
+    "day": "05-05",
+    "hour": "00",
+    "category": "Entertainment",
+    "startTime": "2019-05-05 09:01:37.275",
+    "endTime": "2019-05-04 15:02:46.564"
+  },
+  {
+    "name": "Lite",
+    "seconds": 155,
+    "day": "05-05",
+    "hour": "00",
+    "category": "SNS",
+    "startTime": "2019-05-05 09:02:49.571",
+    "endTime": "2019-05-04 15:05:24.774"
+  },
+  {
+    "name": "네이버 웹툰",
+    "seconds": 84,
+    "day": "05-05",
+    "hour": "00",
+    "category": "Entertainment",
+    "startTime": "2019-05-05 09:05:37.908",
+    "endTime": "2019-05-04 15:07:02.808"
+  },
+  {
+    "name": "Netflix",
+    "seconds": 66,
+    "day": "05-05",
+    "hour": "00",
+    "category": "Entertainment",
+    "startTime": "2019-05-05 09:08:53.812",
+    "endTime": "2019-05-04 15:09:59.972"
+  },
+  {
+    "name": "Netflix",
+    "seconds": 876,
+    "day": "05-05",
+    "hour": "00",
+    "category": "Entertainment",
+    "startTime": "2019-05-05 09:10:00.155",
+    "endTime": "2019-05-04 15:24:37.123"
+  },
+  {
+    "name": "Chrome",
+    "seconds": 174,
+    "day": "05-05",
+    "hour": "09",
+    "category": "Productivity",
+    "startTime": "2019-05-05 18:33:09.993",
+    "endTime": "2019-05-05 00:36:04.782"
+  },
+  {
+    "name": "Chrome",
+    "seconds": 135,
+    "day": "05-05",
+    "hour": "09",
+    "category": "Productivity",
+    "startTime": "2019-05-05 18:37:06.289",
+    "endTime": "2019-05-05 00:39:22.064"
+  },
+  {
+    "name": "기본홈",
+    "seconds": 62,
+    "day": "05-05",
+    "hour": "09",
+    "category": "Etc",
+    "startTime": "2019-05-05 18:41:12.179",
+    "endTime": "2019-05-05 00:42:15.046"
+  },
+  {
+    "name": "Chrome",
+    "seconds": 571,
+    "day": "05-05",
+    "hour": "09",
+    "category": "Productivity",
+    "startTime": "2019-05-05 18:42:15.165",
+    "endTime": "2019-05-05 00:51:46.344"
+  },
+  {
+    "name": "기본홈",
+    "seconds": 71,
+    "day": "05-05",
+    "hour": 10,
+    "category": "Etc",
+    "startTime": "2019-05-05 19:19:10.272",
+    "endTime": "2019-05-05 01:20:21.682"
+  },
+  {
+    "name": "Chrome",
+    "seconds": 74,
+    "day": "05-05",
+    "hour": 10,
+    "category": "Productivity",
+    "startTime": "2019-05-05 19:25:45.387",
+    "endTime": "2019-05-05 01:27:00.148"
+  },
+  {
+    "name": "Lite",
+    "seconds": 83,
+    "day": "05-05",
+    "hour": 10,
+    "category": "SNS",
+    "startTime": "2019-05-05 19:27:00.177",
+    "endTime": "2019-05-05 01:28:24.091"
+  },
+  {
+    "name": "Chrome",
+    "seconds": 111,
+    "day": "05-05",
+    "hour": 10,
+    "category": "Productivity",
+    "startTime": "2019-05-05 19:30:28.261",
+    "endTime": "2019-05-05 01:32:19.321"
+  },
+  {
+    "name": "Chrome",
+    "seconds": 1116,
+    "day": "05-05",
+    "hour": 11,
+    "category": "Productivity",
+    "startTime": "2019-05-05 20:07:45.466",
+    "endTime": "2019-05-05 02:26:21.930"
+  },
+  {
+    "name": "Chrome",
+    "seconds": 223,
+    "day": "05-05",
+    "hour": 11,
+    "category": "Productivity",
+    "startTime": "2019-05-05 20:26:33.948",
+    "endTime": "2019-05-05 02:30:17.649"
+  },
+  {
+    "name": "Chrome",
+    "seconds": 62,
+    "day": "05-05",
+    "hour": 11,
+    "category": "Productivity",
+    "startTime": "2019-05-05 20:32:19.737",
+    "endTime": "2019-05-05 02:33:22.661"
+  },
+  {
+    "name": "YouTube",
+    "seconds": 98,
+    "day": "05-05",
+    "hour": 13,
+    "category": "Entertainment",
+    "startTime": "2019-05-05 22:02:21.598",
+    "endTime": "2019-05-05 04:04:00.246"
+  },
+  {
+    "name": "Chrome",
+    "seconds": 89,
+    "day": "05-05",
+    "hour": 13,
+    "category": "Productivity",
+    "startTime": "2019-05-05 22:04:01.060",
+    "endTime": "2019-05-05 04:05:30.267"
+  },
+  {
+    "name": "YouTube",
+    "seconds": 145,
+    "day": "05-05",
+    "hour": 13,
+    "category": "Entertainment",
+    "startTime": "2019-05-05 22:05:31.845",
+    "endTime": "2019-05-05 04:07:57.670"
+  },
+  {
+    "name": "Lite",
+    "seconds": 71,
+    "day": "05-05",
+    "hour": 13,
+    "category": "SNS",
+    "startTime": "2019-05-05 22:18:20.225",
+    "endTime": "2019-05-05 04:19:31.441"
+  },
+  {
+    "name": "카메라",
+    "seconds": 70,
+    "day": "05-05",
+    "hour": 13,
+    "category": "Life",
+    "startTime": "2019-05-05 22:31:12.578",
+    "endTime": "2019-05-05 04:32:23.054"
+  },
+  {
+    "name": "카메라",
+    "seconds": 87,
+    "day": "05-05",
+    "hour": 13,
+    "category": "Life",
+    "startTime": "2019-05-05 22:47:54.312",
+    "endTime": "2019-05-05 04:49:21.319"
+  },
+  {
+    "name": "Chrome",
+    "seconds": 1380,
+    "day": "05-05",
+    "hour": 14,
+    "category": "Productivity",
+    "startTime": "2019-05-05 23:07:30.430",
+    "endTime": "2019-05-05 05:30:30.556"
+  },
+  {
+    "name": "Chrome",
+    "seconds": 308,
+    "day": "05-05",
+    "hour": 14,
+    "category": "Productivity",
+    "startTime": "2019-05-05 23:30:42.431",
+    "endTime": "2019-05-05 05:35:50.662"
+  },
+  {
+    "name": "Lite",
+    "seconds": 70,
+    "day": "05-05",
+    "hour": 14,
+    "category": "SNS",
+    "startTime": "2019-05-05 23:48:11.003",
+    "endTime": "2019-05-05 05:49:21.547"
+  },
+  {
+    "name": "Chrome",
+    "seconds": 183,
+    "day": "05-05",
+    "hour": 15,
+    "category": "Productivity",
+    "startTime": "2019-05-06 00:04:36.352",
+    "endTime": "2019-05-05 06:07:40.231"
+  },
+  {
+    "name": "Chrome",
+    "seconds": 1483,
+    "day": "05-05",
+    "hour": 15,
+    "category": "Productivity",
+    "startTime": "2019-05-06 00:13:40.811",
+    "endTime": "2019-05-05 06:38:24.690"
+  },
+  {
+    "name": "Lite",
+    "seconds": 262,
+    "day": "05-05",
+    "hour": 15,
+    "category": "SNS",
+    "startTime": "2019-05-06 00:46:03.764",
+    "endTime": "2019-05-05 06:50:26.567"
+  },
+  {
+    "name": "Instagram",
+    "seconds": 95,
+    "day": "05-05",
+    "hour": 15,
+    "category": "SNS",
+    "startTime": "2019-05-06 00:50:29.304",
+    "endTime": "2019-05-05 06:52:04.727"
+  },
+  {
+    "name": "Chrome",
+    "seconds": 335,
+    "day": "05-05",
+    "hour": 15,
+    "category": "Productivity",
+    "startTime": "2019-05-06 00:52:10.112",
+    "endTime": "2019-05-05 06:57:45.842"
+  },
+  {
+    "name": "Chrome",
+    "seconds": 380,
+    "day": "05-05",
+    "hour": 15,
+    "category": "Productivity",
+    "startTime": "2019-05-06 00:58:01.857",
+    "endTime": "2019-05-05 07:04:21.951"
+  },
+  {
+    "name": "Chrome",
+    "seconds": 132,
+    "day": "05-05",
+    "hour": 16,
+    "category": "Productivity",
+    "startTime": "2019-05-06 01:38:40.585",
+    "endTime": "2019-05-05 07:40:52.871"
+  },
+  {
+    "name": "Lite",
+    "seconds": 68,
+    "day": "05-05",
+    "hour": 17,
+    "category": "SNS",
+    "startTime": "2019-05-06 02:26:19.970",
+    "endTime": "2019-05-05 08:27:28.365"
+  },
+  {
+    "name": "Chrome",
+    "seconds": 108,
+    "day": "05-05",
+    "hour": 17,
+    "category": "Productivity",
+    "startTime": "2019-05-06 02:27:28.476",
+    "endTime": "2019-05-05 08:29:16.743"
+  },
+  {
+    "name": "Lite",
+    "seconds": 74,
+    "day": "05-05",
+    "hour": 17,
+    "category": "SNS",
+    "startTime": "2019-05-06 02:31:03.833",
+    "endTime": "2019-05-05 08:32:18.745"
+  },
+  {
+    "name": "Lite",
+    "seconds": 138,
+    "day": "05-05",
+    "hour": 17,
+    "category": "SNS",
+    "startTime": "2019-05-06 02:32:48.724",
+    "endTime": "2019-05-05 08:35:06.984"
+  },
+  {
+    "name": "Chrome",
+    "seconds": 65,
+    "day": "05-05",
+    "hour": 17,
+    "category": "Productivity",
+    "startTime": "2019-05-06 02:35:07.085",
+    "endTime": "2019-05-05 08:36:12.420"
+  },
+  {
+    "name": "Lite",
+    "seconds": 62,
+    "day": "05-05",
+    "hour": 17,
+    "category": "SNS",
+    "startTime": "2019-05-06 02:36:12.444",
+    "endTime": "2019-05-05 08:37:15.396"
+  },
+  {
+    "name": "Lite",
+    "seconds": 82,
+    "day": "05-05",
+    "hour": 17,
+    "category": "SNS",
+    "startTime": "2019-05-06 02:38:12.499",
+    "endTime": "2019-05-05 08:39:35.323"
+  },
+  {
+    "name": "Lite",
+    "seconds": 264,
+    "day": "05-05",
+    "hour": 17,
+    "category": "SNS",
+    "startTime": "2019-05-06 02:43:18.410",
+    "endTime": "2019-05-05 08:47:43.066"
+  },
+  {
+    "name": "기본홈",
+    "seconds": 570,
+    "day": "05-05",
+    "hour": 17,
+    "category": "Etc",
+    "startTime": "2019-05-06 02:54:53.644",
+    "endTime": "2019-05-05 09:04:23.662"
+  },
+  {
+    "name": "기본홈",
+    "seconds": 63,
+    "day": "05-05",
+    "hour": 21,
+    "category": "Etc",
+    "startTime": "2019-05-06 06:49:02.600",
+    "endTime": "2019-05-05 12:50:05.790"
+  },
+  {
+    "name": "Lite",
+    "seconds": 62,
+    "day": "05-05",
+    "hour": 23,
+    "category": "SNS",
+    "startTime": "2019-05-06 08:37:43.412",
+    "endTime": "2019-05-05 14:38:45.842"
+  },
+  {
+    "name": "Chrome",
+    "seconds": 4002,
+    "day": "05-05",
+    "hour": 23,
+    "category": "Productivity",
+    "startTime": "2019-05-06 08:39:07.033",
+    "endTime": "2019-05-05 15:45:49.075"
+  },
+  {
+    "name": "Chrome",
+    "seconds": 768,
+    "day": "05-06",
+    "hour": "00",
+    "category": "Productivity",
+    "startTime": "2019-05-06 09:47:26.964",
+    "endTime": "2019-05-05 16:00:15.100"
+  },
+  {
+    "name": "Chrome",
+    "seconds": 442,
+    "day": "05-06",
+    "hour": "01",
+    "category": "Productivity",
+    "startTime": "2019-05-06 10:00:58.777",
+    "endTime": "2019-05-05 16:08:20.812"
+  },
+  {
+    "name": "다음",
+    "seconds": 266,
+    "day": "05-06",
+    "hour": "01",
+    "category": "Life",
+    "startTime": "2019-05-06 10:08:26.125",
+    "endTime": "2019-05-05 16:12:52.605"
+  },
+  {
+    "name": "Lite",
+    "seconds": 75,
+    "day": "05-06",
+    "hour": "03",
+    "category": "SNS",
+    "startTime": "2019-05-06 12:01:54.714",
+    "endTime": "2019-05-05 18:03:09.892"
+  },
+  {
+    "name": "Lite",
+    "seconds": 93,
+    "day": "05-06",
+    "hour": "09",
+    "category": "SNS",
+    "startTime": "2019-05-06 18:00:33.372",
+    "endTime": "2019-05-06 00:02:07.314"
+  },
+  {
+    "name": "Chrome",
+    "seconds": 99,
+    "day": "05-06",
+    "hour": "09",
+    "category": "Productivity",
+    "startTime": "2019-05-06 18:02:07.407",
+    "endTime": "2019-05-06 00:03:47.325"
+  },
+  {
+    "name": "Chrome",
+    "seconds": 67,
+    "day": "05-06",
+    "hour": "09",
+    "category": "Productivity",
+    "startTime": "2019-05-06 18:04:28.656",
+    "endTime": "2019-05-06 00:05:35.984"
+  },
+  {
+    "name": "Lite",
+    "seconds": 131,
+    "day": "05-06",
+    "hour": "09",
+    "category": "SNS",
+    "startTime": "2019-05-06 18:05:36.009",
+    "endTime": "2019-05-06 00:07:47.415"
+  },
+  {
+    "name": "Chrome",
+    "seconds": 388,
+    "day": "05-06",
+    "hour": "09",
+    "category": "Productivity",
+    "startTime": "2019-05-06 18:47:12.558",
+    "endTime": "2019-05-06 00:53:41.341"
+  },
+  {
+    "name": "카카오톡",
+    "seconds": 108,
+    "day": "05-06",
+    "hour": 11,
+    "category": "Communication",
+    "startTime": "2019-05-06 20:22:28.043",
+    "endTime": "2019-05-06 02:24:16.583"
+  },
+  {
+    "name": "Lite",
+    "seconds": 104,
+    "day": "05-06",
+    "hour": 12,
+    "category": "SNS",
+    "startTime": "2019-05-06 21:33:10.763",
+    "endTime": "2019-05-06 03:34:54.975"
+  },
+  {
+    "name": "Lite",
+    "seconds": 61,
+    "day": "05-06",
+    "hour": 12,
+    "category": "SNS",
+    "startTime": "2019-05-06 21:34:57.365",
+    "endTime": "2019-05-06 03:35:58.535"
+  },
+  {
+    "name": "카카오톡",
+    "seconds": 65,
+    "day": "05-06",
+    "hour": 12,
+    "category": "Communication",
+    "startTime": "2019-05-06 21:52:19.208",
+    "endTime": "2019-05-06 03:53:24.882"
+  },
+  {
+    "name": "Instagram",
+    "seconds": 66,
+    "day": "05-06",
+    "hour": 12,
+    "category": "SNS",
+    "startTime": "2019-05-06 21:53:32.551",
+    "endTime": "2019-05-06 03:54:38.954"
+  },
+  {
+    "name": "Chrome",
+    "seconds": 83,
+    "day": "05-06",
+    "hour": 12,
+    "category": "Productivity",
+    "startTime": "2019-05-06 21:57:03.969",
+    "endTime": "2019-05-06 03:58:27.561"
+  },
+  {
+    "name": "Chrome",
+    "seconds": 65,
+    "day": "05-06",
+    "hour": 12,
+    "category": "Productivity",
+    "startTime": "2019-05-06 21:58:39.000",
+    "endTime": "2019-05-06 03:59:44.999"
+  },
+  {
+    "name": "Chrome",
+    "seconds": 189,
+    "day": "05-06",
+    "hour": 13,
+    "category": "Productivity",
+    "startTime": "2019-05-06 22:00:15.032",
+    "endTime": "2019-05-06 04:03:24.184"
+  },
+  {
+    "name": "Chrome",
+    "seconds": 71,
+    "day": "05-06",
+    "hour": 13,
+    "category": "Productivity",
+    "startTime": "2019-05-06 22:03:51.233",
+    "endTime": "2019-05-06 04:05:02.447"
+  },
+  {
+    "name": "Chrome",
+    "seconds": 192,
+    "day": "05-06",
+    "hour": 13,
+    "category": "Productivity",
+    "startTime": "2019-05-06 22:05:04.546",
+    "endTime": "2019-05-06 04:08:16.711"
+  },
+  {
+    "name": "카카오톡",
+    "seconds": 73,
+    "day": "05-06",
+    "hour": 13,
+    "category": "Communication",
+    "startTime": "2019-05-06 22:21:19.919",
+    "endTime": "2019-05-06 04:22:33.439"
+  },
+  {
+    "name": "Chrome",
+    "seconds": 86,
+    "day": "05-06",
+    "hour": 13,
+    "category": "Productivity",
+    "startTime": "2019-05-06 22:30:53.492",
+    "endTime": "2019-05-06 04:32:19.741"
+  },
+  {
+    "name": "왓챠",
+    "seconds": 91,
+    "day": "05-06",
+    "hour": 13,
+    "category": "Entertainment",
+    "startTime": "2019-05-06 22:46:10.440",
+    "endTime": "2019-05-06 04:47:41.723"
+  },
+  {
+    "name": "왓챠",
+    "seconds": 251,
+    "day": "05-06",
+    "hour": 13,
+    "category": "Entertainment",
+    "startTime": "2019-05-06 22:48:15.691",
+    "endTime": "2019-05-06 04:52:27.292"
+  },
+  {
+    "name": "카카오톡",
+    "seconds": 68,
+    "day": "05-06",
+    "hour": 14,
+    "category": "Communication",
+    "startTime": "2019-05-06 23:14:28.471",
+    "endTime": "2019-05-06 05:15:36.494"
+  },
+  {
+    "name": "카카오톡",
+    "seconds": 130,
+    "day": "05-06",
+    "hour": 14,
+    "category": "Communication",
+    "startTime": "2019-05-06 23:55:23.199",
+    "endTime": "2019-05-06 05:57:34.097"
+  },
+  {
+    "name": "카카오톡",
+    "seconds": 84,
+    "day": "05-06",
+    "hour": 14,
+    "category": "Communication",
+    "startTime": "2019-05-06 23:59:46.707",
+    "endTime": "2019-05-06 06:01:11.175"
+  },
+  {
+    "name": "기본홈",
+    "seconds": 81,
+    "day": "05-06",
+    "hour": 15,
+    "category": "Etc",
+    "startTime": "2019-05-07 00:09:13.043",
+    "endTime": "2019-05-06 06:10:34.544"
+  },
+  {
+    "name": "카카오톡",
+    "seconds": 446,
+    "day": "05-06",
+    "hour": 15,
+    "category": "Communication",
+    "startTime": "2019-05-07 00:30:49.567",
+    "endTime": "2019-05-06 06:38:15.846"
+  },
+  {
+    "name": "기본홈",
+    "seconds": 68,
+    "day": "05-06",
+    "hour": 15,
+    "category": "Etc",
+    "startTime": "2019-05-07 00:38:51.226",
+    "endTime": "2019-05-06 06:40:00.145"
+  },
+  {
+    "name": "카카오톡",
+    "seconds": 115,
+    "day": "05-06",
+    "hour": 15,
+    "category": "Communication",
+    "startTime": "2019-05-07 00:42:26.043",
+    "endTime": "2019-05-06 06:44:21.759"
+  },
+  {
+    "name": "카카오톡",
+    "seconds": 326,
+    "day": "05-06",
+    "hour": 15,
+    "category": "Communication",
+    "startTime": "2019-05-07 00:44:21.779",
+    "endTime": "2019-05-06 06:49:48.748"
+  },
+  {
+    "name": "카카오톡",
+    "seconds": 250,
+    "day": "05-06",
+    "hour": 15,
+    "category": "Communication",
+    "startTime": "2019-05-07 00:51:07.438",
+    "endTime": "2019-05-06 06:55:17.606"
+  },
+  {
+    "name": "카카오톡",
+    "seconds": 69,
+    "day": "05-06",
+    "hour": 16,
+    "category": "Communication",
+    "startTime": "2019-05-07 01:04:29.643",
+    "endTime": "2019-05-06 07:05:39.597"
+  },
+  {
+    "name": "카카오톡",
+    "seconds": 168,
+    "day": "05-06",
+    "hour": 16,
+    "category": "Communication",
+    "startTime": "2019-05-07 01:11:59.153",
+    "endTime": "2019-05-06 07:14:47.862"
+  },
+  {
+    "name": "카카오톡",
+    "seconds": 328,
+    "day": "05-06",
+    "hour": 16,
+    "category": "Communication",
+    "startTime": "2019-05-07 01:14:47.883",
+    "endTime": "2019-05-06 07:20:16.755"
+  },
+  {
+    "name": "Lite",
+    "seconds": 116,
+    "day": "05-06",
+    "hour": 16,
+    "category": "SNS",
+    "startTime": "2019-05-07 01:21:22.175",
+    "endTime": "2019-05-06 07:23:18.803"
+  },
+  {
+    "name": "기본홈",
+    "seconds": 126,
+    "day": "05-06",
+    "hour": 19,
+    "category": "Etc",
+    "startTime": "2019-05-07 04:12:21.839",
+    "endTime": "2019-05-06 10:14:28.490"
+  },
+  {
+    "name": "통화 화면",
+    "seconds": 122,
+    "day": "05-06",
+    "hour": 19,
+    "category": "Communication",
+    "startTime": "2019-05-07 04:18:17.449",
+    "endTime": "2019-05-06 10:20:20.148"
+  },
+  {
+    "name": "YouTube",
+    "seconds": 324,
+    "day": "05-06",
+    "hour": 19,
+    "category": "Entertainment",
+    "startTime": "2019-05-07 04:24:04.818",
+    "endTime": "2019-05-06 10:29:29.543"
+  },
+  {
+    "name": "기본홈",
+    "seconds": 98,
+    "day": "05-06",
+    "hour": 19,
+    "category": "Etc",
+    "startTime": "2019-05-07 04:36:55.476",
+    "endTime": "2019-05-06 10:38:33.957"
+  },
+  {
+    "name": "기본홈",
+    "seconds": 139,
+    "day": "05-06",
+    "hour": 20,
+    "category": "Etc",
+    "startTime": "2019-05-07 05:47:52.599",
+    "endTime": "2019-05-06 11:50:11.813"
+  },
+  {
+    "name": "기본홈",
+    "seconds": 375,
+    "day": "05-06",
+    "hour": 21,
+    "category": "Etc",
+    "startTime": "2019-05-07 06:00:01.827",
+    "endTime": "2019-05-06 12:06:17.373"
+  },
+  {
+    "name": "통화 화면",
+    "seconds": 120,
+    "day": "05-06",
+    "hour": 21,
+    "category": "Communication",
+    "startTime": "2019-05-07 06:07:08.132",
+    "endTime": "2019-05-06 12:09:08.552"
+  },
+  {
+    "name": "주소록",
+    "seconds": 298,
+    "day": "05-06",
+    "hour": 21,
+    "category": "Communication",
+    "startTime": "2019-05-07 06:16:40.879",
+    "endTime": "2019-05-06 12:21:39.167"
+  },
+  {
+    "name": "네이버 지도",
+    "seconds": 873,
+    "day": "05-06",
+    "hour": 21,
+    "category": "Life",
+    "startTime": "2019-05-07 06:21:51.751",
+    "endTime": "2019-05-06 12:36:25.453"
+  },
+  {
+    "name": "Lite",
+    "seconds": 79,
+    "day": "05-06",
+    "hour": 21,
+    "category": "SNS",
+    "startTime": "2019-05-07 06:44:02.798",
+    "endTime": "2019-05-06 12:45:22.494"
+  },
+  {
+    "name": "Lite",
+    "seconds": 152,
+    "day": "05-06",
+    "hour": 21,
+    "category": "SNS",
+    "startTime": "2019-05-07 06:47:25.188",
+    "endTime": "2019-05-06 12:49:57.202"
+  },
+  {
+    "name": "카카오톡",
+    "seconds": 387,
+    "day": "05-06",
+    "hour": 21,
+    "category": "Communication",
+    "startTime": "2019-05-07 06:52:14.235",
+    "endTime": "2019-05-06 12:58:41.610"
+  },
+  {
+    "name": "카카오톡",
+    "seconds": 78,
+    "day": "05-06",
+    "hour": 21,
+    "category": "Communication",
+    "startTime": "2019-05-07 06:59:01.468",
+    "endTime": "2019-05-06 13:00:20.124"
+  },
+  {
+    "name": "Lite",
+    "seconds": 166,
+    "day": "05-06",
+    "hour": 22,
+    "category": "SNS",
+    "startTime": "2019-05-07 07:04:31.664",
+    "endTime": "2019-05-06 13:07:17.801"
+  },
+  {
+    "name": "Instagram",
+    "seconds": 71,
+    "day": "05-06",
+    "hour": 22,
+    "category": "SNS",
+    "startTime": "2019-05-07 07:07:19.845",
+    "endTime": "2019-05-06 13:08:31.815"
+  },
+  {
+    "name": "Chrome",
+    "seconds": 196,
+    "day": "05-06",
+    "hour": 22,
+    "category": "Productivity",
+    "startTime": "2019-05-07 07:08:34.082",
+    "endTime": "2019-05-06 13:11:50.127"
+  }
+]

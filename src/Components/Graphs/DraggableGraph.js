@@ -3,9 +3,12 @@ import Plotly from "plotly.js-basic-dist-min";
 import createPlotlyComponent from "react-plotly.js/factory";
 import { connect } from "react-redux";
 import { setGoal } from "../../store/modules/counter";
-import { allCategory, allColors, allDays } from "../variables/categories";
+import { allColors, allDays } from "../variables/categories";
 import { convertSecToTime } from "../Functions/convertNumToTime";
+
 import usageData from "../../static/data/usageTime.json";
+import emotionAvgData from "../../static/data/emotionAvg.json";
+import { emotionAxis } from "./configs";
 
 const Plot = createPlotlyComponent(Plotly);
 
@@ -19,14 +22,6 @@ const mapDispatchToProps = (dispatch) => ({
 const DraggableGraph = (props) => {
   const [goal, setGoal2] = useState(props.Total);
   const [xaxis, setXaxis] = useState({ x0: 0, x1: 1 });
-  const emotion = [4, 1, 3, 5, 5, 2, 1];
-
-  const usage = [];
-  usageData.forEach((d) => {
-    var total = 0;
-    allCategory.forEach((c) => (total = c === "Total" ? total : total + d[c]));
-    usage.push(Math.round((convertSecToTime(total) + Number.EPSILON) * 100) / 100);
-  });
 
   const handleGoal = (Total) => {
     const { setGoal } = props;
@@ -39,7 +34,7 @@ const DraggableGraph = (props) => {
 
   const emotionTrace = {
     x: allDays,
-    y: emotion,
+    y: emotionAvgData.map((d) => d.Emotional_state),
     yaxis: "y2",
     name: "Emotion Rate",
     marker: {
@@ -47,6 +42,10 @@ const DraggableGraph = (props) => {
       color: "#7BAB63",
     },
   };
+
+  const usage = usageData.map(
+    (d) => Math.round(convertSecToTime(d["Total"]) * 100) / 100
+  );
 
   const usageTrace = {
     x: allDays,
@@ -81,13 +80,7 @@ const DraggableGraph = (props) => {
             fixedrange: true,
             showgrid: false,
           },
-          yaxis2: {
-            title: "Emotional Rate",
-            fixedrange: true,
-            showgrid: false,
-            overlaying: "y",
-            side: "right",
-          },
+          yaxis2: emotionAxis("right"),
           shapes: [
             {
               type: "line",

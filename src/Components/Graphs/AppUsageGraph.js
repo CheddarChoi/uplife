@@ -5,7 +5,10 @@ import { connect } from "react-redux";
 import { changeCategory } from "../../store/modules/counter";
 import { convertSecToTime } from "../Functions/convertNumToTime";
 import { allCategory, allColors, allDays } from "../variables/categories";
+
 import usageData from "../../static/data/usageTime.json";
+import emotionAvgData from "../../static/data/emotionAvg.json";
+import { emotionAxis } from "./configs";
 
 const Plot = createPlotlyComponent(Plotly);
 
@@ -19,16 +22,18 @@ const mapDispatchToProps = (dispatch) => ({
 
 const AppUsageGraph = (props) => {
   const { category, changeCategory } = props;
-  const [goal, setGoal] = useState(props.Total);
 
-  const [category2, setCategory] = useState(props.category);
-  const [color, setColor] = useState(allColors[props.category]);
-  const [xaxis, setXaxis] = useState({ x0: 0, x1: 1 });
-  const emotion = [-4, 1, 3, 5, 5, -2, 1];
+  const totalUsage = usageData.map(
+    (d) =>
+      Math.round(convertSecToTime(d["Total"]) * 100) / 100 -
+      Math.round(convertSecToTime(d[props.category]) * 100) / 100
+  );
 
-  const { Total } = props;
+  const usage = usageData.map(
+    (d) => Math.round(convertSecToTime(d[props.category]) * 100) / 100
+  );
 
-  const usage = usageData.map((d) => Math.round(convertSecToTime(d[props.category])*100)/100);
+  const emotion = emotionAvgData.map((d) => d.Emotional_state);
 
   const emotionTrace = {
     x: allDays,
@@ -41,14 +46,24 @@ const AppUsageGraph = (props) => {
     },
   };
 
-  const trace = {
+  const categoryTrace = {
     x: allDays,
     y: usage,
-    name: "Total Usage",
+    name: props.category + " Usage",
     mode: "bar",
     type: "bar",
     marker: {
       color: allColors[category][0],
+    },
+  };
+  const totalTrace = {
+    x: allDays,
+    y: totalUsage,
+    name: "Total Usage",
+    mode: "bar",
+    type: "bar",
+    marker: {
+      color: "lightgray",
     },
   };
 
@@ -56,8 +71,9 @@ const AppUsageGraph = (props) => {
     <>
       <Plot
         style={{ width: "100%" }}
-        data={[emotionTrace, trace]}
+        data={[emotionTrace, categoryTrace, totalTrace]}
         layout={{
+          barmode: "stack",
           margin: { l: 50, b: 50, r: 50, t: 50 },
           xaxis: {
             fixedrange: true,
@@ -67,19 +83,14 @@ const AppUsageGraph = (props) => {
             fixedrange: true,
             showgrid: false,
           },
-          yaxis2: {
-            title: "Emotional Rate",
-            fixedrange: true,
-            showgrid: false,
-            overlaying: "y",
-            side: "right",
-          },
+          yaxis2: emotionAxis("right"),
           paper_bgcolor: "#f9fbff",
           plot_bgcolor: "#f9fbff",
           showlegend: true,
           legend: {
-            x: 0.4,
-            y: -0.2,
+            x: 0.15,
+            y: -0.1,
+            orientation: "h",
           },
         }}
         config={{

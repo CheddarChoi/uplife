@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useHistory } from "react-router-dom";
 import SectionTitle from "../Components/SectionTitle";
 import { connect } from "react-redux";
@@ -43,8 +43,7 @@ const mapDispatchToProps = (dispatch) => ({
 
 const Goal = (props) => {
   const history = useHistory();
-  const {setCategoryGoal} = props
-
+  const { setCategoryGoal } = props;
 
   const handleRoute = (path) => {
     history.push(path);
@@ -53,7 +52,7 @@ const Goal = (props) => {
   var currentGoal = {};
   allCategory.forEach((c) => {
     currentGoal[c] = props[c];
-  })
+  });
 
   return (
     <div class="container">
@@ -63,12 +62,17 @@ const Goal = (props) => {
           subtitle="Check your current goal lists"
         />
         <ul>
-          {!(!currentGoal["Total"]) && (
+          {!!currentGoal["Total"] && (
             <li>
               <h4>
                 I will use my phone less than{" "}
                 <b>{convertNumToTime(currentGoal["Total"])}</b> a day.
-                <Button variant="outline-danger" onClick={()=>{setCategoryGoal("Total", NaN)}}>
+                <Button
+                  variant="outline-danger"
+                  onClick={() => {
+                    setCategoryGoal("Total", NaN);
+                  }}
+                >
                   <FaTrashAlt />
                 </Button>
               </h4>
@@ -81,7 +85,12 @@ const Goal = (props) => {
                   <h4>
                     I will use <b>{c}</b> apps less than{" "}
                     <b>{convertNumToTime(currentGoal[c])}</b> a day.
-                    <Button variant="outline-danger" onClick={()=>{setCategoryGoal(c, NaN)}}>
+                    <Button
+                      variant="outline-danger"
+                      onClick={() => {
+                        setCategoryGoal(c, NaN);
+                      }}
+                    >
                       <FaTrashAlt />
                     </Button>
                   </h4>

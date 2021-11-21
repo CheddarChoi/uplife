@@ -1,12 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Plotly from "plotly.js-basic-dist-min";
 import createPlotlyComponent from "react-plotly.js/factory";
 import { connect } from "react-redux";
 import { setCategoryGoal } from "../../store/modules/counter";
 import { changeCategory } from "../../store/modules/counter";
-import { allCategory, allColors, allDays } from "../variables/categories";
+import { allColors, allDays } from "../variables/categories";
 import { convertSecToTime } from "../Functions/convertNumToTime";
+
 import usageData from "../../static/data/usageTime.json";
+import emotionAvgData from "../../static/data/emotionAvg.json";
+import { emotionAxis } from "./configs";
 
 const Plot = createPlotlyComponent(Plotly);
 
@@ -45,14 +48,10 @@ const DraggableGraph2 = (props) => {
 
   const [xaxis, setXaxis] = useState({ x0: 0, x1: 1 });
   const [goal, setGoal2] = useState(getGoal(category));
-  const emotion = [-4, 1, 3, 5, 5, -2, 1];
-
-  const usage = usageData.map((d) => Math.round(convertSecToTime(d[props.category])*100)/100);
-
 
   const emotionTrace = {
     x: allDays,
-    y: emotion,
+    y: emotionAvgData.map((d) => d.Emotional_state),
     yaxis: "y2",
     name: "Emotion Rate",
     marker: {
@@ -60,6 +59,9 @@ const DraggableGraph2 = (props) => {
     },
   };
 
+  const usage = usageData.map(
+    (d) => Math.round(convertSecToTime(d[props.category]) * 100) / 100
+  );
   const usageTrace = {
     x: allDays,
     y: usage,
@@ -93,13 +95,7 @@ const DraggableGraph2 = (props) => {
             fixedrange: true,
             showgrid: false,
           },
-          yaxis2: {
-            title: "Emotional Rate",
-            fixedrange: true,
-            showgrid: false,
-            overlaying: "y",
-            side: "right",
-          },
+          yaxis2: emotionAxis("right"),
           shapes: [
             {
               type: "line",

@@ -1,0 +1,704 @@
+[
+  {
+    "Emotional_state": 1,
+    "timestamp": "2019-04-30 10:37:00",
+    "date": "04-30",
+    "time": "10:37"
+  },
+  {
+    "Emotional_state": 0,
+    "timestamp": "2019-04-30 11:56:09",
+    "date": "04-30",
+    "time": "11:56"
+  },
+  {
+    "Emotional_state": 0,
+    "timestamp": "2019-04-30 11:56:09",
+    "date": "04-30",
+    "time": "11:56"
+  },
+  {
+    "Emotional_state": 1,
+    "timestamp": "2019-04-30 12:47:45",
+    "date": "04-30",
+    "time": "12:47"
+  },
+  {
+    "Emotional_state": -7,
+    "timestamp": "2019-04-30 14:18:51",
+    "date": "04-30",
+    "time": "14:18"
+  },
+  {
+    "Emotional_state": -7,
+    "timestamp": "2019-04-30 15:55:30",
+    "date": "04-30",
+    "time": "15:55"
+  },
+  {
+    "Emotional_state": 1,
+    "timestamp": "2019-04-30 19:06:25",
+    "date": "04-30",
+    "time": "19:06"
+  },
+  {
+    "Emotional_state": 4,
+    "timestamp": "2019-04-30 19:44:25",
+    "date": "04-30",
+    "time": "19:44"
+  },
+  {
+    "Emotional_state": 1,
+    "timestamp": "2019-04-30 20:55:26",
+    "date": "04-30",
+    "time": "20:55"
+  },
+  {
+    "Emotional_state": -1,
+    "timestamp": "2019-04-30 22:03:22",
+    "date": "04-30",
+    "time": "22:03"
+  },
+  {
+    "Emotional_state": 0,
+    "timestamp": "2019-05-01 10:15:37",
+    "date": "05-01",
+    "time": "10:15"
+  },
+  {
+    "Emotional_state": 2,
+    "timestamp": "2019-05-01 11:02:50",
+    "date": "05-01",
+    "time": "11:02"
+  },
+  {
+    "Emotional_state": 2,
+    "timestamp": "2019-05-01 11:17:41",
+    "date": "05-01",
+    "time": "11:17"
+  },
+  {
+    "Emotional_state": 3,
+    "timestamp": "2019-05-01 12:26:54",
+    "date": "05-01",
+    "time": "12:26"
+  },
+  {
+    "Emotional_state": 3,
+    "timestamp": "2019-05-01 13:59:16",
+    "date": "05-01",
+    "time": "13:59"
+  },
+  {
+    "Emotional_state": 1,
+    "timestamp": "2019-05-01 14:23:38",
+    "date": "05-01",
+    "time": "14:23"
+  },
+  {
+    "Emotional_state": 4,
+    "timestamp": "2019-05-01 15:41:53",
+    "date": "05-01",
+    "time": "15:41"
+  },
+  {
+    "Emotional_state": 3,
+    "timestamp": "2019-05-01 16:40:21",
+    "date": "05-01",
+    "time": "16:40"
+  },
+  {
+    "Emotional_state": -1,
+    "timestamp": "2019-05-01 17:22:15",
+    "date": "05-01",
+    "time": "17:22"
+  },
+  {
+    "Emotional_state": 1,
+    "timestamp": "2019-05-01 18:18:35",
+    "date": "05-01",
+    "time": "18:18"
+  },
+  {
+    "Emotional_state": 0,
+    "timestamp": "2019-05-01 19:00:08",
+    "date": "05-01",
+    "time": "19:00"
+  },
+  {
+    "Emotional_state": 2,
+    "timestamp": "2019-05-01 21:14:13",
+    "date": "05-01",
+    "time": "21:14"
+  },
+  {
+    "Emotional_state": -1,
+    "timestamp": "2019-05-01 21:56:59",
+    "date": "05-01",
+    "time": "21:56"
+  },
+  {
+    "Emotional_state": 0,
+    "timestamp": "2019-05-02 10:50:49",
+    "date": "05-02",
+    "time": "10:50"
+  },
+  {
+    "Emotional_state": 0,
+    "timestamp": "2019-05-02 10:50:50",
+    "date": "05-02",
+    "time": "10:50"
+  },
+  {
+    "Emotional_state": 3,
+    "timestamp": "2019-05-02 11:55:17",
+    "date": "05-02",
+    "time": "11:55"
+  },
+  {
+    "Emotional_state": 1,
+    "timestamp": "2019-05-02 12:59:20",
+    "date": "05-02",
+    "time": "12:59"
+  },
+  {
+    "Emotional_state": 1,
+    "timestamp": "2019-05-02 14:18:57",
+    "date": "05-02",
+    "time": "14:18"
+  },
+  {
+    "Emotional_state": 1,
+    "timestamp": "2019-05-02 14:25:49",
+    "date": "05-02",
+    "time": "14:25"
+  },
+  {
+    "Emotional_state": 0,
+    "timestamp": "2019-05-02 15:09:35",
+    "date": "05-02",
+    "time": "15:09"
+  },
+  {
+    "Emotional_state": -1,
+    "timestamp": "2019-05-02 15:28:22",
+    "date": "05-02",
+    "time": "15:28"
+  },
+  {
+    "Emotional_state": 2,
+    "timestamp": "2019-05-02 17:50:23",
+    "date": "05-02",
+    "time": "17:50"
+  },
+  {
+    "Emotional_state": 1,
+    "timestamp": "2019-05-02 18:07:50",
+    "date": "05-02",
+    "time": "18:07"
+  },
+  {
+    "Emotional_state": 1,
+    "timestamp": "2019-05-02 18:51:31",
+    "date": "05-02",
+    "time": "18:51"
+  },
+  {
+    "Emotional_state": 0,
+    "timestamp": "2019-05-02 19:51:53",
+    "date": "05-02",
+    "time": "19:51"
+  },
+  {
+    "Emotional_state": 0,
+    "timestamp": "2019-05-02 20:57:50",
+    "date": "05-02",
+    "time": "20:57"
+  },
+  {
+    "Emotional_state": 2,
+    "timestamp": "2019-05-02 21:51:04",
+    "date": "05-02",
+    "time": "21:51"
+  },
+  {
+    "Emotional_state": 2,
+    "timestamp": "2019-05-03 10:07:23",
+    "date": "05-03",
+    "time": "10:07"
+  },
+  {
+    "Emotional_state": 3,
+    "timestamp": "2019-05-03 11:13:34",
+    "date": "05-03",
+    "time": "11:13"
+  },
+  {
+    "Emotional_state": -1,
+    "timestamp": "2019-05-03 12:04:54",
+    "date": "05-03",
+    "time": "12:04"
+  },
+  {
+    "Emotional_state": 1,
+    "timestamp": "2019-05-03 12:14:28",
+    "date": "05-03",
+    "time": "12:14"
+  },
+  {
+    "Emotional_state": 2,
+    "timestamp": "2019-05-03 12:57:30",
+    "date": "05-03",
+    "time": "12:57"
+  },
+  {
+    "Emotional_state": 0,
+    "timestamp": "2019-05-03 14:46:06",
+    "date": "05-03",
+    "time": "14:46"
+  },
+  {
+    "Emotional_state": 1,
+    "timestamp": "2019-05-03 15:45:27",
+    "date": "05-03",
+    "time": "15:45"
+  },
+  {
+    "Emotional_state": 1,
+    "timestamp": "2019-05-03 15:52:12",
+    "date": "05-03",
+    "time": "15:52"
+  },
+  {
+    "Emotional_state": -3,
+    "timestamp": "2019-05-03 17:15:20",
+    "date": "05-03",
+    "time": "17:15"
+  },
+  {
+    "Emotional_state": -3,
+    "timestamp": "2019-05-03 17:15:20",
+    "date": "05-03",
+    "time": "17:15"
+  },
+  {
+    "Emotional_state": -1,
+    "timestamp": "2019-05-03 17:24:05",
+    "date": "05-03",
+    "time": "17:24"
+  },
+  {
+    "Emotional_state": 1,
+    "timestamp": "2019-05-03 18:07:05",
+    "date": "05-03",
+    "time": "18:07"
+  },
+  {
+    "Emotional_state": 2,
+    "timestamp": "2019-05-03 18:48:01",
+    "date": "05-03",
+    "time": "18:48"
+  },
+  {
+    "Emotional_state": 2,
+    "timestamp": "2019-05-03 18:52:00",
+    "date": "05-03",
+    "time": "18:52"
+  },
+  {
+    "Emotional_state": 0,
+    "timestamp": "2019-05-03 20:03:14",
+    "date": "05-03",
+    "time": "20:03"
+  },
+  {
+    "Emotional_state": 0,
+    "timestamp": "2019-05-03 20:03:15",
+    "date": "05-03",
+    "time": "20:03"
+  },
+  {
+    "Emotional_state": 0,
+    "timestamp": "2019-05-03 21:36:34",
+    "date": "05-03",
+    "time": "21:36"
+  },
+  {
+    "Emotional_state": 1,
+    "timestamp": "2019-05-03 22:52:16",
+    "date": "05-03",
+    "time": "22:52"
+  },
+  {
+    "Emotional_state": -3,
+    "timestamp": "2019-05-04 11:13:17",
+    "date": "05-04",
+    "time": "11:13"
+  },
+  {
+    "Emotional_state": -1,
+    "timestamp": "2019-05-04 12:00:36",
+    "date": "05-04",
+    "time": "12:00"
+  },
+  {
+    "Emotional_state": -1,
+    "timestamp": "2019-05-04 12:34:11",
+    "date": "05-04",
+    "time": "12:34"
+  },
+  {
+    "Emotional_state": -2,
+    "timestamp": "2019-05-04 15:01:07",
+    "date": "05-04",
+    "time": "15:01"
+  },
+  {
+    "Emotional_state": 1,
+    "timestamp": "2019-05-04 15:35:39",
+    "date": "05-04",
+    "time": "15:35"
+  },
+  {
+    "Emotional_state": -1,
+    "timestamp": "2019-05-04 15:49:41",
+    "date": "05-04",
+    "time": "15:49"
+  },
+  {
+    "Emotional_state": 3,
+    "timestamp": "2019-05-04 16:21:26",
+    "date": "05-04",
+    "time": "16:21"
+  },
+  {
+    "Emotional_state": -3,
+    "timestamp": "2019-05-04 16:56:55",
+    "date": "05-04",
+    "time": "16:56"
+  },
+  {
+    "Emotional_state": -3,
+    "timestamp": "2019-05-04 17:23:26",
+    "date": "05-04",
+    "time": "17:23"
+  },
+  {
+    "Emotional_state": -3,
+    "timestamp": "2019-05-04 17:23:27",
+    "date": "05-04",
+    "time": "17:23"
+  },
+  {
+    "Emotional_state": -2,
+    "timestamp": "2019-05-04 17:59:35",
+    "date": "05-04",
+    "time": "17:59"
+  },
+  {
+    "Emotional_state": -3,
+    "timestamp": "2019-05-04 18:37:54",
+    "date": "05-04",
+    "time": "18:37"
+  },
+  {
+    "Emotional_state": 0,
+    "timestamp": "2019-05-04 18:58:58",
+    "date": "05-04",
+    "time": "18:58"
+  },
+  {
+    "Emotional_state": -3,
+    "timestamp": "2019-05-04 20:35:10",
+    "date": "05-04",
+    "time": "20:35"
+  },
+  {
+    "Emotional_state": -3,
+    "timestamp": "2019-05-04 20:35:10",
+    "date": "05-04",
+    "time": "20:35"
+  },
+  {
+    "Emotional_state": -2,
+    "timestamp": "2019-05-04 21:15:41",
+    "date": "05-04",
+    "time": "21:15"
+  },
+  {
+    "Emotional_state": -1,
+    "timestamp": "2019-05-04 21:39:17",
+    "date": "05-04",
+    "time": "21:39"
+  },
+  {
+    "Emotional_state": 0,
+    "timestamp": "2019-05-04 22:23:27",
+    "date": "05-04",
+    "time": "22:23"
+  },
+  {
+    "Emotional_state": 1,
+    "timestamp": "2019-05-04 22:31:31",
+    "date": "05-04",
+    "time": "22:31"
+  },
+  {
+    "Emotional_state": -3,
+    "timestamp": "2019-05-04 22:52:06",
+    "date": "05-04",
+    "time": "22:52"
+  },
+  {
+    "Emotional_state": 1,
+    "timestamp": "2019-05-04 23:08:38",
+    "date": "05-04",
+    "time": "23:08"
+  },
+  {
+    "Emotional_state": -4,
+    "timestamp": "2019-05-04 23:26:18",
+    "date": "05-04",
+    "time": "23:26"
+  },
+  {
+    "Emotional_state": 0,
+    "timestamp": "2019-05-05 10:18:50",
+    "date": "05-05",
+    "time": "10:18"
+  },
+  {
+    "Emotional_state": 0,
+    "timestamp": "2019-05-05 10:18:50",
+    "date": "05-05",
+    "time": "10:18"
+  },
+  {
+    "Emotional_state": -1,
+    "timestamp": "2019-05-05 10:56:49",
+    "date": "05-05",
+    "time": "10:56"
+  },
+  {
+    "Emotional_state": -3,
+    "timestamp": "2019-05-05 11:26:32",
+    "date": "05-05",
+    "time": "11:26"
+  },
+  {
+    "Emotional_state": -2,
+    "timestamp": "2019-05-05 12:57:22",
+    "date": "05-05",
+    "time": "12:57"
+  },
+  {
+    "Emotional_state": -2,
+    "timestamp": "2019-05-05 14:04:07",
+    "date": "05-05",
+    "time": "14:04"
+  },
+  {
+    "Emotional_state": -2,
+    "timestamp": "2019-05-05 14:04:08",
+    "date": "05-05",
+    "time": "14:04"
+  },
+  {
+    "Emotional_state": -1,
+    "timestamp": "2019-05-05 14:30:40",
+    "date": "05-05",
+    "time": "14:30"
+  },
+  {
+    "Emotional_state": -2,
+    "timestamp": "2019-05-05 15:13:36",
+    "date": "05-05",
+    "time": "15:13"
+  },
+  {
+    "Emotional_state": -2,
+    "timestamp": "2019-05-05 15:57:59",
+    "date": "05-05",
+    "time": "15:57"
+  },
+  {
+    "Emotional_state": -3,
+    "timestamp": "2019-05-05 16:32:07",
+    "date": "05-05",
+    "time": "16:32"
+  },
+  {
+    "Emotional_state": -1,
+    "timestamp": "2019-05-05 16:41:01",
+    "date": "05-05",
+    "time": "16:41"
+  },
+  {
+    "Emotional_state": 2,
+    "timestamp": "2019-05-05 17:25:38",
+    "date": "05-05",
+    "time": "17:25"
+  },
+  {
+    "Emotional_state": -1,
+    "timestamp": "2019-05-05 18:39:19",
+    "date": "05-05",
+    "time": "18:39"
+  },
+  {
+    "Emotional_state": -2,
+    "timestamp": "2019-05-05 19:24:46",
+    "date": "05-05",
+    "time": "19:24"
+  },
+  {
+    "Emotional_state": -1,
+    "timestamp": "2019-05-05 20:17:16",
+    "date": "05-05",
+    "time": "20:17"
+  },
+  {
+    "Emotional_state": 0,
+    "timestamp": "2019-05-05 21:47:45",
+    "date": "05-05",
+    "time": "21:47"
+  },
+  {
+    "Emotional_state": -2,
+    "timestamp": "2019-05-05 22:16:52",
+    "date": "05-05",
+    "time": "22:16"
+  },
+  {
+    "Emotional_state": -1,
+    "timestamp": "2019-05-06 11:21:01",
+    "date": "05-06",
+    "time": "11:21"
+  },
+  {
+    "Emotional_state": -2,
+    "timestamp": "2019-05-06 12:04:10",
+    "date": "05-06",
+    "time": "12:04"
+  },
+  {
+    "Emotional_state": -3,
+    "timestamp": "2019-05-06 12:39:28",
+    "date": "05-06",
+    "time": "12:39"
+  },
+  {
+    "Emotional_state": 0,
+    "timestamp": "2019-05-06 12:58:37",
+    "date": "05-06",
+    "time": "12:58"
+  },
+  {
+    "Emotional_state": -1,
+    "timestamp": "2019-05-06 13:25:29",
+    "date": "05-06",
+    "time": "13:25"
+  },
+  {
+    "Emotional_state": -1,
+    "timestamp": "2019-05-06 13:41:46",
+    "date": "05-06",
+    "time": "13:41"
+  },
+  {
+    "Emotional_state": 1,
+    "timestamp": "2019-05-06 14:12:01",
+    "date": "05-06",
+    "time": "14:12"
+  },
+  {
+    "Emotional_state": 2,
+    "timestamp": "2019-05-06 14:25:13",
+    "date": "05-06",
+    "time": "14:25"
+  },
+  {
+    "Emotional_state": -1,
+    "timestamp": "2019-05-06 14:59:09",
+    "date": "05-06",
+    "time": "14:59"
+  },
+  {
+    "Emotional_state": -2,
+    "timestamp": "2019-05-06 15:12:48",
+    "date": "05-06",
+    "time": "15:12"
+  },
+  {
+    "Emotional_state": -1,
+    "timestamp": "2019-05-06 15:55:27",
+    "date": "05-06",
+    "time": "15:55"
+  },
+  {
+    "Emotional_state": -1,
+    "timestamp": "2019-05-06 16:20:39",
+    "date": "05-06",
+    "time": "16:20"
+  },
+  {
+    "Emotional_state": -1,
+    "timestamp": "2019-05-06 16:20:39",
+    "date": "05-06",
+    "time": "16:20"
+  },
+  {
+    "Emotional_state": -1,
+    "timestamp": "2019-05-06 16:44:14",
+    "date": "05-06",
+    "time": "16:44"
+  },
+  {
+    "Emotional_state": -2,
+    "timestamp": "2019-05-06 17:29:40",
+    "date": "05-06",
+    "time": "17:29"
+  },
+  {
+    "Emotional_state": -1,
+    "timestamp": "2019-05-06 18:36:10",
+    "date": "05-06",
+    "time": "18:36"
+  },
+  {
+    "Emotional_state": -2,
+    "timestamp": "2019-05-06 19:18:10",
+    "date": "05-06",
+    "time": "19:18"
+  },
+  {
+    "Emotional_state": -2,
+    "timestamp": "2019-05-06 19:18:10",
+    "date": "05-06",
+    "time": "19:18"
+  },
+  {
+    "Emotional_state": -1,
+    "timestamp": "2019-05-06 19:39:21",
+    "date": "05-06",
+    "time": "19:39"
+  },
+  {
+    "Emotional_state": -3,
+    "timestamp": "2019-05-06 20:30:36",
+    "date": "05-06",
+    "time": "20:30"
+  },
+  {
+    "Emotional_state": -1,
+    "timestamp": "2019-05-06 21:51:58",
+    "date": "05-06",
+    "time": "21:51"
+  },
+  {
+    "Emotional_state": -1,
+    "timestamp": "2019-05-06 22:00:33",
+    "date": "05-06",
+    "time": "22:00"
+  }
+]

@@ -59,7 +59,11 @@ const CategoryBarGraph = (props) => {
   );
 
   const trace = {
-    x: allCategory.map((c) => Math.round((convertSecToTime(todayData[c]) + Number.EPSILON) * 100) / 100),
+    x: allCategory.map(
+      (c) =>
+        Math.round((convertSecToTime(todayData[c]) + Number.EPSILON) * 100) /
+        100
+    ),
     y: allCategory,
     name: "Usage",
     mode: "bar",

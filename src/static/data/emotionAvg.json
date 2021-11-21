@@ -1,0 +1,30 @@
+[
+  {
+    "date": "04-30",
+    "Emotional_state": -0.7
+  },
+  {
+    "date": "05-01",
+    "Emotional_state": 1.4615384615384615
+  },
+  {
+    "date": "05-02",
+    "Emotional_state": 0.7857142857142857
+  },
+  {
+    "date": "05-03",
+    "Emotional_state": 0.4444444444444444
+  },
+  {
+    "date": "05-04",
+    "Emotional_state": -1.4545454545454546
+  },
+  {
+    "date": "05-05",
+    "Emotional_state": -1.2777777777777777
+  },
+  {
+    "date": "05-06",
+    "Emotional_state": -1.1363636363636365
+  }
+]

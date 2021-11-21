@@ -47,7 +47,8 @@ const DraggableGraph2 = (props) => {
   const [goal, setGoal2] = useState(getGoal(category));
   const emotion = [-4, 1, 3, 5, 5, -2, 1];
 
-  const usage = usageData.map((d) => convertSecToTime(d[props.category]));
+  const usage = usageData.map((d) => Math.round(convertSecToTime(d[props.category])*100)/100);
+
 
   const emotionTrace = {
     x: allDays,

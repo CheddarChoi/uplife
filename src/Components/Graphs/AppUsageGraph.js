@@ -28,7 +28,7 @@ const AppUsageGraph = (props) => {
 
   const { Total } = props;
 
-  const usage = usageData.map((d) => convertSecToTime(d[props.category]));
+  const usage = usageData.map((d) => Math.round(convertSecToTime(d[props.category])*100)/100);
 
   const emotionTrace = {
     x: allDays,

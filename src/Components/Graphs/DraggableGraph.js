@@ -25,7 +25,7 @@ const DraggableGraph = (props) => {
   usageData.forEach((d) => {
     var total = 0;
     allCategory.forEach((c) => (total = c === "Total" ? total : total + d[c]));
-    usage.push(convertSecToTime(total));
+    usage.push(Math.round((convertSecToTime(total) + Number.EPSILON) * 100) / 100);
   });
 
   const handleGoal = (Total) => {

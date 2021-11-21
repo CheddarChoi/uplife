@@ -24,27 +24,20 @@ const AppUsageGraph = (props) => {
   const [category2, setCategory] = useState(props.category);
   const [color, setColor] = useState(allColors[props.category]);
   const [xaxis, setXaxis] = useState({ x0: 0, x1: 1 });
-  const emotion = [4, 1, 3, 5, 5, 2, 1];
+  const emotion = [-4, 1, 3, 5, 5, -2, 1];
 
   const { Total } = props;
 
-  const usage = [];
-  usageData.forEach((d) => {
-    if (props.category === "Total") {
-      var total = 0;
-      allCategory.forEach(
-        (c) => (total = c === "Total" ? total : total + d[c])
-      );
-      usage.push(convertSecToTime(total));
-    } else usage.push(convertSecToTime(d[props.category]));
-  });
+  const usage = usageData.map((d) => convertSecToTime(d[props.category]));
 
   const emotionTrace = {
     x: allDays,
     y: emotion,
+    yaxis: "y2",
     name: "Emotion Rate",
     marker: {
       size: 12,
+      color: "black",
     },
   };
 
@@ -70,10 +63,24 @@ const AppUsageGraph = (props) => {
             fixedrange: true,
           },
           yaxis: {
+            title: "Usage Time",
             fixedrange: true,
+            showgrid: false,
+          },
+          yaxis2: {
+            title: "Emotional Rate",
+            fixedrange: true,
+            showgrid: false,
+            overlaying: "y",
+            side: "right",
           },
           paper_bgcolor: "#f9fbff",
           plot_bgcolor: "#f9fbff",
+          showlegend: true,
+          legend: {
+            x: 0.4,
+            y: -0.2,
+          },
         }}
         config={{
           displayModeBar: false,

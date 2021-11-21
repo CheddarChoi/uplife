@@ -24,15 +24,7 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 const DraggableGraph2 = (props) => {
-  const {
-    Entertainment,
-    SNS,
-    Communication,
-    Total,
-    Productivity,
-    category,
-    setCategoryGoal,
-  } = props;
+  const { category, setCategoryGoal } = props;
 
   const getGoal = (type) => {
     switch (type) {
@@ -52,51 +44,60 @@ const DraggableGraph2 = (props) => {
   };
 
   const [xaxis, setXaxis] = useState({ x0: 0, x1: 1 });
-  // const [category2, setCategory2] = useState(props.category)
   const [goal, setGoal2] = useState(getGoal(category));
-  const emotion = [4, 1, 3, 5, 5, 2, 1];
+  const emotion = [-4, 1, 3, 5, 5, -2, 1];
 
-  const usage = [];
-  usageData.forEach((d) => {
-    var total = 0;
-    allCategory.forEach((c) => (total = c === category ? total : total + d[c]));
-    usage.push(convertSecToTime(total));
-  });
+  const usage = usageData.map((d) => convertSecToTime(d[props.category]));
+
+  const emotionTrace = {
+    x: allDays,
+    y: emotion,
+    yaxis: "y2",
+    name: "Emotion Rate",
+    marker: {
+      size: 12,
+    },
+  };
+
+  const usageTrace = {
+    x: allDays,
+    y: usage,
+    name: category + " Total Usage",
+    mode: "bar",
+    type: "bar",
+    marker: {
+      color: usage.map((value) => {
+        return value > goal ? allColors[category][1] : allColors[category][0];
+      }),
+    },
+  };
 
   return (
     <>
       <Plot
         style={{ width: "100%" }}
-        data={[
-          {
-            x: allDays,
-            y: emotion,
-            name: "Emotion Rate",
-            marker: {
-              size: 12,
-            },
-          },
-          {
-            x: allDays,
-            y: usage,
-            name: category + " Total Usage",
-            mode: "bar",
-            type: "bar",
-            marker: {
-              color: usage.map((value) => {
-                return value > goal
-                  ? allColors[category][1]
-                  : allColors[category][0];
-              }),
-            },
-          },
-        ]}
+        data={[emotionTrace, usageTrace]}
         layout={{
           margin: { l: 50, b: 50, r: 50, t: 0 },
           showlegend: true,
           legend: {
             x: 0.4,
             y: -0.2,
+          },
+          xaxis: {
+            fixedrange: true,
+          },
+          yaxis: {
+            title: "Usage Time",
+            fixedrange: true,
+            showgrid: false,
+          },
+          yaxis2: {
+            title: "Emotional Rate",
+            fixedrange: true,
+            showgrid: false,
+            overlaying: "y",
+            side: "right",
           },
           shapes: [
             {

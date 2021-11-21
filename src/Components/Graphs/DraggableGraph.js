@@ -37,35 +37,35 @@ const DraggableGraph = (props) => {
     handleGoal(goal);
   }, [goal]);
 
+  const emotionTrace = {
+    x: allDays,
+    y: emotion,
+    yaxis: "y2",
+    name: "Emotion Rate",
+    marker: {
+      size: 12,
+      color: "#7BAB63",
+    },
+  };
+
+  const usageTrace = {
+    x: allDays,
+    y: usage,
+    name: "Total Usage",
+    mode: "bar",
+    type: "bar",
+    marker: {
+      color: usage.map((value) => {
+        return value > goal ? allColors["Total"][1] : allColors["Total"][0];
+      }),
+    },
+  };
+
   return (
     <>
       <Plot
         style={{ width: "100%" }}
-        data={[
-          {
-            x: allDays,
-            y: emotion,
-            name: "Emotion Rate",
-            marker: {
-              size: 12,
-              color: "#7BAB63",
-            },
-          },
-          {
-            x: allDays,
-            y: usage,
-            name: "Total Usage",
-            mode: "bar",
-            type: "bar",
-            marker: {
-              color: usage.map((value) => {
-                return value > goal
-                  ? allColors["Total"][1]
-                  : allColors["Total"][0];
-              }),
-            },
-          },
-        ]}
+        data={[emotionTrace, usageTrace]}
         layout={{
           margin: { l: 50, b: 50, r: 50, t: 0 },
           showlegend: true,
@@ -73,19 +73,29 @@ const DraggableGraph = (props) => {
             x: 0.4,
             y: -0.2,
           },
+          xaxis: {
+            fixedrange: true,
+          },
+          yaxis: {
+            title: "Usage Time",
+            fixedrange: true,
+            showgrid: false,
+          },
+          yaxis2: {
+            title: "Emotional Rate",
+            fixedrange: true,
+            showgrid: false,
+            overlaying: "y",
+            side: "right",
+          },
           shapes: [
             {
               type: "line",
-              xaxis: {
-                fixedrange: true,
-              },
+
               x0: xaxis.x0,
               x1: xaxis.x1,
               xref: "paper",
 
-              yaxis: {
-                fixedrange: true,
-              },
               y0: goal ? goal : 3,
               y1: goal ? goal : 3,
               yref: "y",

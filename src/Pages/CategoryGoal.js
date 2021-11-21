@@ -27,15 +27,8 @@ const mapDispatchToProps = (dispatch) => ({
 
 const CategoryGoal = (props) => {
   const history = useHistory();
-  const { Entertainment, SNS, Communication, Total, Productivity } = props;
-  const [category, setCategory] = useState(props.category);
-  const options = [
-    "Entertainment",
-    "SNS",
-    "Communication",
-    "Productivity",
-    "Total",
-  ];
+  const [category, setCategory] = useState("Entertainment");
+  const options = ["Entertainment", "SNS", "Communication", "Productivity"];
 
   const getGoal = (type) => {
     switch (type) {
@@ -60,7 +53,6 @@ const CategoryGoal = (props) => {
 
   const onChangeHandler = (e) => {
     setCategory(e.currentTarget.value);
-    changeCategory(e.currentTarget.value);
   };
   const handleCategory = (type) => {
     const { changeCategory } = props;

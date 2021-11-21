@@ -74,21 +74,27 @@ const CategoryBarGraph = (props) => {
   };
 
   const goalMarker = allCategory.map((e) => {
-    return {
-      x: [getGoal(e) - 0.05, getGoal(e) + 0.05],
-      y: [e, e],
-      name: "Goal",
-      mode: "lines",
-      line: { width: 40, color: "rgba(50, 50, 50, 0.7)" },
-      showlegend: false,
-    };
+    if (getGoal(e) !== null)
+      return {
+        x: [getGoal(e) - 0.05, getGoal(e) + 0.05],
+        y: [e, e],
+        name: "Goal",
+        mode: "lines",
+        line: { width: 40, color: "rgba(50, 50, 50, 0.7)" },
+        showlegend: false,
+      };
+    else return {};
   });
 
   const layout = {
     bargap: 0.5,
     margin: { l: 100, r: 100, b: 20, t: 50 },
     xaxis: { fixedrange: true },
-    yaxis: { fixedrange: true },
+    yaxis: {
+      fixedrange: true,
+      categoryorder: "array",
+      categoryarray: allCategory,
+    },
     showlegend: true,
     legend: {
       x: 0.4,

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto:100,200,300,400,500,600,700,800,900');
+@import url("https://fonts.googleapis.com/css?family=Roboto:100,200,300,400,500,600,700,800,900");
 
 body {
   font-family: Roboto;
@@ -61,7 +61,7 @@ div.content {
   background: #f9fbff;
   border-radius: 30px;
 
-  margin-top: 75px;
+  margin: 75px 0;
   padding: 40px 75px;
 }
 

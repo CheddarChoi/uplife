@@ -2,91 +2,156 @@ import React from "react";
 import Plotly from "plotly.js-basic-dist-min";
 import createPlotlyComponent from "react-plotly.js/factory";
 
-import { allColors } from "../variables/categories";
+import { allCategory, allColors } from "../variables/categories";
+import emotionTimeData from "../../static/data/emotionTime.json";
 
 const Plot = createPlotlyComponent(Plotly);
 
-var data = [
-  { time: "2019-01-01 00:00", emotion: "bad", category: "Productivity" },
-  { time: "2019-01-01 02:00", emotion: "good", category: "SNS" },
-  { time: "2019-01-01 02:00", emotion: "bad", category: "SNS" },
-  { time: "2019-01-01 02:00", emotion: "bad", category: "Entertainment" },
-  { time: "2019-01-01 12:00", emotion: "good", category: "Productivity" },
-];
+var cnt = { Good: {}, Bad: {} };
 
-var cnt = { good: {}, bad: {} };
+var goodTraces = [];
+var badTraces = [];
 
-var traces = [];
-
-data.forEach((d) => {
-  if (cnt[d.emotion][d.time] === undefined) cnt[d.emotion][d.time] = 0;
-  cnt[d.emotion][d.time] += 1;
-  traces.push({
-    type: "scatter",
-    x: [d.time],
-    y:
-      d.emotion === "good"
-        ? [cnt[d.emotion][d.time]]
-        : [-cnt[d.emotion][d.time]],
-    mode: "markers+text",
-    text: d.emotion === "good" ? ["😁"] : ["😠"],
-    textfont: {
-      size: 16,
-      color: "black",
-    },
-    name: d.category,
-    marker: {
-      color: allColors[d.category][0],
-      symbol: "circle",
-      size: 25,
-    },
-  });
+emotionTimeData.forEach((d) => {
+  if (allCategory.includes(d.category)) {
+    var timeZone = d.datetime.split(" ")[1].split(":")[0];
+    if (cnt[d.condition][timeZone] === undefined)
+      cnt[d.condition][timeZone] = 0;
+    cnt[d.condition][timeZone] += 1;
+    var trace = {
+      type: "scatter",
+      x: [timeZone],
+      y:
+        d.condition === "Good"
+          ? [cnt[d.condition][timeZone]]
+          : [-cnt[d.condition][timeZone]],
+      mode: "markers+text",
+      text: d.condition === "Good" ? ["😁"] : ["😠"],
+      textfont: {
+        size: 12,
+        color: "black",
+      },
+      name: d.category,
+      marker: {
+        color: allColors[d.category][0],
+        symbol: "circle",
+        size: 15,
+      },
+    };
+    if (d.condition === "Good") goodTraces.push(trace);
+    else badTraces.push(trace);
+  }
 });
 
+const goodMax = Math.max(
+  ...Object.keys(cnt["Good"]).map(function (key) {
+    return cnt["Good"][key];
+  })
+);
+const badMax = Math.max(
+  ...Object.keys(cnt["Bad"]).map(function (key) {
+    return cnt["Bad"][key];
+  })
+);
+
 const DotGraph = () => {
+  console.log(cnt);
   return (
-    <Plot
-      style={{ width: "100%" }}
-      data={traces}
-      layout={{
-        hovermode: !1,
-        height: 400,
-        xaxis: {
-          title: "",
-          titlefont: {
-            size: 10,
+    <>
+      <Plot
+        style={{ width: "100%" }}
+        data={goodTraces}
+        layout={{
+          hovermode: !1,
+          height: goodMax * 20,
+          xaxis: {
+            title: "",
+            titlefont: {
+              size: 10,
+            },
+            tickfont: {
+              size: 10,
+            },
+            ticks: "outside",
+            dtick: 3,
+            range: [-1, 25],
+            zeroline: false,
+            fixedrange: true,
+            showticklabels: true,
+            showgrid: true,
           },
-          tickfont: {
-            size: 10,
+          yaxis: {
+            title: "",
+            titlefont: {
+              size: 10,
+            },
+            tickfont: {
+              size: 10,
+            },
+            range: [0, goodMax + 1],
+            fixedrange: true,
+            showgrid: false,
+            showticklabels: false,
+            zerolinecolor: "black",
+            zerolinewidth: 1,
           },
-          ticks: "outside",
-          range: ["2019-01-01", "2019-01-02"],
-          fixedrange: true,
-          showticklabels: true,
-          showgrid: true,
-        },
-        yaxis: {
-          title: "",
-          titlefont: {
-            size: 10,
+          showlegend: false,
+          margin: { l: 50, b: 20, r: 50, t: 0 },
+          paper_bgcolor: "#f9fbff",
+          plot_bgcolor: "#f9fbff",
+        }}
+        config={{
+          displayModeBar: false,
+        }}
+      />
+      <Plot
+        style={{ width: "100%" }}
+        data={badTraces}
+        layout={{
+          hovermode: !1,
+          height: badMax * 20,
+          xaxis: {
+            side: "top",
+            title: "",
+            titlefont: {
+              size: 10,
+            },
+            tickfont: {
+              size: 10,
+            },
+            ticks: "outside",
+            dtick: 3,
+            range: [-1, 25],
+            zeroline: false,
+            fixedrange: true,
+            showticklabels: false,
+            showgrid: true,
           },
-          tickfont: {
-            size: 10,
+          yaxis: {
+            title: "",
+            titlefont: {
+              size: 10,
+            },
+            tickfont: {
+              size: 10,
+            },
+            range: [-(badMax + 1), 0],
+            fixedrange: true,
+            showgrid: false,
+            showticklabels: false,
+            zerolinecolor: "black",
+            zerolinewidth: 1,
           },
-          range: [-5, 5],
-          fixedrange: true,
-          showgrid: false,
-          showticklabels: false,
-          zerolinecolor: "#969696",
-          zerolinewidth: 1,
-        },
-        showlegend: false,
-        margin: { l: 50, b: 50, r: 50, t: 0 },
-      }}
-      config={{
-        displayModeBar: false,
-      }}
-    />
+          showlegend: false,
+          margin: { l: 50, b: 0, r: 50, t: 10 },
+          paper_bgcolor: "#f9fbff",
+          plot_bgcolor: "#f9fbff",
+        }}
+        config={{
+          displayModeBar: false,
+        }}
+      />
+    </>
   );
 };
 

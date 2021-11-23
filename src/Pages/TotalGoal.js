@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import DraggableGraph from "../Components/Graphs/DraggableGraph";
 import SectionTitle from "../Components/SectionTitle";
 import { connect } from "react-redux";
 import { convertNumToTime } from "../Components/Functions/convertNumToTime";
 import { Range, getTrackBackground } from 'react-range';
+import { setCategoryGoal, setGoal } from "../store/modules/counter";
 
 import "../static/customStyle.css";
 import "./Goal.css";
@@ -12,15 +13,26 @@ import "./Goal.css";
 const mapStateToProps = (state) => ({
   Total: state.counter.Total,
 });
+const mapDispatchToProps = (dispatch) => ({
+  setGoal: (Total) => dispatch(setGoal(Total)),
+});
 
 const TotalGoal = (props) => {
+  const {Total, setGoal} = props
+  console.log("Total", [Total])
   const history = useHistory();
-  const [values, setValues] = useState([50])
+  const [values, setValues] = useState([Total])
+  const min = 0
+  const [max, setMax] = useState(24)
 
+  useEffect(()=>{
+    console.log("value changed", values)
+    setGoal(values[0])
+    console.log("new goal",Total)
+  },[values])
   const handleRoute = (path) => {
     history.push(path);
   };
-  const { Total } = props;
 
   return (
     <div class="container">
@@ -69,11 +81,13 @@ const TotalGoal = (props) => {
         }}
       >
         <Range
-          values={values}
+          values={[Total]}
           step={0.1}
-          min={0}
-          max={100}
-          onChange={(values) => setValues(values)}
+          min={min}
+          max={max}
+          onChange={(values) => {
+            setGoal(values[0])
+          }}
           renderTrack={({ props, children }) => (
             <div
               onMouseDown={props.onMouseDown}
@@ -92,10 +106,10 @@ const TotalGoal = (props) => {
                   width: "100%",
                   borderRadius: "4px",
                   background: getTrackBackground({
-                    values: values,
+                    values: [Total],
                     colors: ["#548BF4", "#ccc"],
-                    min: 0,
-                    max: 100
+                    min: min,
+                    max: max
                   }),
                   alignSelf: "center"
                 }}
@@ -130,7 +144,7 @@ const TotalGoal = (props) => {
           )}
         />
         <output style={{ marginTop: "30px" }} id="output">
-          {values[0].toFixed(1)}
+          {Total.toFixed(1)}
         </output>
       </div>
         </div>
@@ -139,4 +153,4 @@ const TotalGoal = (props) => {
   );
 };
 
-export default connect(mapStateToProps)(TotalGoal);
+export default connect(mapStateToProps, mapDispatchToProps)(TotalGoal);

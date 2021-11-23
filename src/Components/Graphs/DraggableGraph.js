@@ -20,7 +20,8 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 const DraggableGraph = (props) => {
-  const [goal, setGoal2] = useState(props.Total);
+  const {Total, setGoal} = props
+  const [goal, setGoal2] = useState(Total);
   const [xaxis, setXaxis] = useState({ x0: 0, x1: 1 });
 
   const handleGoal = (Total) => {
@@ -89,8 +90,8 @@ const DraggableGraph = (props) => {
               x1: xaxis.x1,
               xref: "paper",
 
-              y0: goal ? goal : 3,
-              y1: goal ? goal : 3,
+              y0: Total ? Total : 3,
+              y1: Total ? Total : 3,
               yref: "y",
 
               line: {
@@ -109,7 +110,7 @@ const DraggableGraph = (props) => {
           },
         }}
         onUpdate={(figure) => {
-          setGoal2(figure.layout.shapes[0].y0);
+          setGoal(figure.layout.shapes[0].y0);
         }}
       />
     </>

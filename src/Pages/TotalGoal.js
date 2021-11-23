@@ -31,9 +31,12 @@ const TotalGoal = (props) => {
     (d) => Math.round(convertSecToTime(d["Total"]) * 100) / 100
   );
 
-  const [success, setSuccess] = useState(usage.map((value) => {
-        return value > Total ? true : false;
-  }))
+  const Direction = {
+    Right : 'to right',
+    Left : 'to left',
+    Down : 'to bottom',
+    Up : 'to top'
+  }
 
   useEffect(()=>{
     console.log("value changed", values)
@@ -91,6 +94,7 @@ const TotalGoal = (props) => {
         }}
       >
         <Range
+          direction={Direction.Right}
           values={[Total]}
           step={0.1}
           min={min}

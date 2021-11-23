@@ -86,12 +86,12 @@ const TotalGoal = (props) => {
             </div>
           </div>
           <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          flexWrap: "wrap",
-          margin: "2em"
-        }}
+        // style={{
+        //   display: "flex",
+        //   justifyContent: "center",
+        //   flexWrap: "wrap",
+        //   margin: "2em"
+        // }}
       >
         <Range
           direction={Direction.Right}
@@ -164,7 +164,7 @@ const TotalGoal = (props) => {
         <output style={{ marginTop: "30px" }} id="output">
           {usage.map((value) => {
         return value > Total ? true : false;
-  }).filter(x=> x==true).length} day/week success
+  }).filter(x=> x==true).length-1} day/week success
         </output>
       </div>
         </div>

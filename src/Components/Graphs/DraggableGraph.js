@@ -56,7 +56,7 @@ const DraggableGraph = (props) => {
     type: "bar",
     marker: {
       color: usage.map((value) => {
-        return value > goal ? allColors["Total"][1] : allColors["Total"][0];
+        return value > Total ? allColors["Total"][1] : allColors["Total"][0];
       }),
     },
   };

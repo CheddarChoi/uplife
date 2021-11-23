@@ -1,6 +1,7 @@
 const CHANGE_CATEGORY = "counter/CHANGE_CATEGORY";
 const SET_GOAL = "counter/SETGOAL";
 const SET_CATEGORY_GOAL = "counter/SET_CATEGORY_GOAL";
+const SET_RANGE_GOAL = "counter/SET_CATEGORY_GOAL";
 
 export const changeCategory = (category) => ({
   type: CHANGE_CATEGORY,
@@ -20,6 +21,10 @@ const initialState = {
   SNS: NaN,
   Communication: NaN,
   Productivity: NaN,
+  entertainment_range:[0,0],
+  sns_range:[0,0],
+  communication_range:[0,0],
+  productivity_range:[0,0]
 };
 
 export default function counter(state = initialState, action) {

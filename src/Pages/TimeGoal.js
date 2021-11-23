@@ -1,16 +1,32 @@
 import React from "react";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
+import { connect } from "react-redux"
 
 import DotGraph from "../Components/Graphs/DotGraph";
 import SectionTitle from "../Components/SectionTitle";
+import { changeCategory } from "../store/modules/counter";
 
 import "../static/customStyle.css";
 import "./Goal.css";
 
-const TimeGoal = () => {
+  const mapStateToProps = (state) => ({
+    category: state.counter.category,
+    Total: state.counter.Total,
+    Entertainment: state.counter.Entertainment,
+    SNS: state.counter.SNS,
+    Communication: state.counter.Communication,
+    Productivity: state.counter.Productivity,
+  });
+
+  const mapDispatchToProps = (dispatch) => ({
+    changeCategory: (type) => dispatch(changeCategory(type)),
+  });
+
+const TimeGoal = (props) => {
+  const { Entertainment, SNS, Communication, Total, Productivity, category, changeCategory } = props;
   const history = useHistory();
-  const [category, setCategory] = useState("Entertainment");
+  // const [category, setCategory] = useState("Entertainment");
   const options = ["Entertainment", "SNS", "Communication", "Productivity"];
 
   const handleRoute = (path) => {
@@ -18,7 +34,7 @@ const TimeGoal = () => {
   };
 
   const onChangeHandler = (e) => {
-    setCategory(e.currentTarget.value);
+    changeCategory(e.currentTarget.value);
   };
 
   return (
@@ -78,4 +94,4 @@ const TimeGoal = () => {
   );
 };
 
-export default TimeGoal;
+export default connect(mapStateToProps, mapDispatchToProps)(TimeGoal);

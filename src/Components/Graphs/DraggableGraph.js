@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import { setGoal } from "../../store/modules/counter";
 import { allColors, allDays } from "../variables/categories";
 import { convertSecToTime } from "../Functions/convertNumToTime";
+import { convertNumToTime } from "../Functions/convertNumToTime";
 
 import usageData from "../../static/data/usageTime.json";
 import emotionAvgData from "../../static/data/emotionAvg.json";
@@ -43,10 +44,17 @@ const DraggableGraph = (props) => {
       color: "#7BAB63",
     },
   };
+  
+  
 
   const usage = usageData.map(
     (d) => Math.round(convertSecToTime(d["Total"]) * 100) / 100
   );
+
+  const days = 8 - usage.map((value) => {
+    return value > Total ? true: false;
+  }).filter(x => x==true).length
+  // console.log(days);
 
   const usageTrace = {
     x: allDays,
@@ -90,18 +98,38 @@ const DraggableGraph = (props) => {
               x1: xaxis.x1,
               xref: "paper",
 
-              y0: Total ? Total : 3,
-              y1: Total ? Total : 3,
+              y0: Total ? Total : 2.5,
+              y1: Total ? Total : 2.5,
               yref: "y",
 
               line: {
                 width: 2,
-                color: "rgb(30, 30, 30)",
+                color: "rgb(0, 0, 0)",
               },
             },
           ],
           paper_bgcolor: "#f9fbff",
           plot_bgcolor: "#f9fbff",
+          annotations: [
+            {
+              text: convertNumToTime(Total),
+              x: 0.98,
+              xref: 'paper',
+              y: Total+0.15,
+              yref: 'y',
+              showarrow: false,
+              font: { size: 16 },
+            },
+            {
+              text: days + " day / week",
+              x: 0.98,
+              xref: 'paper',
+              y: Total-0.15,
+              yref: 'y',
+              showarrow: false,
+              font: { size: 16 },
+            }
+          ],
         }}
         config={{
           displayModeBar: false,

@@ -62,7 +62,7 @@ div.content {
   border-radius: 30px;
 
   margin: 75px 0;
-  padding: 40px 75px;
+  padding: 40px 70px;
 }
 
 div.uplifeDiv {
@@ -83,6 +83,25 @@ div.uplifeDiv {
 
   text-align: center;
   color: #3598db;
+}
+
+button.uplifeToGoal {
+  width: fit-content;
+  margin: auto;
+  background: #3598db;
+  box-shadow: 0px 4px 45px -15px rgba(0, 0, 0, 0.15);
+  border-radius: 20px;
+  border: none;
+  padding: 16px 40px;
+  margin-bottom: 35px;
+
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 32px;
+
+  text-align: center;
+  color: #ffffff;
 }
 
 button.uplifeButton {

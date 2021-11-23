@@ -28,14 +28,14 @@ emotionTimeData.forEach((d) => {
       mode: "markers+text",
       text: d.condition === "Good" ? ["😁"] : ["😠"],
       textfont: {
-        size: 12,
+        size: 16,
         color: "black",
       },
       name: d.category,
       marker: {
         color: allColors[d.category][0],
         symbol: "circle",
-        size: 15,
+        size: 24,
       },
     };
     if (d.condition === "Good") goodTraces.push(trace);
@@ -63,7 +63,7 @@ const DotGraph = () => {
         data={goodTraces}
         layout={{
           hovermode: !1,
-          height: goodMax * 20,
+          height: goodMax * 35,
           xaxis: {
             title: "",
             titlefont: {
@@ -109,7 +109,7 @@ const DotGraph = () => {
         data={badTraces}
         layout={{
           hovermode: !1,
-          height: badMax * 20,
+          height: badMax * 35,
           xaxis: {
             side: "top",
             title: "",

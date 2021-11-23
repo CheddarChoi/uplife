@@ -6,11 +6,14 @@ import DailyGraph from "../Components/Graphs/DailyGraph";
 import AppUsageGraph from "../Components/Graphs/AppUsageGraph";
 import { connect } from "react-redux";
 import { changeCategory } from "../store/modules/counter";
+import { useHistory } from "react-router-dom";
 
 import { allColors } from "../Components/variables/categories";
 import { allCategory } from "../Components/variables/categories";
+import { appByCategory } from "../Components/variables/categories";
 
 import "./Home.css";
+import DotGraph from "../Components/Graphs/DotGraph";
 
 const mapStateToProps = (state) => ({
   category: state.counter.category,
@@ -20,10 +23,10 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 const Home = (props) => {
-  const categoryLits = Object.entries(allColors).map((key, i) => {
+  const categoryButs = Object.entries(allColors).map((key, i) => {
     const { changeCategory, category } = props;
     const setCategory = () => {
-      changeCategory(allCategory[i]);
+      changeCategory(allCategory[4 - i]);
     };
     return (
       <div
@@ -36,6 +39,19 @@ const Home = (props) => {
     );
   });
 
+  var apps = [];
+  if (props.category === "Total")
+    Object.entries(appByCategory).forEach(
+      (key) => (apps = apps.concat(key[1]))
+    );
+  else apps = appByCategory[props.category];
+  apps.sort();
+
+  const history = useHistory();
+  const handleRoute = (path) => {
+    history.push(path);
+  };
+
   return (
     <div className="container">
       <div className="content">
@@ -47,7 +63,7 @@ const Home = (props) => {
           className="d-flex justify-content-around"
           style={{ marginTop: "50px", columnGap: "30px" }}
         >
-          <div className="col-7">
+          <div className="col-8">
             <div className="uplifeDiv">
               Today's Phone Usage &#38; Emotional State
             </div>
@@ -55,9 +71,27 @@ const Home = (props) => {
               <DailyGraph />
             </div>
           </div>
-          <div className="col-5">
+          <div className="col-4">
             <div className="uplifeDiv">App Category</div>
-            {categoryLits}
+            <div className="d-flex">
+              <div className="col-6">{categoryButs}</div>
+              <div className="col-6">
+                <div className="appList">
+                  {apps.map((name) => {
+                    return (
+                      <div class="appLogoTooltip">
+                        <img
+                          src={process.env.PUBLIC_URL + "/app/" + name + ".jpg"}
+                          alt={name + " logo"}
+                          className="appLogo"
+                        />
+                        <div className="tooltiptext appName">{name}</div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         <div
@@ -76,6 +110,31 @@ const Home = (props) => {
               <CategoryBarGraph />
             </div>
           </div>
+        </div>
+        <div style={{ marginTop: "50px", columnGap: "30px" }}>
+          <div className="uplifeDiv" style={{ marginBottom: "20px" }}>
+            Good/bad emotion over the past week
+          </div>
+          <h6 style={{ textAlign: "center", marginBottom: "25px" }}>
+            Each dot is the case when your emotion state was good/bad,
+            <br />
+            and represented based on the time and app category you used
+          </h6>
+          <div style={{ width: "100%" }}>
+            <DotGraph />
+          </div>
+        </div>
+        <div
+          className="d-flex justify-content-around"
+          style={{ marginTop: "50px", columnGap: "30px" }}
+        >
+          <button
+            className="uplifeToGoal"
+            onClick={() => handleRoute("/goal")}
+            s
+          >
+            Set / Change Goals
+          </button>
         </div>
       </div>
     </div>

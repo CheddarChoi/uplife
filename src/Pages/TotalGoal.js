@@ -6,6 +6,8 @@ import { connect } from "react-redux";
 import { convertNumToTime } from "../Components/Functions/convertNumToTime";
 import { Range, getTrackBackground } from 'react-range';
 import { setCategoryGoal, setGoal } from "../store/modules/counter";
+import usageData from "../static/data/usageTime.json";
+import { convertSecToTime } from "../Components/Functions/convertNumToTime";
 
 import "../static/customStyle.css";
 import "./Goal.css";
@@ -24,6 +26,14 @@ const TotalGoal = (props) => {
   const [values, setValues] = useState([Total])
   const min = 0
   const [max, setMax] = useState(24)
+
+  const usage = usageData.map(
+    (d) => Math.round(convertSecToTime(d["Total"]) * 100) / 100
+  );
+
+  const [success, setSuccess] = useState(usage.map((value) => {
+        return value > Total ? true : false;
+  }))
 
   useEffect(()=>{
     console.log("value changed", values)
@@ -144,7 +154,13 @@ const TotalGoal = (props) => {
           )}
         />
         <output style={{ marginTop: "30px" }} id="output">
-          {Total.toFixed(1)}
+          {convertNumToTime(Total)}
+        </output>
+        <br/>
+        <output style={{ marginTop: "30px" }} id="output">
+          {usage.map((value) => {
+        return value > Total ? true : false;
+  }).filter(x=> x==true).length} day/week success
         </output>
       </div>
         </div>

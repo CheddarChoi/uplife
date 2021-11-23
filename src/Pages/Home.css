@@ -21,29 +21,45 @@
 .appList {
   height: 370px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   overflow-y: scroll;
-  align-items: center;
-  /* flex-wrap: wrap; */
-  /* justify-content: space-evenly; */
+  align-items: stretch;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-content: flex-start;
 }
 
-.app {
-  padding: 15px 0px;
-  width: 100%;
-  margin-top: 10px;
-  box-shadow: 0px 4px 30px -10px rgba(0, 0, 0, 0.1);
-
-  background: white;
-  border-radius: 12px;
-  /* border: #000000; */
-
+.appName {
   font-family: Roboto;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 14px;
-  text-align: center;
-  /* line-height: 24px; */
+  font-size: 12px;
+}
 
-  color: black;
+.appLogo {
+  width: 56px;
+  border-radius: 12px;
+}
+
+.appLogoTooltip {
+  position: relative;
+  display: inline-block;
+  margin-top: 10px;
+}
+
+.appLogoTooltip .tooltiptext {
+  visibility: hidden;
+  width: max-content;
+  max-width: 56px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  padding: 5px;
+  border-radius: 6px;
+
+  margin: auto;
+  position: absolute;
+  z-index: 1;
+}
+
+.appLogoTooltip:hover .tooltiptext {
+  visibility: visible;
 }

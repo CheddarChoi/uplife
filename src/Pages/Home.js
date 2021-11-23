@@ -13,6 +13,7 @@ import { allCategory } from "../Components/variables/categories";
 import { appByCategory } from "../Components/variables/categories";
 
 import "./Home.css";
+import DotGraph from "../Components/Graphs/DotGraph";
 
 const mapStateToProps = (state) => ({
   category: state.counter.category,
@@ -38,19 +39,13 @@ const Home = (props) => {
     );
   });
 
-  const categoryLits = Object.entries(appByCategory).map((key) => {
-    const { category } = props;
-    console.log(category);
-    if (key[0] === category)
-      return (
-        <div className="appList">
-          {key[1].map((name) => {
-            return <div className="app">{name}</div>;
-          })}
-        </div>
-      );
-    else return <></>;
-  });
+  var apps = [];
+  if (props.category === "Total")
+    Object.entries(appByCategory).forEach(
+      (key) => (apps = apps.concat(key[1]))
+    );
+  else apps = appByCategory[props.category];
+  apps.sort();
 
   const history = useHistory();
   const handleRoute = (path) => {
@@ -80,7 +75,22 @@ const Home = (props) => {
             <div className="uplifeDiv">App Category</div>
             <div className="d-flex">
               <div className="col-6">{categoryButs}</div>
-              <div className="col-6">{categoryLits}</div>
+              <div className="col-6">
+                <div className="appList">
+                  {apps.map((name) => {
+                    return (
+                      <div class="appLogoTooltip">
+                        <img
+                          src={process.env.PUBLIC_URL + "/app/" + name + ".jpg"}
+                          alt={name + " logo"}
+                          className="appLogo"
+                        />
+                        <div className="tooltiptext appName">{name}</div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -99,6 +109,19 @@ const Home = (props) => {
             <div style={{ width: "100%" }}>
               <CategoryBarGraph />
             </div>
+          </div>
+        </div>
+        <div style={{ marginTop: "50px", columnGap: "30px" }}>
+          <div className="uplifeDiv" style={{ marginBottom: "20px" }}>
+            Good/bad emotion over the past week
+          </div>
+          <h6 style={{ textAlign: "center", marginBottom: "25px" }}>
+            Each dot is the case when your emotion state was good/bad,
+            <br />
+            and represented based on the time and app category you used
+          </h6>
+          <div style={{ width: "100%" }}>
+            <DotGraph />
           </div>
         </div>
         <div

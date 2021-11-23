@@ -25,7 +25,7 @@ const Home = (props) => {
   const categoryButs = Object.entries(allColors).map((key, i) => {
     const { changeCategory, category } = props;
     const setCategory = () => {
-      changeCategory(allCategory[4-i]);
+      changeCategory(allCategory[4 - i]);
     };
     return (
       <div
@@ -38,22 +38,17 @@ const Home = (props) => {
     );
   });
 
-  const categoryLits = Object.entries(appByCategory).map(key => {
+  const categoryLits = Object.entries(appByCategory).map((key) => {
     const { category } = props;
     console.log(category);
     if (key[0] === category)
-    return (
-      <div className="appList">
-        {key[1].map(name => {
-            return (
-              <div className="app">
-                {name}
-              </div>
-            );
-          
-        })}
-      </div>
-    );
+      return (
+        <div className="appList">
+          {key[1].map((name) => {
+            return <div className="app">{name}</div>;
+          })}
+        </div>
+      );
     else return <></>;
   });
 
@@ -73,7 +68,7 @@ const Home = (props) => {
           className="d-flex justify-content-around"
           style={{ marginTop: "50px", columnGap: "30px" }}
         >
-          <div className="col-7">
+          <div className="col-8">
             <div className="uplifeDiv">
               Today's Phone Usage &#38; Emotional State
             </div>
@@ -81,17 +76,11 @@ const Home = (props) => {
               <DailyGraph />
             </div>
           </div>
-          <div className="col-5">
+          <div className="col-4">
             <div className="uplifeDiv">App Category</div>
-            <div
-              className="d-flex"
-            >
-              <div className="col-4">
-              {categoryButs}
-              </div>
-              <div className="col-8">
-              {categoryLits}
-              </div>
+            <div className="d-flex">
+              <div className="col-6">{categoryButs}</div>
+              <div className="col-6">{categoryLits}</div>
             </div>
           </div>
         </div>
@@ -111,18 +100,18 @@ const Home = (props) => {
               <CategoryBarGraph />
             </div>
           </div>
-        
         </div>
         <div
           className="d-flex justify-content-around"
           style={{ marginTop: "50px", columnGap: "30px" }}
         >
-        <button
-          className="uplifeToGoal"
-          onClick={() => handleRoute("/goal")}s
-        >
-          Set / Change Goals
-        </button>
+          <button
+            className="uplifeToGoal"
+            onClick={() => handleRoute("/goal")}
+            s
+          >
+            Set / Change Goals
+          </button>
         </div>
       </div>
     </div>

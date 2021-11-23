@@ -23,13 +23,12 @@ const TotalGoal = (props) => {
   const {Total, setGoal} = props
   console.log("Total", [Total])
   const history = useHistory();
-  const [values, setValues] = useState([Total])
+  const [values, setValues] = useState([2.5])
   const min = 0
   const usage = usageData.map(
     (d) => Math.round(convertSecToTime(d["Total"]) * 100) / 100
   );
-  const [max, setMax] = useState(Math.max.apply(Math, usage.slice(0,7)));
-  console.log(usage.slice(0,7));
+  const [max, setMax] = useState(Math.max.apply(Math, usage.slice(0,7)))
 
 
   const Direction = {
@@ -120,7 +119,7 @@ const TotalGoal = (props) => {
                       colors: ["#548BF4", "#ccc"],
                       min: min,
                       max: max,
-                      // direction: Direction.Up,
+                      direction: Direction.Up,
                     }),
                     alignSelf: "center"
                   }}
@@ -164,7 +163,7 @@ const TotalGoal = (props) => {
         // }}
         >
         
-        <output style={{ marginTop: "30px" }} id="output">
+        {/* <output style={{ marginTop: "30px" }} id="output">
           {convertNumToTime(Total)}
         </output>
         <br/>
@@ -172,7 +171,7 @@ const TotalGoal = (props) => {
           {8-usage.map((value) => {
         return value > Total ? true : false;
   }).filter(x=> x==true).length} day/week success
-        </output>
+        </output> */}
       </div>
         </div>
       </div>

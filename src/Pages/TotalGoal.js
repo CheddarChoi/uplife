@@ -162,9 +162,9 @@ const TotalGoal = (props) => {
         </output>
         <br/>
         <output style={{ marginTop: "30px" }} id="output">
-          {usage.map((value) => {
+          {8-usage.map((value) => {
         return value > Total ? true : false;
-  }).filter(x=> x==true).length-1} day/week success
+  }).filter(x=> x==true).length} day/week success
         </output>
       </div>
         </div>

@@ -27,20 +27,20 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 const DraggableGraph2 = (props) => {
-  const { category, setCategoryGoal } = props;
+  const { category, Total, Entertainment,SNS, Communication, Productivity, setCategoryGoal } = props;
 
   const getGoal = (type) => {
     switch (type) {
       case "Entertainment":
-        return props.Entertainment;
+        return Entertainment;
       case "SNS":
-        return props.SNS;
+        return SNS;
       case "Communication":
-        return props.Communication;
+        return Communication;
       case "Productivity":
-        return props.Productivity;
+        return Productivity;
       case "Total":
-        return props.Total;
+        return Total;
       default:
         return null;
     }
@@ -60,7 +60,7 @@ const DraggableGraph2 = (props) => {
   };
 
   const usage = usageData.map(
-    (d) => Math.round(convertSecToTime(d[props.category]) * 100) / 100
+    (d) => Math.round(convertSecToTime(d[category]) * 100) / 100
   );
   const usageTrace = {
     x: allDays,
@@ -70,7 +70,7 @@ const DraggableGraph2 = (props) => {
     type: "bar",
     marker: {
       color: usage.map((value) => {
-        return value > goal ? allColors[category][1] : allColors[category][0];
+        return value > getGoal(category) ? allColors[category][1] : allColors[category][0];
       }),
     },
   };
@@ -125,8 +125,8 @@ const DraggableGraph2 = (props) => {
         }}
         onUpdate={(figure) => {
           setXaxis({x0:0, x1:1})
-          setGoal2(figure.layout.shapes[0].y0);
-          setCategoryGoal(props.category, figure.layout.shapes[0].y0);
+          setCategoryGoal(category, figure.layout.shapes[0].y0);
+          //setCategoryGoal(props.category, figure.layout.shapes[0].y0);
         }}
       />
     </>

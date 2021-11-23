@@ -110,6 +110,7 @@ const DraggableGraph = (props) => {
           },
         }}
         onUpdate={(figure) => {
+          setXaxis({x0:0, x1:1})
           setGoal(figure.layout.shapes[0].y0);
         }}
       />

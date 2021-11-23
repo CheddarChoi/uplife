@@ -6,9 +6,11 @@ import DailyGraph from "../Components/Graphs/DailyGraph";
 import AppUsageGraph from "../Components/Graphs/AppUsageGraph";
 import { connect } from "react-redux";
 import { changeCategory } from "../store/modules/counter";
+import { useHistory } from "react-router-dom";
 
 import { allColors } from "../Components/variables/categories";
 import { allCategory } from "../Components/variables/categories";
+import { appByCategory } from "../Components/variables/categories";
 
 import "./Home.css";
 
@@ -20,10 +22,10 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 const Home = (props) => {
-  const categoryLits = Object.entries(allColors).map((key, i) => {
+  const categoryButs = Object.entries(allColors).map((key, i) => {
     const { changeCategory, category } = props;
     const setCategory = () => {
-      changeCategory(allCategory[i]);
+      changeCategory(allCategory[4-i]);
     };
     return (
       <div
@@ -35,6 +37,30 @@ const Home = (props) => {
       </div>
     );
   });
+
+  const categoryLits = Object.entries(appByCategory).map(key => {
+    const { category } = props;
+    console.log(category);
+    if (key[0] === category)
+    return (
+      <div className="appList">
+        {key[1].map(name => {
+            return (
+              <div className="app">
+                {name}
+              </div>
+            );
+          
+        })}
+      </div>
+    );
+    else return <></>;
+  });
+
+  const history = useHistory();
+  const handleRoute = (path) => {
+    history.push(path);
+  };
 
   return (
     <div className="container">
@@ -57,7 +83,16 @@ const Home = (props) => {
           </div>
           <div className="col-5">
             <div className="uplifeDiv">App Category</div>
-            {categoryLits}
+            <div
+              className="d-flex"
+            >
+              <div className="col-4">
+              {categoryButs}
+              </div>
+              <div className="col-8">
+              {categoryLits}
+              </div>
+            </div>
           </div>
         </div>
         <div
@@ -76,6 +111,18 @@ const Home = (props) => {
               <CategoryBarGraph />
             </div>
           </div>
+        
+        </div>
+        <div
+          className="d-flex justify-content-around"
+          style={{ marginTop: "50px", columnGap: "30px" }}
+        >
+        <button
+          className="uplifeToGoal"
+          onClick={() => handleRoute("/goal")}s
+        >
+          Set / Change Goals
+        </button>
         </div>
       </div>
     </div>

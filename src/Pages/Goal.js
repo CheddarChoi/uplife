@@ -66,9 +66,10 @@ const Goal = (props) => {
             <li>
               <h4>
                 I will use my phone less than{" "}
-                <b>{convertNumToTime(currentGoal["Total"])}</b> a day.
+                <b>{convertNumToTime(currentGoal["Total"])}</b> a day. &nbsp;
                 <Button
                   variant="outline-danger"
+                  size="sm"
                   onClick={() => {
                     setCategoryGoal("Total", NaN);
                   }}
@@ -84,9 +85,11 @@ const Goal = (props) => {
                 <li>
                   <h4>
                     I will use <b>{c}</b> apps less than{" "}
-                    <b>{convertNumToTime(currentGoal[c])}</b> a day.
+                    <b>{convertNumToTime(currentGoal[c])}</b> a day. &nbsp;
                     <Button
                       variant="outline-danger"
+                      size="sm"
+                      // style={{ cursor: pointer }}
                       onClick={() => {
                         setCategoryGoal(c, NaN);
                       }}

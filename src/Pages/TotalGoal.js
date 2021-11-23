@@ -28,8 +28,8 @@ const TotalGoal = (props) => {
   const usage = usageData.map(
     (d) => Math.round(convertSecToTime(d["Total"]) * 100) / 100
   );
-  const [max, setMax] = useState(Math.max.apply(Math, usage))
-
+  const [max, setMax] = useState(Math.max.apply(Math, usage.slice(0,7)));
+  console.log(usage.slice(0,7));
 
 
   const Direction = {
@@ -57,7 +57,7 @@ const TotalGoal = (props) => {
         />
 
         <div class="goalContainer row">
-          <div className="goalType col" style={{ cursor: "default" }}>
+          <div className="goalType col-3" style={{ cursor: "default" }}>
             <h2
               style={{ color: "rgba(53, 152, 219, 1)", marginBottom: "32px" }}
             >
@@ -75,7 +75,7 @@ const TotalGoal = (props) => {
               Set Goal
             </button>
           </div>
-          <div class="col">
+          <div class="col-8">
             <div className="uplifeDiv" style={{ marginBottom: "20px" }}>
               Total phone usage over the past week
             </div>
@@ -86,78 +86,84 @@ const TotalGoal = (props) => {
               <DraggableGraph />
             </div>
           </div>
-          <div
+          <div class="col">
+          <Range
+            direction={Direction.Up}
+            values={[Total]}
+            step={0.1}
+            min={min}
+            max={max}
+            onChange={(values) => {
+              setGoal(values[0])
+            }}
+            renderTrack={({ props, children }) => (
+              <div
+                onMouseDown={props.onMouseDown}
+                onTouchStart={props.onTouchStart}
+                style={{
+                  ...props.style,
+                  margin: "150px 0px",
+                  height: "60%",
+                  display: "flex",
+                  width: "100%",
+                  alignItems: "center",
+                }}
+              >
+                <div
+                  ref={props.ref}
+                  style={{
+                    height: "100%",
+                    width: "5px",
+                    borderRadius: "0px",
+                    background: getTrackBackground({
+                      values: [Total],
+                      colors: ["#548BF4", "#ccc"],
+                      min: min,
+                      max: max,
+                      // direction: Direction.Up,
+                    }),
+                    alignSelf: "center"
+                  }}
+                >
+                  {children}
+                </div>
+              </div>
+            )}
+            renderThumb={({ props, isDragged }) => (
+              <div
+                {...props}
+                style={{
+                  ...props.style,
+                  height: "40px",
+                  width: "40px",
+                  borderRadius: "20px",
+                  backgroundColor: "#FFF",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  boxShadow: "0px 2px 6px #AAA"
+                }}
+              >
+                <div
+                  style={{
+                    height: "16px",
+                    width: "5px",
+                    backgroundColor: isDragged ? "#548BF4" : "#CCC"
+                  }}
+                />
+              </div>
+            )}
+          />
+        </div>
+        <div
         // style={{
         //   display: "flex",
         //   justifyContent: "center",
         //   flexWrap: "wrap",
         //   margin: "2em"
         // }}
-      >
-        <Range
-          direction={Direction.Right}
-          values={[Total]}
-          step={0.1}
-          min={min}
-          max={max}
-          onChange={(values) => {
-            setGoal(values[0])
-          }}
-          renderTrack={({ props, children }) => (
-            <div
-              onMouseDown={props.onMouseDown}
-              onTouchStart={props.onTouchStart}
-              style={{
-                ...props.style,
-                height: "36px",
-                display: "flex",
-                width: "100%"
-              }}
-            >
-              <div
-                ref={props.ref}
-                style={{
-                  height: "5px",
-                  width: "100%",
-                  borderRadius: "4px",
-                  background: getTrackBackground({
-                    values: [Total],
-                    colors: ["#548BF4", "#ccc"],
-                    min: min,
-                    max: max
-                  }),
-                  alignSelf: "center"
-                }}
-              >
-                {children}
-              </div>
-            </div>
-          )}
-          renderThumb={({ props, isDragged }) => (
-            <div
-              {...props}
-              style={{
-                ...props.style,
-                height: "42px",
-                width: "42px",
-                borderRadius: "4px",
-                backgroundColor: "#FFF",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                boxShadow: "0px 2px 6px #AAA"
-              }}
-            >
-              <div
-                style={{
-                  height: "16px",
-                  width: "5px",
-                  backgroundColor: isDragged ? "#548BF4" : "#CCC"
-                }}
-              />
-            </div>
-          )}
-        />
+        >
+        
         <output style={{ marginTop: "30px" }} id="output">
           {convertNumToTime(Total)}
         </output>

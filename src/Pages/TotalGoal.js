@@ -25,11 +25,12 @@ const TotalGoal = (props) => {
   const history = useHistory();
   const [values, setValues] = useState([Total])
   const min = 0
-  const [max, setMax] = useState(24)
-
   const usage = usageData.map(
     (d) => Math.round(convertSecToTime(d["Total"]) * 100) / 100
   );
+  const [max, setMax] = useState(Math.max.apply(Math, usage))
+
+
 
   const Direction = {
     Right : 'to right',

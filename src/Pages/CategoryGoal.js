@@ -38,12 +38,13 @@ const CategoryGoal = (props) => {
   const { setCategoryGoal} = props;
   const [category, setCategory] = useState("Entertainment");
   const options = ["Entertainment", "SNS", "Communication", "Productivity"];
-  const min = 0.01;
+  
   const [values, setValues] = useState([0.3]);
 
   const usage = usageData.map(
     (d) => Math.round(convertSecToTime(d[category]) * 100) / 100
   );
+  const min = Math.max.apply(Math, usage.slice(0, 7))*0.1;
 
   // const getGoal = (type) => {
   //   switch (type) {

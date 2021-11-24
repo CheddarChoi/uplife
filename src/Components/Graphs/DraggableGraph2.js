@@ -87,7 +87,7 @@ const DraggableGraph2 = (props) => {
     type: "bar",
     marker: {
       color: usage.map((value) => {
-        return value > getGoal(category) ? allColors[category][1] : allColors[category][0];
+        return value > values ? allColors[category][1] : allColors[category][0];
       }),
     },
   };
@@ -166,6 +166,7 @@ const DraggableGraph2 = (props) => {
         }}
         onUpdate={(figure) => {
           setGoal2(figure.layout.shapes[0].y0);
+          console.log(values)
           // setCategoryGoal(props.category, figure.layout.shapes[0].y0);
         }}
       />

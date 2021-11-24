@@ -15,7 +15,6 @@ const App = () => {
   return (
     <BrowserRouter>
       <div>
-        <Header />
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/goal" component={Goal} />

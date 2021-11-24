@@ -34,14 +34,13 @@ const DailyGraph = () => {
     yaxis: "y2",
     showlegend: false,
   };
-  console.log(emotionTrace);
 
   var usageData = [];
   usageLogData.forEach((d) => {
-    var start = new Date(d.startTime);
-    var end = new Date(d.startTime);
+    var start = new Date(d.startTime.replace(" ", "T"));
+    var end = new Date(d.startTime.replace(" ", "T"));
     end.setSeconds(end.getSeconds() + d.seconds);
-    if (date2string(start) > "2019-05-06 00:00:00")
+    if (date2string(start) > "2019-05-06")
       usageData.push({
         startTime: date2string(start),
         endTime: date2string(end),
@@ -70,7 +69,7 @@ const DailyGraph = () => {
         style={{ width: "100%" }}
         data={usageLogTrace.concat(emotionTrace)}
         layout={{
-          height: 400,
+          height: 350,
           xaxis: {
             title: "",
             tickfont: {
@@ -113,7 +112,7 @@ const DailyGraph = () => {
             tickfont: {
               size: 10,
             },
-            range: [-0.5, 2.5],
+            range: [-0.5, 2],
             fixedrange: true,
             showgrid: false,
             showticklabels: false,
@@ -121,7 +120,7 @@ const DailyGraph = () => {
           yaxis2: {
             title: "",
             fixedrange: true,
-            range: [-15, 10],
+            range: [-10, 5],
             showgrid: false,
             showticklabels: false,
             overlaying: "y",

@@ -17,14 +17,14 @@ export const setCategoryGoal = (category, goal) => ({
 const initialState = {
   category: "Total",
   Total: 3,
-  Entertainment: 3,
-  SNS: 3,
-  Communication: 3,
-  Productivity: 3,
-  entertainment_range:[0,0],
-  sns_range:[0,0],
-  communication_range:[0,0],
-  productivity_range:[0,0]
+  Entertainment: NaN,
+  SNS: NaN,
+  Communication: NaN,
+  Productivity: NaN,
+  entertainment_range: [0, 0],
+  sns_range: [0, 0],
+  communication_range: [0, 0],
+  productivity_range: [0, 0],
 };
 
 export default function counter(state = initialState, action) {

@@ -25,8 +25,7 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 const CategoryBarGraph = (props) => {
-  const { Total, category } = props; ////요오오오오오게 Total Goal. 소수점이고, hr, min으로 convert 하려면 ../Functions/convertNumToTime.js쓰면댐!
-  const [total, setTotal] = useState(Total);
+  const { category } = props; ////요오오오오오게 Total Goal. 소수점이고, hr, min으로 convert 하려면 ../Functions/convertNumToTime.js쓰면댐!
   const [category2, setCategory] = useState(props.category);
   const handleCategory = (type) => {
     const { changeCategory } = props;
@@ -54,9 +53,8 @@ const CategoryBarGraph = (props) => {
     handleCategory(category2);
   }, [category2]);
 
-  let todayData = usageData.at(
-    usageData.findIndex((e) => e.Date === "2019-05-06")
-  );
+  const todayData =
+    usageData[usageData.findIndex((e) => e.Date === "2019-05-06")];
 
   const trace = {
     x: allCategory.map(
@@ -91,7 +89,8 @@ const CategoryBarGraph = (props) => {
   });
 
   const layout = {
-    bargap: 0.5,
+    height: 350,
+    bargap: 0.4,
     margin: { l: 100, r: 100, b: 20, t: 50 },
     xaxis: { fixedrange: true },
     yaxis: {
@@ -119,7 +118,6 @@ const CategoryBarGraph = (props) => {
           if (allCategory.includes(figure.points[0].label)) {
             setCategory(figure.points[0].label);
             changeCategory(figure.points[0].label);
-            console.log("categoryafter", figure.points[0].label);
           }
         }}
       />

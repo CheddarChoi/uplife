@@ -1,10 +1,8 @@
 .categoryTag {
-  /* width: 100%; */
-  height: 64px;
   border-radius: 10px;
   text-align: center;
   cursor: pointer;
-  /* color: white; */
+
   padding: 15px;
   margin: 10px;
 }
@@ -12,14 +10,13 @@
 .categoryButton {
   font-weight: 500;
   font-size: 16px;
-  line-height: 19px;
+  line-height: 20px;
   margin-bottom: 0;
-  padding-top: 7.5px;
   color: white;
 }
 
 .appList {
-  height: 370px;
+  height: 300px;
   display: flex;
   flex-direction: row;
   overflow-y: scroll;
@@ -35,14 +32,15 @@
 }
 
 .appLogo {
-  width: 56px;
+  width: 50px;
+  margin-top: 10px;
+  margin-left: 5px;
   border-radius: 12px;
 }
 
 .appLogoTooltip {
   position: relative;
   display: inline-block;
-  margin-top: 10px;
 }
 
 .appLogoTooltip .tooltiptext {

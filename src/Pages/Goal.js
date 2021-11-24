@@ -10,13 +10,14 @@ import { FaTrashAlt } from "react-icons/fa";
 import { changeCategory } from "../store/modules/counter";
 import { setCategoryGoal } from "../store/modules/counter";
 import "./Goal.css";
+import Header from "../Components/Header";
 
 const GoalNum = (props) => {
   return (
     <div
       style={{
-        width: "40px",
-        height: "40px",
+        width: "36px",
+        height: "36px",
         backgroundColor: "#3598DB",
         borderRadius: "50%",
         marginBottom: "32px",
@@ -58,92 +59,95 @@ const Goal = (props) => {
   });
 
   return (
-    <div class="container">
-      <div class="content">
-        <div class="d-flex">
-          <div
-            class="colSection"
-            style={{ borderRight: "solid 1px black", paddingRight: "30px" }}
-          >
-            <SectionTitle
-              title="Current Goals"
-              subtitle="Check your current goal lists"
-            />
-            <ul>
-              {!!currentGoal["Total"] && (
-                <li>
-                  <h5>
+    <>
+      <Header selected="Goal" />
+      <div className="container">
+        <div className="content">
+          <div className="d-flex">
+            <div
+              className="colSection"
+              style={{ borderRight: "solid 1px black", paddingRight: "30px" }}
+            >
+              <SectionTitle
+                title="Current Goals"
+                subtitle="Check your current goal lists"
+              />
+              <ul>
+                {!!currentGoal["Total"] && (
+                  <li>
+                    <h5>
+                      I will use my phone less than{" "}
+                      <b>{convertNumToTime(currentGoal["Total"])}</b> a day.
+                      &nbsp;
+                      <Button
+                        variant="outline-danger"
+                        size="sm"
+                        onClick={() => {
+                          setCategoryGoal("Total", NaN);
+                        }}
+                      >
+                        <FaTrashAlt />
+                      </Button>
+                    </h5>
+                  </li>
+                )}
+                {allCategory.map((c) => {
+                  if (c !== "Total" && currentGoal[c])
+                    return (
+                      <li>
+                        <h5>
+                          I will use <b>{c}</b> apps less than{" "}
+                          <b>{convertNumToTime(currentGoal[c])}</b> a day.
+                          &nbsp;
+                          <Button
+                            variant="outline-danger"
+                            size="sm"
+                            // style={{ cursor: pointer }}
+                            onClick={() => {
+                              setCategoryGoal(c, NaN);
+                            }}
+                          >
+                            <FaTrashAlt />
+                          </Button>
+                        </h5>
+                      </li>
+                    );
+                  else return <></>;
+                })}
+              </ul>
+            </div>
+            <div className="colSection" style={{ marginLeft: "35px" }}>
+              <SectionTitle
+                title="Add New Goals"
+                subtitle="Choose a new type of goal you want to create"
+              />
+              <div className="goalContainer row">
+                <div
+                  className="goalType col"
+                  onClick={() => handleRoute("/goal/total")}
+                >
+                  <GoalNum num="1" />
+                  <h4>
                     I will use my phone less than{" "}
-                    <b>{convertNumToTime(currentGoal["Total"])}</b> a day.
-                    &nbsp;
-                    <Button
-                      variant="outline-danger"
-                      size="sm"
-                      onClick={() => {
-                        setCategoryGoal("Total", NaN);
-                      }}
-                    >
-                      <FaTrashAlt />
-                    </Button>
-                  </h5>
-                </li>
-              )}
-              {allCategory.map((c) => {
-                if (c !== "Total" && currentGoal[c])
-                  return (
-                    <li>
-                      <h5>
-                        I will use <b>{c}</b> apps less than{" "}
-                        <b>{convertNumToTime(currentGoal[c])}</b> a day. &nbsp;
-                        <Button
-                          variant="outline-danger"
-                          size="sm"
-                          // style={{ cursor: pointer }}
-                          onClick={() => {
-                            setCategoryGoal(c, NaN);
-                          }}
-                        >
-                          <FaTrashAlt />
-                        </Button>
-                      </h5>
-                    </li>
-                  );
-                else return <></>;
-              })}
-            </ul>
-          </div>
-          <div class="colSection" style={{ marginLeft: "35px" }}>
-            <SectionTitle
-              title="Add New Goals"
-              subtitle="Choose a new type of goal you want to create"
-            />
-            <div class="goalContainer row">
-              <div
-                className="goalType col"
-                onClick={() => handleRoute("/goal/total")}
-              >
-                <GoalNum num="1" />
-                <h4>
-                  I will use my phone less than{" "}
-                  <span className="blank">
-                    {convertNumToTime(currentGoal["Total"])}
-                  </span>{" "}
-                  a day.
-                </h4>
-              </div>
+                    <span className="blank">
+                      {convertNumToTime(currentGoal["Total"])}
+                    </span>{" "}
+                    a day.
+                  </h4>
+                </div>
 
-              <div
-                className="goalType col"
-                onClick={() => handleRoute("/goal/category")}
-              >
-                <GoalNum num="2" />
-                <h4>
-                  I will use <span className="blank">entertainment</span> apps
-                  less than <span className="blank">1 hr 15 min</span> a day.
-                </h4>
-              </div>
+                <div
+                  className="goalType col"
+                  onClick={() => handleRoute("/goal/category")}
+                >
+                  <GoalNum num="2" />
+                  <h4>
+                    I will use <span className="blank">entertainment</span> apps
+                    less than <span className="blank">1 hr 15 min</span> a day.
+                  </h4>
+                </div>
 
-              {/* <div
+                {/* <div
             className="goalType col"
             // onClick={() => alert("Not implemented yet!")}
             onClick={() => handleRoute("/goal/time")}
@@ -154,11 +158,12 @@ const Goal = (props) => {
               <span className="blank">1:00 pm ~ 3:00 pm</span>
             </h4>
           </div> */}
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

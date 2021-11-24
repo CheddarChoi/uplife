@@ -1,7 +1,6 @@
 import React from "react";
-import { useState } from "react";
 import { useHistory } from "react-router-dom";
-import { connect } from "react-redux"
+import { connect } from "react-redux";
 
 import DotGraph from "../Components/Graphs/DotGraph";
 import SectionTitle from "../Components/SectionTitle";
@@ -10,21 +9,21 @@ import { changeCategory } from "../store/modules/counter";
 import "../static/customStyle.css";
 import "./Goal.css";
 
-  const mapStateToProps = (state) => ({
-    category: state.counter.category,
-    Total: state.counter.Total,
-    Entertainment: state.counter.Entertainment,
-    SNS: state.counter.SNS,
-    Communication: state.counter.Communication,
-    Productivity: state.counter.Productivity,
-  });
+const mapStateToProps = (state) => ({
+  category: state.counter.category,
+  Total: state.counter.Total,
+  Entertainment: state.counter.Entertainment,
+  SNS: state.counter.SNS,
+  Communication: state.counter.Communication,
+  Productivity: state.counter.Productivity,
+});
 
-  const mapDispatchToProps = (dispatch) => ({
-    changeCategory: (type) => dispatch(changeCategory(type)),
-  });
+const mapDispatchToProps = (dispatch) => ({
+  changeCategory: (type) => dispatch(changeCategory(type)),
+});
 
 const TimeGoal = (props) => {
-  const { Entertainment, SNS, Communication, Total, Productivity, category, changeCategory } = props;
+  const { category, changeCategory } = props;
   const history = useHistory();
   // const [category, setCategory] = useState("Entertainment");
   const options = ["Entertainment", "SNS", "Communication", "Productivity"];
@@ -38,14 +37,14 @@ const TimeGoal = (props) => {
   };
 
   return (
-    <div class="container">
-      <div class="content">
+    <div className="container">
+      <div className="content">
         <SectionTitle
           title="Goal Type"
           subtitle="Choose a new type of goal you want to create"
         />
 
-        <div class="goalContainer row">
+        <div className="goalContainer row">
           <div className="goalType col" style={{ cursor: "default" }}>
             <h2
               style={{ color: "rgba(53, 152, 219, 1)", marginBottom: "32px" }}
@@ -75,7 +74,7 @@ const TimeGoal = (props) => {
               Set Goal
             </button>
           </div>
-          <div class="col">
+          <div className="col">
             <div className="uplifeDiv" style={{ marginBottom: "20px" }}>
               Good/bad emotion over the past week
             </div>

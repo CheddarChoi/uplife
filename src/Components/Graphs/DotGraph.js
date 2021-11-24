@@ -55,7 +55,6 @@ const badMax = Math.max(
 );
 
 const DotGraph = () => {
-  console.log(cnt);
   return (
     <>
       <Plot

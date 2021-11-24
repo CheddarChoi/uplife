@@ -15,7 +15,7 @@ export const convertNumToTime = (number) => {
     minute = "0" + minute;
   }
 
-  sign = sign == 1 ? "" : "-";
+  sign = sign === 1 ? "" : "-";
 
   var time = sign + hour + " hr " + minute + " min";
 

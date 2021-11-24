@@ -24,7 +24,7 @@ const TotalGoal = (props) => {
   console.log("Total", [Total]);
   const history = useHistory();
   const [values, setValues] = useState([2.5]);
-  const min = 0;
+  const min = 0.25;
   const usage = usageData.map(
     (d) => Math.round(convertSecToTime(d["Total"]) * 100) / 100
   );

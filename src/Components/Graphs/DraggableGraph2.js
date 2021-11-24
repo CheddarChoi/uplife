@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Plotly from "plotly.js-basic-dist-min";
 import createPlotlyComponent from "react-plotly.js/factory";
 import { connect } from "react-redux";
@@ -6,6 +6,7 @@ import { setCategoryGoal } from "../../store/modules/counter";
 import { changeCategory } from "../../store/modules/counter";
 import { allColors, allDays } from "../variables/categories";
 import { convertSecToTime } from "../Functions/convertNumToTime";
+import { convertNumToTime } from "../Functions/convertNumToTime";
 
 import usageData from "../../static/data/usageTime.json";
 import emotionAvgData from "../../static/data/emotionAvg.json";
@@ -49,6 +50,14 @@ const DraggableGraph2 = (props) => {
   const [xaxis, setXaxis] = useState({ x0: 0, x1: 1 });
   const [goal, setGoal2] = useState(getGoal(category));
 
+  const handleGoal = (goal) => {
+    setGoal2(goal);
+  };
+
+  useEffect(() => {
+    handleGoal(goal);
+  }, [goal]);
+
   const emotionTrace = {
     x: allDays,
     y: emotionAvgData.map((d) => d.Emotional_state),
@@ -62,6 +71,16 @@ const DraggableGraph2 = (props) => {
   const usage = usageData.map(
     (d) => Math.round(convertSecToTime(d[props.category]) * 100) / 100
   );
+
+  const days =
+    8 -
+    usage
+      .map((value) => {
+        return value > goal ? true : false;
+      })
+      .filter((x) => x === true).length;
+  // console.log(days);
+
   const usageTrace = {
     x: allDays,
     y: usage,
@@ -116,6 +135,26 @@ const DraggableGraph2 = (props) => {
           ],
           paper_bgcolor: "#f9fbff",
           plot_bgcolor: "#f9fbff",
+          annotations: [
+            {
+              text: convertNumToTime(goal),
+              x: 0.98,
+              xref: "paper",
+              y: goal + ( Math.max.apply(Math, usage.slice(0, 7)) * 0.05),
+              yref: "y",
+              showarrow: false,
+              font: { size: 16 },
+            },
+            {
+              text: days + " day / week",
+              x: 0.98,
+              xref: "paper",
+              y: goal - ( Math.max.apply(Math, usage.slice(0, 7)) * 0.05),
+              yref: "y",
+              showarrow: false,
+              font: { size: 16 },
+            },
+          ],
         }}
         config={{
           displayModeBar: false,

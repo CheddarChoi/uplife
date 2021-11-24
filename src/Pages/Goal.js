@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import SectionTitle from "../Components/SectionTitle";
 import { connect } from "react-redux";
@@ -42,6 +42,9 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 const Goal = (props) => {
+  useEffect(()=>{
+    console.log("Goal Rendered")
+  },[])
   const history = useHistory();
   const { setCategoryGoal } = props;
 

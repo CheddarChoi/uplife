@@ -26,6 +26,10 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 const CategoryGoal = (props) => {
+
+  useEffect(()=>{
+    console.log("Category Goal Rendered")
+  })
   const history = useHistory();
   const [category, setCategory] = useState("Entertainment");
   const options = ["Entertainment", "SNS", "Communication", "Productivity"];
@@ -113,7 +117,7 @@ const CategoryGoal = (props) => {
               Drag the black bar to set your own goal
             </h6>
             <div style={{ width: "100%" }}>
-              <DraggableGraph2 />
+              {/* <DraggableGraph2 /> */}
             </div>
           </div>
         </div>

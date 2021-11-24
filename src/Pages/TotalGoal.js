@@ -20,13 +20,19 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 const TotalGoal = (props) => {
+  useEffect(()=>{
+    console.log("Total Goal rendered")
+  },[])
   const {Total, setGoal} = props
   console.log("Total", [Total])
   const history = useHistory();
-  const [values, setValues] = useState([2.5])
+  const [values, setValues] = useState([Total])
   const min = 0
   const usage = usageData.map(
-    (d) => Math.round(convertSecToTime(d["Total"]) * 100) / 100
+    (d,i) => {
+      console.log("mapping index",i)
+      return Math.round(convertSecToTime(d["Total"]) * 100) / 100
+    }
   );
   const [max, setMax] = useState(Math.max.apply(Math, usage.slice(0,7)))
 
@@ -37,6 +43,8 @@ const TotalGoal = (props) => {
     Down : 'to bottom',
     Up : 'to top'
   }
+
+
 
   useEffect(()=>{
     console.log("value changed", values)

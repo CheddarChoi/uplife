@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import Plotly from "plotly.js-basic-dist-min";
 import createPlotlyComponent from "react-plotly.js/factory";
 import { connect } from "react-redux";
-import { setGoal } from "../../store/modules/counter";
+import { setCategoryGoal } from "../../store/modules/counter";
+import { changeCategory } from "../../store/modules/counter";
 import { allColors, allDays } from "../variables/categories";
 import { convertSecToTime } from "../Functions/convertNumToTime";
 import { convertNumToTime } from "../Functions/convertNumToTime";
@@ -12,22 +13,50 @@ import emotionAvgData from "../../static/data/emotionAvg.json";
 import { emotionAxis } from "./configs";
 
 const Plot = createPlotlyComponent(Plotly);
-
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state) => (
+    // console.log(state),
+{
+  category: state.counter.category,
   Total: state.counter.Total,
+  Entertainment: state.counter.Entertainment,
+  SNS: state.counter.SNS,
+  Communication: state.counter.Communication,
+  Productivity: state.counter.Productivity,
 });
 const mapDispatchToProps = (dispatch) => ({
-  setGoal: (Total) => dispatch(setGoal(Total)),
+  setCategoryGoal: (category, num) => dispatch(setCategoryGoal(category, num)),
+  changeCategory: (type) => dispatch(changeCategory(type)),
 });
 
 const DraggableGraph = (props) => {
-  const { Total, setGoal } = props;
-  const [goal, setGoal2] = useState(Total);
-  const [xaxis, setXaxis] = useState({ x0: 0, x1: 1 });
+  const { Total, Entertainment,SNS, Communication, Productivity, setCategoryGoal, changeGoal, values } = props;
+  console.log(props);
+  console.log(Total);
+  console.log(values);
+  const category = "Total"
 
-  const handleGoal = (Total) => {
-    const { setGoal } = props;
-    setGoal(Total);
+  const getGoal = (type) => {
+    switch (type) {
+      case "Entertainment":
+        return Entertainment;
+      case "SNS":
+        return SNS;
+      case "Communication":
+        return Communication;
+      case "Productivity":
+        return Productivity;
+      case Total:
+        return Total;
+      default:
+        return null;
+    }
+  };
+
+  const [goal, setGoal2] = useState(getGoal(Total));
+
+  const handleGoal = (goal) => {
+    setGoal2(goal);
+
   };
 
   useEffect(() => {
@@ -41,32 +70,29 @@ const DraggableGraph = (props) => {
     name: "Emotion Rate",
     marker: {
       size: 12,
-      color: "#7BAB63",
     },
   };
 
   const usage = usageData.map(
-    (d) => Math.round(convertSecToTime(d["Total"]) * 100) / 100
+    (d) => Math.round(convertSecToTime(d[category]) * 100) / 100
   );
-
   const days =
     8 -
     usage
       .map((value) => {
-        return value > Total ? true : false;
+        return value > goal ? true : false;
       })
       .filter((x) => x === true).length;
-  // console.log(days);
 
   const usageTrace = {
     x: allDays,
     y: usage,
-    name: "Total Usage",
+    name: category + " Total Usage",
     mode: "bar",
     type: "bar",
     marker: {
       color: usage.map((value) => {
-        return value > Total ? allColors["Total"][1] : allColors["Total"][0];
+        return value > values ? allColors[category][1] : allColors[category][0];
       }),
     },
   };
@@ -96,17 +122,21 @@ const DraggableGraph = (props) => {
             {
               type: "line",
 
-              x0: xaxis.x0,
-              x1: xaxis.x1,
+              x0: 0,
+              x1: 1,
               xref: "paper",
 
-              y0: Total ? Total : 2.5,
-              y1: Total ? Total : 2.5,
+            //   y0: getGoal(Total) ? (getGoal(Total) > Math.max.apply(Math, usage.slice(0, 7)) ?  Math.max.apply(Math, usage.slice(0, 7)) : getGoal(Total)) : 0.25,
+            //   y1: getGoal(Total) ? (getGoal(Total) > Math.max.apply(Math, usage.slice(0, 7)) ?  Math.max.apply(Math, usage.slice(0, 7)) : getGoal(Total)) : 0.25,
+              // y0: getGoal(category) ? getGoal(category) : 0.25,
+              // y1: getGoal(category) ? getGoal(category) : 0.25,
+              y0: values ? values : 0,
+              y1: values ? values : 0,
               yref: "y",
 
               line: {
                 width: 2,
-                color: "rgb(0, 0, 0)",
+                color: "rgb(30, 30, 30)",
               },
             },
           ],
@@ -114,10 +144,10 @@ const DraggableGraph = (props) => {
           plot_bgcolor: "#f9fbff",
           annotations: [
             {
-              text: convertNumToTime(Total),
+              text: convertNumToTime(goal),
               x: 0.98,
               xref: "paper",
-              y: Total + 0.15,
+              y: goal + ( Math.max.apply(Math, usage.slice(0, 7)) * 0.05),
               yref: "y",
               showarrow: false,
               font: { size: 16 },
@@ -126,7 +156,7 @@ const DraggableGraph = (props) => {
               text: days + " day / week",
               x: 0.98,
               xref: "paper",
-              y: Total - 0.15,
+              y: goal - ( Math.max.apply(Math, usage.slice(0, 7)) * 0.05),
               yref: "y",
               showarrow: false,
               font: { size: 16 },
@@ -140,7 +170,10 @@ const DraggableGraph = (props) => {
           },
         }}
         onUpdate={(figure) => {
-          setGoal(figure.layout.shapes[0].y0);
+          // setXaxis({ x0 : 0, x1 : 1 })
+          setGoal2(figure.layout.shapes[0].y0);
+          // changeGoal([values]);
+          // setCategoryGoal(values, figure.layout.shapes[0].y0);
         }}
       />
     </>

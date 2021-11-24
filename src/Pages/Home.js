@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import SectionTitle from "../Components/SectionTitle";
 import CategoryBarGraph from "../Components/Graphs/CategoryBarGraph";
@@ -24,6 +24,9 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 const Home = (props) => {
+  useEffect(()=>{
+    console.log("Home Rendered")
+  },[])
   const categoryButs = Object.entries(allColors).map((key, i) => {
     const { changeCategory, category } = props;
     const setCategory = () => {

@@ -30,32 +30,37 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 const CategoryGoal = (props) => {
+
+  useEffect(()=>{
+    console.log("Category Goal Rendered")
+  })
   const history = useHistory();
-  const { setCategoryGoal } = props;
+  const { setCategoryGoal} = props;
   const [category, setCategory] = useState("Entertainment");
   const options = ["Entertainment", "SNS", "Communication", "Productivity"];
   const min = 0.01;
+  const [values, setValues] = useState([0.3]);
 
   const usage = usageData.map(
     (d) => Math.round(convertSecToTime(d[category]) * 100) / 100
   );
 
-  const getGoal = (type) => {
-    switch (type) {
-      case "Entertainment":
-        return props.Entertainment;
-      case "SNS":
-        return props.SNS;
-      case "Communication":
-        return props.Communication;
-      case "Productivity":
-        return props.Productivity;
-      case "Total":
-        return props.Total;
-      default:
-        return null;
-    }
-  };
+  // const getGoal = (type) => {
+  //   switch (type) {
+  //     case "Entertainment":
+  //       return props.Entertainment;
+  //     case "SNS":
+  //       return props.SNS;
+  //     case "Communication":
+  //       return props.Communication;
+  //     case "Productivity":
+  //       return props.Productivity;
+  //     case "Total":
+  //       return props.Total;
+  //     default:
+  //       return null;
+  //   }
+  // };
 
   // const [max, setMax] = useState(Math.max.apply(Math, usage.slice(0, 7)));
   const [max, setMax] = useState(Math.max.apply(Math, usage.slice(0, 7)));
@@ -72,6 +77,7 @@ const CategoryGoal = (props) => {
   };
 
   const onChangeHandler = (e) => {
+    setValues(0.3);
     setCategory(e.currentTarget.value);
   };
   const handleCategory = (type) => {
@@ -119,14 +125,18 @@ const CategoryGoal = (props) => {
                 </select>{" "}
                 apps less than{" "}
                 <span className="blank">
-                  {convertNumToTime(getGoal(category))}
+                  {/* {convertNumToTime(getGoal(category))} */}
+                  {convertNumToTime(values)}
                 </span>{" "}
                 a day.
               </h4>
               <button
                 className="uplifeButton"
                 style={{ marginTop: "auto" }}
-                onClick={() => handleRoute("/")}
+                onClick={() => {
+                  setCategoryGoal(category, values);
+                  handleRoute("/")}
+                }
               >
                 Set Goal
               </button>
@@ -139,24 +149,26 @@ const CategoryGoal = (props) => {
                 Drag the black bar to set your own goal
               </h6>
               <div style={{ width: "100%" }}>
-                <DraggableGraph2 />
+                <DraggableGraph2 changeGoal={setValues} values={values}/>
               </div>
             </div>
             <div className="col">
               <Range
                 direction={Direction.Up}
                 values={[
-                  getGoal(category) > max
-                    ? max
-                    : getGoal(category)
-                    ? getGoal(category)
-                    : 0.5,
+                  // getGoal(category) > max
+                  //   ? max
+                  //   : getGoal(category)
+                  //   ? getGoal(category)
+                  //   : 0.5,
+                  values ? values : 0.3
                 ]}
                 step={0.01}
                 min={min}
                 max={max}
                 onChange={(values) => {
-                  setCategoryGoal(category, values[0]);
+                  // setCategoryGoal(category, values[0]);
+                  setValues(values[0])
                 }}
                 renderTrack={({ props, children }) => (
                   <div
@@ -179,11 +191,12 @@ const CategoryGoal = (props) => {
                         borderRadius: "0px",
                         background: getTrackBackground({
                           values: [
-                            getGoal(category) > max
-                              ? max
-                              : getGoal(category)
-                              ? getGoal(category)
-                              : 0.25,
+                            // getGoal(category) > max
+                            //   ? max
+                            //   : getGoal(category)
+                            //   ? getGoal(category)
+                            //   : 0.25,
+                            values ? values : 0.1
                           ],
                           colors: ["#548BF4", "#ccc"],
                           min: min,

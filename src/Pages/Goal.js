@@ -55,11 +55,11 @@ const Goal = (props) => {
   });
 
   return (
-    <div class="container">
-      <div class="content">
-        <div class="d-flex">
+    <div className="container">
+      <div className="content">
+        <div className="d-flex">
           <div
-            class="colSection"
+            className="colSection"
             style={{ borderRight: "solid 1px black", paddingRight: "30px" }}
           >
             <SectionTitle
@@ -109,12 +109,12 @@ const Goal = (props) => {
               })}
             </ul>
           </div>
-          <div class="colSection" style={{ marginLeft: "35px" }}>
+          <div className="colSection" style={{ marginLeft: "35px" }}>
             <SectionTitle
               title="Add New Goals"
               subtitle="Choose a new type of goal you want to create"
             />
-            <div class="goalContainer row">
+            <div className="goalContainer row">
               <div
                 className="goalType col"
                 onClick={() => handleRoute("/goal/total")}

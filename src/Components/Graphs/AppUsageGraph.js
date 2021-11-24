@@ -73,6 +73,7 @@ const AppUsageGraph = (props) => {
         style={{ width: "100%" }}
         data={[emotionTrace, categoryTrace, totalTrace]}
         layout={{
+          height: 350,
           barmode: "stack",
           margin: { l: 50, b: 50, r: 50, t: 50 },
           xaxis: {

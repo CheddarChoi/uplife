@@ -89,7 +89,8 @@ const CategoryBarGraph = (props) => {
   });
 
   const layout = {
-    bargap: 0.5,
+    height: 350,
+    bargap: 0.4,
     margin: { l: 100, r: 100, b: 20, t: 50 },
     xaxis: { fixedrange: true },
     yaxis: {

@@ -69,7 +69,7 @@ const DailyGraph = () => {
         style={{ width: "100%" }}
         data={usageLogTrace.concat(emotionTrace)}
         layout={{
-          height: 400,
+          height: 350,
           xaxis: {
             title: "",
             tickfont: {
@@ -112,7 +112,7 @@ const DailyGraph = () => {
             tickfont: {
               size: 10,
             },
-            range: [-0.5, 2.5],
+            range: [-0.5, 2],
             fixedrange: true,
             showgrid: false,
             showticklabels: false,
@@ -120,7 +120,7 @@ const DailyGraph = () => {
           yaxis2: {
             title: "",
             fixedrange: true,
-            range: [-15, 10],
+            range: [-10, 5],
             showgrid: false,
             showticklabels: false,
             overlaying: "y",

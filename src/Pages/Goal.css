@@ -40,4 +40,5 @@
 
 .colSection ul {
   padding-left: 1rem;
+  min-width: 30vw;
 }

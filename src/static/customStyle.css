@@ -6,38 +6,38 @@ body {
 
 h1 {
   font-weight: bold;
-  font-size: 40px;
-  line-height: 48px;
+  font-size: 30px;
+  line-height: 36px;
 }
 
 h2 {
   font-weight: normal;
-  font-size: 32px;
-  line-height: 38px;
+  font-size: 28px;
+  line-height: 36px;
 }
 
 h3 {
   font-weight: normal;
-  font-size: 28px;
-  line-height: 34px;
-}
-
-h4 {
-  font-weight: normal;
-  font-size: 24px;
+  font-size: 24x;
   line-height: 32px;
 }
 
-h5 {
+h4 {
   font-weight: normal;
   font-size: 20px;
   line-height: 24px;
 }
 
-h6 {
+h5 {
   font-weight: normal;
   font-size: 16px;
   line-height: 19px;
+}
+
+h6 {
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 16px;
   margin-bottom: 0;
 }
 
@@ -61,7 +61,7 @@ div.content {
   background: #f9fbff;
   border-radius: 30px;
 
-  margin: 75px 0;
+  margin: 60px 0;
   padding: 40px 70px;
 }
 
@@ -73,13 +73,11 @@ div.uplifeDiv {
   box-shadow: 0px 4px 45px -15px rgba(0, 0, 0, 0.15);
   border-radius: 20px;
   padding: 16px 40px;
-  margin-bottom: 35px;
+  margin-bottom: 30px;
 
   font-family: Roboto;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 24px;
-  line-height: 32px;
+  font-size: 20px;
+  line-height: 24px;
 
   text-align: center;
   color: #3598db;

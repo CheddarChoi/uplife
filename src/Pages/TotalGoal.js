@@ -142,13 +142,12 @@ const TotalGoal = (props) => {
                     boxShadow: "0px 2px 6px #AAA",
                   }}
                 />
-              </div>
-            )}
-          />
+              )}
+            />
+          </div>
         </div>
       </div>
     </div>
-  </div>
   );
 };
 

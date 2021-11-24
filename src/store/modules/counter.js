@@ -21,10 +21,10 @@ const initialState = {
   SNS: NaN,
   Communication: NaN,
   Productivity: NaN,
-  entertainment_range:[0,0],
-  sns_range:[0,0],
-  communication_range:[0,0],
-  productivity_range:[0,0]
+  entertainment_range: [0, 0],
+  sns_range: [0, 0],
+  communication_range: [0, 0],
+  productivity_range: [0, 0],
 };
 
 export default function counter(state = initialState, action) {

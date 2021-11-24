@@ -34,7 +34,6 @@ const DailyGraph = () => {
     yaxis: "y2",
     showlegend: false,
   };
-  console.log(emotionTrace);
 
   var usageData = [];
   usageLogData.forEach((d) => {

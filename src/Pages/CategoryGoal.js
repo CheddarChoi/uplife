@@ -29,7 +29,6 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 const CategoryGoal = (props) => {
-  // console.log(props)
   const history = useHistory();
   const { setCategoryGoal } = props;
   const [category, setCategory] = useState("Entertainment");
@@ -39,8 +38,6 @@ const CategoryGoal = (props) => {
   const usage = usageData.map(
     (d) => Math.round(convertSecToTime(d[category]) * 100) / 100
   );
-  console.log(usage)
-  
 
   const getGoal = (type) => {
     switch (type) {
@@ -61,11 +58,6 @@ const CategoryGoal = (props) => {
 
   // const [max, setMax] = useState(Math.max.apply(Math, usage.slice(0, 7)));
   const [max, setMax] = useState(Math.max.apply(Math, usage.slice(0, 7)));
-  console.log(props);
-  console.log(max);
-  console.log(category);
-  console.log(getGoal(category));
-  
 
   const Direction = {
     Right: "to right",
@@ -87,7 +79,7 @@ const CategoryGoal = (props) => {
   };
   const handleMax = (type) => {
     setMax(Math.max.apply(Math, usage.slice(0, 7)));
-  }
+  };
 
   useEffect(() => {
     handleCategory(category);
@@ -150,7 +142,13 @@ const CategoryGoal = (props) => {
           <div className="col">
             <Range
               direction={Direction.Up}
-              values={[getGoal(category) > max ? max : (getGoal(category) ? getGoal(category) : 0.5)]}
+              values={[
+                getGoal(category) > max
+                  ? max
+                  : getGoal(category)
+                  ? getGoal(category)
+                  : 0.5,
+              ]}
               step={0.01}
               min={min}
               max={max}
@@ -177,7 +175,13 @@ const CategoryGoal = (props) => {
                       width: "5px",
                       borderRadius: "0px",
                       background: getTrackBackground({
-                        values: [getGoal(category) > max ? max : (getGoal(category) ? getGoal(category) : 0.25)],
+                        values: [
+                          getGoal(category) > max
+                            ? max
+                            : getGoal(category)
+                            ? getGoal(category)
+                            : 0.25,
+                        ],
                         colors: ["#548BF4", "#ccc"],
                         min: min,
                         max: max,

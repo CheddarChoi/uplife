@@ -20,9 +20,7 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 const TotalGoal = (props) => {
-  console.log(props)
   const { Total, setGoal } = props;
-  console.log("Total", [Total]);
   const history = useHistory();
   const [values, setValues] = useState([2]);
   const min = 0.25;
@@ -39,9 +37,7 @@ const TotalGoal = (props) => {
   };
 
   useEffect(() => {
-    console.log("value changed", values);
     setGoal(values[0]);
-    console.log("new goal", Total);
   }, [values]);
   const handleRoute = (path) => {
     history.push(path);

@@ -141,39 +141,14 @@ const TotalGoal = (props) => {
                     alignItems: "center",
                     boxShadow: "0px 2px 6px #AAA",
                   }}
-                >
-                  <div
-                    style={{
-                      height: "16px",
-                      width: "5px",
-                      backgroundColor: isDragged ? "#548BF4" : "#CCC",
-                    }}
-                  />
-                </div>
-              )}
-            />
-          </div>
-          <div
-          // style={{
-          //   display: "flex",
-          //   justifyContent: "center",
-          //   flexWrap: "wrap",
-          //   margin: "2em"
-          // }}
-          >
-            {/* <output style={{ marginTop: "30px" }} id="output">
-          {convertNumToTime(Total)}
-        </output>
-        <br/>
-        <output style={{ marginTop: "30px" }} id="output">
-          {8-usage.map((value) => {
-        return value > Total ? true : false;
-  }).filter(x=> x==true).length} day/week success
-        </output> */}
-          </div>
+                />
+              </div>
+            )}
+          />
         </div>
       </div>
     </div>
+  </div>
   );
 };
 

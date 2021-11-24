@@ -53,9 +53,8 @@ const CategoryBarGraph = (props) => {
     handleCategory(category2);
   }, [category2]);
 
-  let todayData = usageData.at(
-    usageData.findIndex((e) => e.Date === "2019-05-06")
-  );
+  const todayData =
+    usageData[usageData.findIndex((e) => e.Date === "2019-05-06")];
 
   const trace = {
     x: allCategory.map(

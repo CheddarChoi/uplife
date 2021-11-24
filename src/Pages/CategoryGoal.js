@@ -64,14 +64,14 @@ const CategoryGoal = (props) => {
   }, [category]);
 
   return (
-    <div class="container">
-      <div class="content">
+    <div className="container">
+      <div className="content">
         <SectionTitle
           title="Goal Type"
           subtitle="Choose a new type of goal you want to create"
         />
 
-        <div class="goalContainer row">
+        <div className="goalContainer row">
           <div className="goalType col" style={{ cursor: "default" }}>
             <h2
               style={{ color: "rgba(53, 152, 219, 1)", marginBottom: "32px" }}
@@ -105,7 +105,7 @@ const CategoryGoal = (props) => {
               Set Goal
             </button>
           </div>
-          <div class="col">
+          <div className="col">
             <div className="uplifeDiv" style={{ marginBottom: "20px" }}>
               Categorical phone usage over the past week
             </div>

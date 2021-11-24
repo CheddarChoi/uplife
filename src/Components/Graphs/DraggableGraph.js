@@ -21,7 +21,7 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 const DraggableGraph = (props) => {
-  const {Total, setGoal} = props
+  const { Total, setGoal } = props;
   const [goal, setGoal2] = useState(Total);
   const [xaxis, setXaxis] = useState({ x0: 0, x1: 1 });
 
@@ -44,16 +44,18 @@ const DraggableGraph = (props) => {
       color: "#7BAB63",
     },
   };
-  
-  
 
   const usage = usageData.map(
     (d) => Math.round(convertSecToTime(d["Total"]) * 100) / 100
   );
 
-  const days = 8 - usage.map((value) => {
-    return value > Total ? true: false;
-  }).filter(x => x==true).length
+  const days =
+    8 -
+    usage
+      .map((value) => {
+        return value > Total ? true : false;
+      })
+      .filter((x) => x === true).length;
   // console.log(days);
 
   const usageTrace = {
@@ -114,21 +116,21 @@ const DraggableGraph = (props) => {
             {
               text: convertNumToTime(Total),
               x: 0.98,
-              xref: 'paper',
-              y: Total+0.15,
-              yref: 'y',
+              xref: "paper",
+              y: Total + 0.15,
+              yref: "y",
               showarrow: false,
               font: { size: 16 },
             },
             {
               text: days + " day / week",
               x: 0.98,
-              xref: 'paper',
-              y: Total-0.15,
-              yref: 'y',
+              xref: "paper",
+              y: Total - 0.15,
+              yref: "y",
               showarrow: false,
               font: { size: 16 },
-            }
+            },
           ],
         }}
         config={{

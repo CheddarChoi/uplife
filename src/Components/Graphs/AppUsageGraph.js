@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import Plotly from "plotly.js-basic-dist-min";
 import createPlotlyComponent from "react-plotly.js/factory";
 import { connect } from "react-redux";
 import { changeCategory } from "../../store/modules/counter";
 import { convertSecToTime } from "../Functions/convertNumToTime";
-import { allCategory, allColors, allDays } from "../variables/categories";
+import { allColors, allDays } from "../variables/categories";
 
 import usageData from "../../static/data/usageTime.json";
 import emotionAvgData from "../../static/data/emotionAvg.json";
@@ -21,7 +21,7 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 const AppUsageGraph = (props) => {
-  const { category, changeCategory } = props;
+  const { category } = props;
 
   const totalUsage = usageData.map(
     (d) =>

@@ -124,7 +124,7 @@ const DraggableGraph2 = (props) => {
           },
         }}
         onUpdate={(figure) => {
-          // setXaxis({x0:0, x1:1})
+          // setXaxis({ x0 : 0, x1 : 1 })
           setGoal2(figure.layout.shapes[0].y0);
           setCategoryGoal(props.category, figure.layout.shapes[0].y0);
         }}

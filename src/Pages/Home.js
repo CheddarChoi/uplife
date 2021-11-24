@@ -79,7 +79,7 @@ const Home = (props) => {
                 <div className="appList">
                   {apps.map((name) => {
                     return (
-                      <div class="appLogoTooltip">
+                      <div className="appLogoTooltip">
                         <img
                           src={process.env.PUBLIC_URL + "/app/" + name + ".jpg"}
                           alt={name + " logo"}

@@ -21,7 +21,7 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 const DraggableGraph = (props) => {
-  const { Total, setGoal } = props;
+  const { Total, setGoal, values, changeGoal } = props;
   const [goal, setGoal2] = useState(Total);
   const [xaxis, setXaxis] = useState({ x0: 0, x1: 1 });
 
@@ -30,9 +30,9 @@ const DraggableGraph = (props) => {
     setGoal(Total);
   };
 
-  useEffect(() => {
-    handleGoal(goal);
-  }, [goal]);
+  // useEffect(() => {
+  //   handleGoal(goal);
+  // }, [goal]);
 
   const emotionTrace = {
     x: allDays,
@@ -53,7 +53,7 @@ const DraggableGraph = (props) => {
     8 -
     usage
       .map((value) => {
-        return value > Total ? true : false;
+        return value > values ? true : false;
       })
       .filter((x) => x === true).length;
   // console.log(days);
@@ -66,7 +66,7 @@ const DraggableGraph = (props) => {
     type: "bar",
     marker: {
       color: usage.map((value) => {
-        return value > Total ? allColors["Total"][1] : allColors["Total"][0];
+        return value > values ? allColors["Total"][1] : allColors["Total"][0];
       }),
     },
   };
@@ -100,8 +100,8 @@ const DraggableGraph = (props) => {
               x1: xaxis.x1,
               xref: "paper",
 
-              y0: Total ? Total : 2.5,
-              y1: Total ? Total : 2.5,
+              y0: values ? values : 2.5,
+              y1: values ? values : 2.5,
               yref: "y",
 
               line: {
@@ -114,10 +114,10 @@ const DraggableGraph = (props) => {
           plot_bgcolor: "#f9fbff",
           annotations: [
             {
-              text: convertNumToTime(Total),
+              text: convertNumToTime(values),
               x: 0.98,
               xref: "paper",
-              y: Total + 0.15,
+              y: values + 0.15,
               yref: "y",
               showarrow: false,
               font: { size: 16 },
@@ -126,7 +126,7 @@ const DraggableGraph = (props) => {
               text: days + " day / week",
               x: 0.98,
               xref: "paper",
-              y: Total - 0.15,
+              y: values - 0.15,
               yref: "y",
               showarrow: false,
               font: { size: 16 },
@@ -141,7 +141,7 @@ const DraggableGraph = (props) => {
         }}
         onUpdate={(figure) => {
           setXaxis({x0:0, x1:1})
-          setGoal(figure.layout.shapes[0].y0);
+          changeGoal(figure.layout.shapes[0].y0);
         }}
       />
     </>

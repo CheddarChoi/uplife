@@ -23,7 +23,7 @@ const mapDispatchToProps = (dispatch) => ({
 const TotalGoal = (props) => {
   const { Total, setGoal } = props;
   const history = useHistory();
-  const [values, setValues] = useState([2]);
+  const [values, setValues] = useState([Total]);
   const min = 0;
   const usage = usageData.map(
     (d,i) => {
@@ -40,12 +40,12 @@ const TotalGoal = (props) => {
     Up: "to top",
   };
 
-  useEffect(() => {
-    setGoal(values[0]);
-  }, [values]);
-  const handleRoute = (path) => {
-    history.push(path);
-  };
+  // useEffect(() => {
+  //   setGoal(values[0]);
+  // }, [values]);
+  // const handleRoute = (path) => {
+  //   history.push(path);
+  // };
 
   return (
     <>
@@ -66,12 +66,12 @@ const TotalGoal = (props) => {
               </h2>
               <h4>
                 I will use my phone less than{" "}
-                <span className="blank">{convertNumToTime(Total)}</span> a day.
+                <span className="blank">{convertNumToTime(values[0])}</span> a day.
               </h4>
               <button
                 className="uplifeButton"
                 style={{ marginTop: "auto" }}
-                onClick={() => handleRoute("/")}
+                onClick={() => setGoal(values[0])}
               >
                 Set Goal
               </button>
@@ -84,18 +84,18 @@ const TotalGoal = (props) => {
                 Drag the black bar to set your own goal
               </h6>
               <div style={{ width: "100%" }}>
-                <DraggableGraph />
+                <DraggableGraph changeGoal={setValues} values={values[0]}/>
               </div>
             </div>
             <div className="col">
               <Range
                 direction={Direction.Up}
-                values={[Total]}
+                values={values}
                 step={0.1}
                 min={min}
                 max={max}
                 onChange={(values) => {
-                  setGoal(values[0]);
+                  setValues(values)
                 }}
                 renderTrack={({ props, children }) => (
                   <div
@@ -117,7 +117,7 @@ const TotalGoal = (props) => {
                         width: "5px",
                         borderRadius: "0px",
                         background: getTrackBackground({
-                          values: [Total],
+                          values: values,
                           colors: ["#548BF4", "#ccc"],
                           min: min,
                           max: max,

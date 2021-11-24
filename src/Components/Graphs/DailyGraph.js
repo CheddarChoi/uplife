@@ -39,9 +39,8 @@ const DailyGraph = () => {
   usageLogData.forEach((d) => {
     var start = new Date(d.startTime.replace(" ", "T"));
     var end = new Date(d.startTime.replace(" ", "T"));
-
     end.setSeconds(end.getSeconds() + d.seconds);
-    if (date2string(start) > "2019-05-06T00:00:00")
+    if (date2string(start) > "2019-05-06")
       usageData.push({
         startTime: date2string(start),
         endTime: date2string(end),

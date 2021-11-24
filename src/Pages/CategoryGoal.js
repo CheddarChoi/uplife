@@ -31,8 +31,8 @@ const mapDispatchToProps = (dispatch) => ({
 const CategoryGoal = (props) => {
   // console.log(props)
   const history = useHistory();
-  const { setCategoryGoal, Communication, Entertainment, Productivity, SNS } = props;
-  const [category, setCategory] = useState("Communication");
+  const { setCategoryGoal } = props;
+  const [category, setCategory] = useState("Entertainment");
   const options = ["Entertainment", "SNS", "Communication", "Productivity"];
   const min = 0.01;
 
@@ -40,7 +40,7 @@ const CategoryGoal = (props) => {
     (d) => Math.round(convertSecToTime(d[category]) * 100) / 100
   );
   console.log(usage)
-  const [max, setMax] = useState(Math.max.apply(Math, usage.slice(0, 7)));
+  
 
   const getGoal = (type) => {
     switch (type) {
@@ -58,6 +58,13 @@ const CategoryGoal = (props) => {
         return null;
     }
   };
+
+  // const [max, setMax] = useState(Math.max.apply(Math, usage.slice(0, 7)));
+  const [max, setMax] = useState(Math.max.apply(Math, usage.slice(0, 7)));
+  console.log(props);
+  console.log(max);
+  console.log(category);
+  console.log(getGoal(category));
   
 
   const Direction = {
@@ -143,7 +150,7 @@ const CategoryGoal = (props) => {
           <div className="col">
             <Range
               direction={Direction.Up}
-              values={[getGoal(category)]}
+              values={[getGoal(category) > max ? max : (getGoal(category) ? getGoal(category) : 0.5)]}
               step={0.01}
               min={min}
               max={max}
@@ -170,7 +177,7 @@ const CategoryGoal = (props) => {
                       width: "5px",
                       borderRadius: "0px",
                       background: getTrackBackground({
-                        values: [getGoal(category)],
+                        values: [getGoal(category) > max ? max : (getGoal(category) ? getGoal(category) : 0.25)],
                         colors: ["#548BF4", "#ccc"],
                         min: min,
                         max: max,

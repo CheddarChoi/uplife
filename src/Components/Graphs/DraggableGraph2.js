@@ -71,7 +71,7 @@ const DraggableGraph2 = (props) => {
   const usage = usageData.map(
     (d) => Math.round(convertSecToTime(d[props.category]) * 100) / 100
   );
-
+  // console.log(Math.max.apply(Math, usage.slice(0, 7)));
   const days =
     8 -
     usage
@@ -123,8 +123,10 @@ const DraggableGraph2 = (props) => {
               x1: 1,
               xref: "paper",
 
-              y0: getGoal(category) ? getGoal(category) : 3,
-              y1: getGoal(category) ? getGoal(category) : 3,
+              y0: getGoal(category) ? (getGoal(category) > Math.max.apply(Math, usage.slice(0, 7)) ?  Math.max.apply(Math, usage.slice(0, 7)) : getGoal(category)) : 0.25,
+              y1: getGoal(category) ? (getGoal(category) > Math.max.apply(Math, usage.slice(0, 7)) ?  Math.max.apply(Math, usage.slice(0, 7)) : getGoal(category)) : 0.25,
+              // y0: getGoal(category) ? getGoal(category) : 0.25,
+              // y1: getGoal(category) ? getGoal(category) : 0.25,
               yref: "y",
 
               line: {

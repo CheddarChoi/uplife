@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
-import DraggableGraph from "../Components/Graphs/DraggableGraph";
 import SectionTitle from "../Components/SectionTitle";
 import { connect } from "react-redux";
 import { convertNumToTime } from "../Components/Functions/convertNumToTime";
@@ -12,6 +11,7 @@ import { convertSecToTime } from "../Components/Functions/convertNumToTime";
 import "../static/customStyle.css";
 import "./Goal.css";
 import Header from "../Components/Header";
+import DraggableGraph3 from "../Components/Graphs/DraggableGraph3";
 
 const mapStateToProps = (state) => ({
   Total: state.counter.Total,
@@ -27,11 +27,14 @@ const TotalGoal = (props) => {
   const min = 0;
   const usage = usageData.map(
     (d,i) => {
-      console.log("mapping index",i)
       return Math.round(convertSecToTime(d["Total"]) * 100) / 100
     }
   );
   const [max, setMax] = useState(Math.max.apply(Math, usage.slice(0, 7)));
+
+  const handleRoute = (path) => {
+    history.push(path);
+  };
 
   const Direction = {
     Right: "to right",
@@ -71,7 +74,10 @@ const TotalGoal = (props) => {
               <button
                 className="uplifeButton"
                 style={{ marginTop: "auto" }}
-                onClick={() => setGoal(values[0])}
+                onClick={() => {
+                  setGoal(values[0])
+                  handleRoute("/")
+                }}
               >
                 Set Goal
               </button>
@@ -84,13 +90,13 @@ const TotalGoal = (props) => {
                 Drag the black bar to set your own goal
               </h6>
               <div style={{ width: "100%" }}>
-                <DraggableGraph changeGoal={setValues} values={values[0]}/>
+                <DraggableGraph3 changeGoal={setValues} values={values[0]}/>
               </div>
             </div>
             <div className="col">
               <Range
                 direction={Direction.Up}
-                values={values}
+                values={values ? values : 0.1}
                 step={0.1}
                 min={min}
                 max={max}
@@ -117,7 +123,7 @@ const TotalGoal = (props) => {
                         width: "5px",
                         borderRadius: "0px",
                         background: getTrackBackground({
-                          values: values,
+                          values: values ? values : 0.1,
                           colors: ["#548BF4", "#ccc"],
                           min: min,
                           max: max,

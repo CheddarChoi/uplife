@@ -16,7 +16,7 @@ export const setCategoryGoal = (category, goal) => ({
 
 const initialState = {
   category: "Total",
-  Total: 3,
+  Total: NaN,
   Entertainment: NaN,
   SNS: NaN,
   Communication: NaN,

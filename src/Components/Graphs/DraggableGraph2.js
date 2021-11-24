@@ -28,7 +28,7 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 const DraggableGraph2 = (props) => {
-  const { category, Total, Entertainment,SNS, Communication, Productivity, setCategoryGoal } = props;
+  const { category, Total, Entertainment,SNS, Communication, Productivity, values } = props;
 
   const getGoal = (type) => {
     switch (type) {
@@ -47,7 +47,6 @@ const DraggableGraph2 = (props) => {
     }
   };
 
-  const [xaxis, setXaxis] = useState({ x0: 0, x1: 1 });
   const [goal, setGoal2] = useState(getGoal(category));
 
   const handleGoal = (goal) => {
@@ -71,7 +70,7 @@ const DraggableGraph2 = (props) => {
   const usage = usageData.map(
     (d) => Math.round(convertSecToTime(d[category]) * 100) / 100
   );
-  // console.log(Math.max.apply(Math, usage.slice(0, 7)));
+  
   const days =
     8 -
     usage
@@ -79,7 +78,6 @@ const DraggableGraph2 = (props) => {
         return value > goal ? true : false;
       })
       .filter((x) => x === true).length;
-  // console.log(days);
 
   const usageTrace = {
     x: allDays,
@@ -123,10 +121,12 @@ const DraggableGraph2 = (props) => {
               x1: 1,
               xref: "paper",
 
-              y0: getGoal(category) ? (getGoal(category) > Math.max.apply(Math, usage.slice(0, 7)) ?  Math.max.apply(Math, usage.slice(0, 7)) : getGoal(category)) : 0.25,
-              y1: getGoal(category) ? (getGoal(category) > Math.max.apply(Math, usage.slice(0, 7)) ?  Math.max.apply(Math, usage.slice(0, 7)) : getGoal(category)) : 0.25,
+              // y0: getGoal(category) ? (getGoal(category) > Math.max.apply(Math, usage.slice(0, 7)) ?  Math.max.apply(Math, usage.slice(0, 7)) : getGoal(category)) : 0.25,
+              // y1: getGoal(category) ? (getGoal(category) > Math.max.apply(Math, usage.slice(0, 7)) ?  Math.max.apply(Math, usage.slice(0, 7)) : getGoal(category)) : 0.25,
               // y0: getGoal(category) ? getGoal(category) : 0.25,
               // y1: getGoal(category) ? getGoal(category) : 0.25,
+              y0: values ? values : 0,
+              y1: values ? values : 0,
               yref: "y",
 
               line: {
@@ -165,9 +165,8 @@ const DraggableGraph2 = (props) => {
           },
         }}
         onUpdate={(figure) => {
-          // setXaxis({ x0 : 0, x1 : 1 })
           setGoal2(figure.layout.shapes[0].y0);
-          setCategoryGoal(props.category, figure.layout.shapes[0].y0);
+          // setCategoryGoal(props.category, figure.layout.shapes[0].y0);
         }}
       />
     </>

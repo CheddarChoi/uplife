@@ -11,7 +11,7 @@ import { convertSecToTime } from "../Components/Functions/convertNumToTime";
 import "../static/customStyle.css";
 import "./Goal.css";
 import Header from "../Components/Header";
-import DraggableGraph3 from "../Components/Graphs/DraggableGraph3";
+import DraggableGraph from "../Components/Graphs/DraggableGraph";
 
 const mapStateToProps = (state) => ({
   Total: state.counter.Total,
@@ -22,6 +22,7 @@ const mapDispatchToProps = (dispatch) => ({
 
 const TotalGoal = (props) => {
   const { Total, setGoal } = props;
+  console.log(Total);
   const history = useHistory();
   const [values, setValues] = useState([Total]);
   const min = 0;
@@ -90,7 +91,7 @@ const TotalGoal = (props) => {
                 Drag the black bar to set your own goal
               </h6>
               <div style={{ width: "100%" }}>
-                <DraggableGraph3 changeGoal={setValues} values={values[0]}/>
+                <DraggableGraph changeGoal={setValues} values={values[0]}/>
               </div>
             </div>
             <div className="col">

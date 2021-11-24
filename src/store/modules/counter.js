@@ -16,11 +16,11 @@ export const setCategoryGoal = (category, goal) => ({
 
 const initialState = {
   category: "Total",
-  Total: NaN,
-  Entertainment: NaN,
-  SNS: NaN,
-  Communication: NaN,
-  Productivity: NaN,
+  Total: 0.3,
+  Entertainment: 0.3,
+  SNS: 0.3,
+  Communication: 0.3,
+  Productivity: 0.3,
   entertainment_range: [0, 0],
   sns_range: [0, 0],
   communication_range: [0, 0],

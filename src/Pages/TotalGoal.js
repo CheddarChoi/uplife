@@ -30,7 +30,6 @@ const TotalGoal = (props) => {
   );
   const [max, setMax] = useState(Math.max.apply(Math, usage.slice(0,7)))
 
-
   const Direction = {
     Right : 'to right',
     Left : 'to left',
@@ -154,28 +153,9 @@ const TotalGoal = (props) => {
             )}
           />
         </div>
-        <div
-        // style={{
-        //   display: "flex",
-        //   justifyContent: "center",
-        //   flexWrap: "wrap",
-        //   margin: "2em"
-        // }}
-        >
-        
-        {/* <output style={{ marginTop: "30px" }} id="output">
-          {convertNumToTime(Total)}
-        </output>
-        <br/>
-        <output style={{ marginTop: "30px" }} id="output">
-          {8-usage.map((value) => {
-        return value > Total ? true : false;
-  }).filter(x=> x==true).length} day/week success
-        </output> */}
-      </div>
-        </div>
       </div>
     </div>
+  </div>
   );
 };
 

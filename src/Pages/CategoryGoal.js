@@ -27,7 +27,7 @@ const mapDispatchToProps = (dispatch) => ({
 
 const CategoryGoal = (props) => {
   const history = useHistory();
-  const [category, setCategory] = useState("Entertainment");
+  const [category, setCategory] = useState("Communication");
   const options = ["Entertainment", "SNS", "Communication", "Productivity"];
 
   const getGoal = (type) => {

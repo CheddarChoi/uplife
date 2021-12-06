@@ -1,60 +1,96 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useState } from "react";
 import Plotly from "plotly.js-basic-dist-min";
 import createPlotlyComponent from "react-plotly.js/factory";
+import { connect } from "react-redux";
+import { changeCategory } from "../../store/modules/counter";
 
 import { allCategory, allColors } from "../variables/categories";
 import emotionTimeData from "../../static/data/emotionTime.json";
 
 const Plot = createPlotlyComponent(Plotly);
 
-var cnt = { Good: {}, Bad: {} };
-
-var goodTraces = [];
-var badTraces = [];
-
-emotionTimeData.forEach((d) => {
-  if (allCategory.includes(d.category)) {
-    var timeZone = d.datetime.split(" ")[1].split(":")[0];
-    if (cnt[d.condition][timeZone] === undefined)
-      cnt[d.condition][timeZone] = 0;
-    cnt[d.condition][timeZone] += 1;
-    var trace = {
-      type: "scatter",
-      x: [timeZone],
-      y:
-        d.condition === "Good"
-          ? [cnt[d.condition][timeZone]]
-          : [-cnt[d.condition][timeZone]],
-      mode: "markers+text",
-      text: d.condition === "Good" ? ["😁"] : ["😠"],
-      textfont: {
-        size: 16,
-        color: "black",
-      },
-      name: d.category,
-      marker: {
-        color: allColors[d.category][0],
-        symbol: "circle",
-        size: 24,
-      },
-    };
-    if (d.condition === "Good") goodTraces.push(trace);
-    else badTraces.push(trace);
-  }
+const mapStateToProps = (state) => ({
+  category: state.counter.category,
+  Entertainment: state.counter.Entertainment,
+  SNS: state.counter.SNS,
+  Communication: state.counter.Communication,
+  Total: state.counter.Total,
+  Productivity: state.counter.Productivity,
+});
+const mapDispatchToProps = (dispatch) => ({
+  changeCategory: (category) => dispatch(changeCategory(category)),
 });
 
-const goodMax = Math.max(
-  ...Object.keys(cnt["Good"]).map(function (key) {
-    return cnt["Good"][key];
-  })
-);
-const badMax = Math.max(
-  ...Object.keys(cnt["Bad"]).map(function (key) {
-    return cnt["Bad"][key];
-  })
-);
+const DotGraph = (props) => {
+  const { category } = props;
 
-const DotGraph = () => {
+  const [category2, setCategory] = useState(props.category);
+  const handleCategory = (type) => {
+    const { changeCategory } = props;
+    changeCategory(type);
+  };
+  useEffect(() => {
+    handleCategory(category2);
+  }, [category2]);
+
+  var cnt = { Good: {}, Bad: {} };
+
+  var goodTraces = [];
+  var badTraces = [];
+
+  var sortedEmotionTimeData = [];
+  emotionTimeData.forEach((d) => {
+    if (d.category === category) sortedEmotionTimeData.push(d);
+  });
+  emotionTimeData.forEach((d) => {
+    if (d.category !== category) sortedEmotionTimeData.push(d);
+  });
+  sortedEmotionTimeData.forEach((d) => {
+    if (allCategory.includes(d.category)) {
+      var timeZone = d.datetime.split(" ")[1].split(":")[0];
+      if (cnt[d.condition][timeZone] === undefined)
+        cnt[d.condition][timeZone] = 0;
+      cnt[d.condition][timeZone] += 1;
+      var trace = {
+        type: "scatter",
+        x: [timeZone],
+        y:
+          d.condition === "Good"
+            ? [cnt[d.condition][timeZone]]
+            : [-cnt[d.condition][timeZone]],
+        mode: "markers+text",
+        text: d.condition === "Good" ? ["😁"] : ["😠"],
+        textfont: {
+          size: 16,
+          color: "black",
+        },
+        name: d.category,
+        marker: {
+          color:
+            category === "Total" || d.category === category
+              ? allColors[d.category][0]
+              : allColors[d.category][1],
+          symbol: "circle",
+          size: 24,
+        },
+      };
+      if (d.condition === "Good") goodTraces.push(trace);
+      else badTraces.push(trace);
+    }
+  });
+
+  const goodMax = Math.max(
+    ...Object.keys(cnt["Good"]).map(function (key) {
+      return cnt["Good"][key];
+    })
+  );
+  const badMax = Math.max(
+    ...Object.keys(cnt["Bad"]).map(function (key) {
+      return cnt["Bad"][key];
+    })
+  );
+
   return (
     <>
       <Plot
@@ -154,4 +190,4 @@ const DotGraph = () => {
   );
 };
 
-export default DotGraph;
+export default connect(mapStateToProps, mapDispatchToProps)(DotGraph);

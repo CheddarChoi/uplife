@@ -30,6 +30,7 @@ const DailyGraph = () => {
     x: x,
     y: y,
     mode: "markers+lines",
+    line: { color: "#3598DB" },
     name: "emotion",
     yaxis: "y2",
     showlegend: false,

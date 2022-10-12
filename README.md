@@ -41,8 +41,10 @@ To Visit App:
 `localhost:3000/`
 
 ## Project Screenshots
-
-Preparing
+<figure class="half">
+  <img src="https://github.com/CheddarChoi/uplife/blob/main/uplife_screenshot1.png"/>
+  <img src="https://github.com/CheddarChoi/uplife/blob/main/uplife_screenshot2.png"/>
+<figure>
 
 ## Project Structure
 
